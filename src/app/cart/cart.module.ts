@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { LineItemComponent } from './line-item/line-item.component';
+import { LineItemComponent } from './components/line-item/line-item.component';
 
 @NgModule({
   imports: [

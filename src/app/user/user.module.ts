@@ -1,12 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { OrdersComponent } from './orders/orders.component';
-import { OverviewComponent } from './overview/overview.component';
-import { AddressComponent } from './address/address.component';
+import { OrdersComponent } from './components/orders/orders.component';
+import { OverviewComponent } from './components/overview/overview.component';
+import { AddressComponent } from './components/address/address.component';
+
+import { UserRoutingModule } from './user-routing.module';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    UserRoutingModule
   ],
   declarations: [OrdersComponent, OverviewComponent, AddressComponent]
 })
