@@ -2,9 +2,9 @@
   "name": "ang-hippo",
   "version": "0.0.0",
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
+    "ng": "./node_modules/@angular/cli/bin/ng",
+    "start": "ng serve --aot",
+    "build": "ng build --aot",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
