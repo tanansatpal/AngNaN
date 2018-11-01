@@ -1,1 +1,3 @@
-export const Product = {};
+export class Product {
+  _id: string;
+}

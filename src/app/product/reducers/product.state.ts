@@ -1,6 +1,7 @@
 import { Product } from '@shared/models/product.model';
 
 export interface ProductState {
-  products: Product[];
+  productIds: string[];
+  productEntities: { [_id: string]: Product };
   selectedProduct: Product;
 }
