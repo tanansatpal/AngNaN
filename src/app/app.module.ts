@@ -4,7 +4,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { StoreModule } from '@ngrx/store';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
-
+import 'bootstrap';
 import { UserModule } from '@app/user/user.module';
 import { ProductModule } from '@app/product';
 import { CartModule } from '@app/cart';
