@@ -1,46 +1,46 @@
 <header class="header header-fixed nav-down">
   <div class="box mb-0">
     <div class="">
-      <nav class="navbar navbar-default">
+
+      <nav class="navbar navbar-expand-lg navbar-light">
         <div class="container-fluid">
-          <div class="navbar-header">
-            <a href="#" class="header-logo-small">
-              <img src="assets/images/logo.png" alt="store logo">
-            </a>
-            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".js-navbar-collapse">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-          </div>
+          <a href="#" class="header-logo-small">
+            <img src="assets/images/logo.png" alt="store logo">
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".js-navbar-collapse"
+                  aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
 
           <div class="collapse navbar-collapse js-navbar-collapse">
-            <ul class="nav navbar-nav">
-              <li class="header-link"><a href="#">Home</a></li>
-              <li class="header-link"><a href="#">Specials</a></li>
-              <li class="header-link dropdown mega pull-left ">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Categories <span class="ti-angle-down"></span></a>
+            <ul class="nav navbar-nav mr-auto justify-content-between">
+              <li class="nav-item header-link"><a href="#" class="nav-link">Home</a></li>
+              <li class="nav-item header-link"><a href="#" class="nav-link">Specials</a></li>
+              <li class="nav-item header-link dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Categories
+                </a>
 
                 <ul class="dropdown-menu mega-menu row">
                   <li class="col-sm-3">
                     <ul>
-                      <li><img class="img-responsive  width-100 mb-15" src="assets/img/categories/05.jpg" alt="category image">
-                        <img class="img-responsive width-100" src="assets/img/categories/06.jpg" alt="category image"></li>
+                      <li><img class="img-responsive  width-100 mb-15" src="assets/img/categories/05.jpg"
+                               alt="category image">
+                        <img class="img-responsive width-100" src="assets/img/categories/06.jpg" alt="category image">
+                      </li>
                     </ul>
                   </li>
 
                   <li class="col-sm-3 col-xs-6 smartphone-fw">
                     <ul>
-                      <li class="dropdown-header">Excepteur s cupidatat </li>
+                      <li class="dropdown-header">Excepteur s cupidatat</li>
                       <li><a href="#">lorem ipsum dolor </a></li>
                       <li><a href="#">laboris nisi ut aliquip</a></li>
                       <li><a href="#">int occaecat</a></li>
                       <li><a href="#">Newsletter Form</a></li>
                       <li><a href="#">fugiat nulla pariatur</a></li>
                       <li class="divider"></li>
-                      <li class="dropdown-header">Reprehenderit </li>
-                      <li><a href="#">ullamco  ex ea commodo</a></li>
+                      <li class="dropdown-header">Reprehenderit</li>
+                      <li><a href="#">ullamco ex ea commodo</a></li>
                       <li><a href="#">incididunt ut labore </a></li>
                       <li><a href="#">fugiat nulla pariatur</a></li>
                     </ul>
@@ -55,7 +55,7 @@
                       <li><a href="#">fugiat nulla pariatur</a></li>
                       <li class="divider"></li>
 
-                      <li class="dropdown-header">Consectetur adipisicing </li>
+                      <li class="dropdown-header">Consectetur adipisicing</li>
                       <li><a href="#">enim ad minim veniam</a></li>
                       <li><a href="#">dolore magna aliqua</a></li>
                       <li><a href="#"> aute irure dolor</a></li>
@@ -73,25 +73,20 @@
                   </li>
                 </ul>
               </li>
-              <li class="header-link"><a href="#">New products</a></li>
-
+              <li class="nav-item header-link"><a href="#" class="nav-link">New products</a></li>
             </ul>
-            <div class="header-languages pull-right mr-30">
+            <form class="form-inline">
+              <div class="form-group">
+                <input class="form-control" placeholder="Search" type="text">
+              </div>
+              <button type="submit" class="btn btn-link"><span class="ti-search"></span></button>
+            </form>
+            <div class="nav-item nav-link header-link header-languages mr-30">
               <ul>
                 <li><span>EN</span></li>
                 <li><a href="#">DE</a></li>
                 <li><a href="#">FR</a></li>
               </ul>
-            </div>
-            <div class="header-search-container pull-right">
-              <form class="navbar-form pull-right">
-                <fieldset>
-                  <div class="form-group">
-                    <input class="form-control" placeholder="Search" type="text">
-                  </div>
-                  <button type="submit" class="btn btn-link"><span class="ti-search"></span></button>
-                </fieldset>
-              </form>
             </div>
           </div>
         </div>
