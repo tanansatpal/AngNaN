@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  API_URL: '',
+  API_URL: 'https://satpal.storehippo.com/api/1/',
 };
 
 /*

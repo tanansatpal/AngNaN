@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Sell - Bootstrap 4 Ecommerce Template</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="robots" content="all,follow">
+    <!-- Price Slider Stylesheets -->
+    <link rel="stylesheet" href="https://d19m59y37dris4.cloudfront.net/sell/1-2-2/vendor/nouislider/nouislider.css">
+    <!-- Google fonts - Playfair Display-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Playfair+Display:400,400i,700">
+    <link rel="stylesheet" href="fonts/hkgrotesk/stylesheet.css">
+    <!-- owl carousel-->
+    <link rel="stylesheet" href="https://d19m59y37dris4.cloudfront.net/sell/1-2-2/vendor/owl.carousel/assets/owl.carousel.css">
+    <!-- Ekko Lightbox-->
+    <link rel="stylesheet" href="https://d19m59y37dris4.cloudfront.net/sell/1-2-2/vendor/ekko-lightbox/ekko-lightbox.css">
+    <!-- theme stylesheet-->
+    <link rel="stylesheet" href="css/style.default.css" id="theme-stylesheet">
+    <!-- Custom stylesheet - for your changes-->
+    <link rel="stylesheet" href="css/custom.css">
+    <!-- Favicon-->
+    <link rel="shortcut icon" href="https://d19m59y37dris4.cloudfront.net/sell/1-2-2/img/favicon.png">
+    <!-- Tweaks for older IEs--><!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+    <!-- Font Awesome CSS-->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/solid.css" integrity="sha384-TbilV5Lbhlwdyc4RuIV/JhD8NR+BfMrvz4BL5QFa2we1hQu6wvREr3v6XSRfCTRp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/regular.css" integrity="sha384-avJt9MoJH2rB4PKRsJRHZv7yiFZn8LrnXuzvmZoD3fh1aL6aM6s0BBcnCvBe6XSD" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/brands.css" integrity="sha384-7xAnn7Zm3QC1jFjVc1A6v/toepoG3JXboQYzbM0jrPzou9OFXm/fY6Z/XiIebl/k" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/fontawesome.css" integrity="sha384-ozJwkrqb90Oa3ZNb+yKFW2lToAWYdTiF1vt8JiH5ptTGHTGcN7qdoR1F95e0kYyG" crossorigin="anonymous">
+  </head>
+  <body>
+    <div class="mh-full-screen d-flex align-items-center dark-overlay"><img src="https://d19m59y37dris4.cloudfront.net/sell/1-2-2/img/photo/pete-bellis-189599-unsplash-big.jpg" class="bg-image">
+      <div class="container text-white text-center text-lg overlay-content py-6 py-lg-0">
+        <h1 class="text-hide mx-auto mb-6">Coming soon<img src="https://d19m59y37dris4.cloudfront.net/sell/1-2-2/img/coming-soon.png" class="img-fluid"></h1>
+        <h3 class="mb-5 font-weight-normal">Sell. store is coming to you soon.</h3>
+        <p class="mb-4"><i class="fas fa-map-marker-alt mr-2"></i> 25 Baker St., LB8 E18 London, UK</p>
+        <ul class="list-inline">
+          <li class="list-inline-item"><a href="#" target="_blank" title="twitter" class="text-white"><i class="fab fa-twitter">           </i></a></li>
+          <li class="list-inline-item"><a href="#" target="_blank" title="facebook" class="text-white"><i class="fab fa-facebook">           </i></a></li>
+          <li class="list-inline-item"><a href="#" target="_blank" title="instagram" class="text-white"><i class="fab fa-instagram">           </i></a></li>
+          <li class="list-inline-item"><a href="#" target="_blank" title="pinterest" class="text-white"><i class="fab fa-pinterest">           </i></a></li>
+          <li class="list-inline-item"><a href="#" target="_blank" title="vimeo" class="text-white"><i class="fab fa-vimeo">           </i></a></li>
+        </ul>
+      </div>
+    </div>
+    <button type="button" data-toggle="collapse" data-target="#style-switch" id="style-switch-button" class="btn btn-primary btn-sm d-none d-lg-block"><i class="fa fa-cog fa-2x"></i></button>
+    <div id="style-switch" class="collapse">
+      <h4 class="text-uppercase mb-4">Select theme colour</h4>
+      <form class="mb-3">
+        <select name="colour" id="colour" class="form-control style-switch-select">
+          <option value="">select colour variant</option>
+          <option value="default">violet</option>
+          <option value="pink">pink</option>
+          <option value="green">green</option>
+          <option value="red">red</option>
+          <option value="blue">blue</option>
+        </select>
+      </form>
+      <p class="text-muted">Stylesheet switching is done with JavaScript and can cause a blink while page loads. This will not happen in your production code.</p>
+    </div>
+    <!-- JavaScript files-->
+    <script>
+      // ------------------------------------------------------- //
+      //   Inject SVG Sprite - 
+      //   see more here 
+      //   https://css-tricks.com/ajaxing-svg-sprite/
+      // ------------------------------------------------------ //
+      function injectSvgSprite(path) {
+      
+          var ajax = new XMLHttpRequest();
+          ajax.open("GET", path, true);
+          ajax.send();
+          ajax.onload = function(e) {
+          var div = document.createElement("div");
+          div.className = 'd-none';
+          div.innerHTML = ajax.responseText;
+          document.body.insertBefore(div, document.body.childNodes[0]);
+          }
+      }
+      // this is set to Bootstrapious website as you cannot 
+      // inject local SVG sprite (using only 'icons/orion-svg-sprite.svg' path)
+      // while using file:// protocol
+      // pls don't forget to change to your domain :)
+      injectSvgSprite('https://demo.bootstrapious.com/sell/1-2-0/icons/orion-svg-sprite.svg'); 
+      
+    </script>
+    <!-- jQuery-->
+    <script src="https://d19m59y37dris4.cloudfront.net/sell/1-2-2/vendor/jquery/jquery.min.js"></script>
+    <!-- PopperJS (Bootstrap's dependency)-->
+    <script src="https://d19m59y37dris4.cloudfront.net/sell/1-2-2/vendor/popper.js/umd/popper.min.js"> </script>
+    <!-- Bootstrap JavaScript-->
+    <script src="https://d19m59y37dris4.cloudfront.net/sell/1-2-2/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!-- Owl Carousel-->
+    <script src="https://d19m59y37dris4.cloudfront.net/sell/1-2-2/vendor/owl.carousel/owl.carousel.js"></script>
+    <script src="https://d19m59y37dris4.cloudfront.net/sell/1-2-2/vendor/owl.carousel2.thumbs/owl.carousel2.thumbs.min.js"></script>
+    <!-- NoUI Slider (price slider)-->
+    <script src="https://d19m59y37dris4.cloudfront.net/sell/1-2-2/vendor/nouislider/nouislider.min.js"></script>
+    <!-- Smooth scrolling-->
+    <script src="https://d19m59y37dris4.cloudfront.net/sell/1-2-2/vendor/smooth-scroll/smooth-scroll.polyfills.min.js"></script>
+    <!-- Lightbox -->
+    <script src="https://d19m59y37dris4.cloudfront.net/sell/1-2-2/vendor/ekko-lightbox/ekko-lightbox.min.js"></script>
+    <!-- Object Fit Images - Fallback for browsers that don't support object-fit-->
+    <script src="https://d19m59y37dris4.cloudfront.net/sell/1-2-2/vendor/object-fit-images/ofi.min.js"></script>
+    <script src="https://d19m59y37dris4.cloudfront.net/sell/1-2-2/vendor/jquery.cookie/jquery.cookie.js"> </script>
+    <script src="js/demo.js"></script>
+    <script>
+      var basePath = ''
+      
+    </script>
+    <script src="js/theme.js"></script>
+  </body>
+</html>

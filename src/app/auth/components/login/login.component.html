@@ -1,3 +1,56 @@
-<p>
-  login works!
-</p>
+<section>
+  <div class="container">
+    <div class="row">
+      <div id="login" class="login col-md-6 offset-md-3 col-sm-12">
+        <div class="panel panel-default shadow">
+          <div class="panel-heading ">
+            <div class="panel-title h3">Sign In
+              <div class="float-right login-context-info">
+                <a routerLink="/auth/register">
+                  Sign Up
+                </a>
+              </div>
+            </div>
+          </div>
+          <div class="panel-body">
+            <form id="loginform" class="form-horizontal">
+              <div class="form-group">
+                <div class="col-md-12">
+                  <label for="email-sign-in">Email</label>
+                  <input type="text" class="form-control" id="email-sign-in" placeholder="Email Address">
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-md-12">
+                  <label for="password-sign-in">Password</label>
+                  <input type="password" class="form-control" id="password-sign-in" placeholder="Password">
+                </div>
+              </div>
+
+              <div class="custom-checkbox custom-checkbox-primary pull-left">
+                <input id="custom-checkbox2" class="styled" type="checkbox" checked>
+                <label for="custom-checkbox2"> Remember Me
+                </label>
+              </div>
+
+
+              <div class="form-group">
+                <!-- Button -->
+                <div class="col-md-12 login-btn">
+                  <a id="btn-sign-in" href="#" class="btn btn-primary">Login </a>
+                  <a id="btn-fb-sign-in" href="#" class="btn btn-default">Facebook sign in</a>
+                  <a id="btn-gp-sign-in" href="#" class="btn btn-default">Google sign in</a>
+                </div>
+              </div>
+              <div class="form-group">
+                <div class="col-md-12">
+                  <a href="#">password recovery</a>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
