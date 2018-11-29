@@ -2,12 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError } from 'rxjs/operators';
 import { environment } from '../../../environments/environment';
-import { CommonService } from '@shared/services';
+import { CommonService } from '@shared/services/common.service';
 
 @Injectable({
   providedIn: 'root'
 })
-export class SlidesService {
+export class SiteService {
 
   private API_URL = environment.API_URL;
 

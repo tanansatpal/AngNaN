@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { StoreModule } from '@ngrx/store';
+import { HttpClientModule } from '@angular/common/http';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import 'bootstrap';
@@ -22,6 +23,7 @@ import { AppReducer } from './app.reducer';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     FontAwesomeModule,
     StoreModule.forRoot(AppReducer),
     AppRoutingModule,

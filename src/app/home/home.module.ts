@@ -4,6 +4,8 @@ import { SlidesComponent } from './components/slides/slides.component';
 import { HomeComponent } from './home.component';
 import { OwlModule } from 'ngx-owl-carousel';
 import { HomeRoutingModule } from './home-routing.module';
+import { BrandsComponent } from './components/brands/brands.component';
+import { SiteService } from '@shared/services/site.service';
 
 @NgModule({
   imports: [
@@ -11,7 +13,8 @@ import { HomeRoutingModule } from './home-routing.module';
     HomeRoutingModule,
     OwlModule
   ],
-  declarations: [SlidesComponent, HomeComponent]
+  declarations: [SlidesComponent, HomeComponent, BrandsComponent],
+  providers: [SiteService]
 })
 export class HomeModule {
 }

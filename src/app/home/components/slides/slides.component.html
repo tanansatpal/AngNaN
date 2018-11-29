@@ -2,7 +2,7 @@
 
   <owl-carousel [options]="sliderOptions"
                 [items]="slides"
-                [carouselClasses]="['owl-carousel','owl-theme', 'home-full-slider','owl-dots-modern']">
+                [carouselClasses]="['owl-carousel','owl-theme', 'home-full-slider']">
     <div class="item home-full-item" *ngFor="let slide of slides;let i = index">
       <img [src]="slide.image" [alt]="slide.title" class="bg-image"/>
       <div [innerHTML]="slide.description"></div>

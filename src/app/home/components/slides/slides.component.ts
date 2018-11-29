@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SlidesService } from '../../services/slides.service';
+import { SiteService } from '@shared/services';
 
 @Component({
   selector: 'app-slides',
@@ -11,7 +11,7 @@ export class SlidesComponent implements OnInit {
   slides: any = [];
   sliderOptions: any = {};
 
-  constructor(private slidesService: SlidesService) {
+  constructor(private siteService: SiteService) {
   }
 
   ngOnInit() {
@@ -22,7 +22,7 @@ export class SlidesComponent implements OnInit {
         '<img src="../../../../assets/img/prev.svg" alt="" width="50">',
         '<img src="../../../../assets/img/next.svg" alt="" width="50">'
       ],
-      dots: true,
+      dots: false,
       responsiveClass: true,
       nav: true,
       autoHeight: true
@@ -81,7 +81,7 @@ export class SlidesComponent implements OnInit {
   }
 
   getSlides() {
-    this.slidesService.getSlides()
+    this.siteService.getSlides()
       .subscribe(result => {
         this.slides = result['data'].map(slide => {
           slide.image = `${result['fileBaseUrl']}${slide.image}`;
