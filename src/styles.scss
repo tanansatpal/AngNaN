@@ -1,3 +1,4 @@
 /* You can add global styles to this file, and also import other style files */
+@import './assets/fonts/hkgrotesk/stylesheet.css';
+@import './app/shared/scss/_themes.scss';
 @import "../node_modules/bootstrap/scss/bootstrap";
-@import url('./app/shared/scss/_themes.scss');

@@ -52,6 +52,10 @@ $font_2: Playfair Display;
 $font_3: serif !important;
 $font_5: Font Awesome\ 5 Free;
 
+$font-family-sans-serif: "HK Grotesk", sans-serif !default;
+$font-family-monospace: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
+$font-size-base: .9rem;
+
 .top-bar {
   color: $color_abbey_approx;
   background: $color_alabaster_approx;
