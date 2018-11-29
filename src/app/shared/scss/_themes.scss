@@ -56,6 +56,44 @@ $font-family-sans-serif: "HK Grotesk", sans-serif !default;
 $font-family-monospace: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
 $font-size-base: .9rem;
 
+// This variable affects the `.h-*` and `.w-*` classes.
+$sizes: () !default;
+// stylelint-disable-next-line scss/dollar-variable-default
+$sizes: map-merge(
+    (
+      25: 25%,
+      50: 50%,
+      75: 75%,
+      100: 100%,
+      1rem: 1rem,
+      2rem: 2rem,
+      3rem: 3rem,
+      6rem: 6rem,
+      auto: auto
+    ),
+    $sizes
+);
+
+$spacer: 1rem !default;
+$spacers: () !default;
+// stylelint-disable-next-line scss/dollar-variable-default
+$spacers: map-merge(
+    (
+      0: 0,
+      1: ($spacer * .25),
+      2: ($spacer * .5),
+      3: $spacer,
+      4: ($spacer * 1.5),
+      5: ($spacer * 3),
+      6: ($spacer * 6),
+      7: ($spacer * 7),
+      5px: 5px,
+      10px: 10px,
+      30px: 30px,
+    ),
+    $spacers
+);
+
 .top-bar {
   color: $color_abbey_approx;
   background: $color_alabaster_approx;

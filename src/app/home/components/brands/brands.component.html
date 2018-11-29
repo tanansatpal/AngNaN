@@ -1,0 +1,65 @@
+<section class="py-6 brands">
+  <div class="container">
+    <h4 class="text-uppercase text-center mb-5">Our brands</h4>
+    <owl-carousel [options]="sliderOptions"
+                  [items]="brands"
+                  [carouselClasses]="['owl-carousel','owl-theme', 'brands-slider']">
+      <div class="item d-flex align-items-center justify-content-center" *ngFor="let brand of brands;">
+        <div class="w-6rem">
+          <img [src]="brand.image" [alt]="brand.name" class="img-fluid"></div>
+      </div>
+    </owl-carousel>
+    <div class="owl-carousel owl-theme brands-slider">
+      <!-- item-->
+      <div class="item d-flex align-items-center justify-content-center">
+        <div class="w-6rem"><img src="https://d19m59y37dris4.cloudfront.net/sell/1-2-2/img/brand/brand-1.svg"
+                                 alt="Brand 1" class="img-fluid"></div>
+      </div>
+      <!-- item-->
+      <div class="item d-flex align-items-center justify-content-center">
+        <div class="w-6rem"><img src="https://d19m59y37dris4.cloudfront.net/sell/1-2-2/img/brand/brand-2.svg"
+                                 alt="Brand 2" class="img-fluid"></div>
+      </div>
+      <!-- item-->
+      <div class="item d-flex align-items-center justify-content-center">
+        <div class="w-6rem"><img src="https://d19m59y37dris4.cloudfront.net/sell/1-2-2/img/brand/brand-3.svg"
+                                 alt="Brand 3" class="img-fluid"></div>
+      </div>
+      <!-- item-->
+      <div class="item d-flex align-items-center justify-content-center">
+        <div class="w-6rem"><img src="https://d19m59y37dris4.cloudfront.net/sell/1-2-2/img/brand/brand-4.svg"
+                                 alt="Brand 4" class="img-fluid"></div>
+      </div>
+      <!-- item-->
+      <div class="item d-flex align-items-center justify-content-center">
+        <div class="w-6rem"><img src="https://d19m59y37dris4.cloudfront.net/sell/1-2-2/img/brand/brand-5.svg"
+                                 alt="Brand 5" class="img-fluid"></div>
+      </div>
+      <!-- item-->
+      <div class="item d-flex align-items-center justify-content-center">
+        <div class="w-6rem"><img src="https://d19m59y37dris4.cloudfront.net/sell/1-2-2/img/brand/brand-6.svg"
+                                 alt="Brand 6" class="img-fluid"></div>
+      </div>
+      <!-- item-->
+      <div class="item d-flex align-items-center justify-content-center">
+        <div class="w-6rem"><img src="https://d19m59y37dris4.cloudfront.net/sell/1-2-2/img/brand/brand-1.svg"
+                                 alt="Brand 1" class="img-fluid"></div>
+      </div>
+      <!-- item-->
+      <div class="item d-flex align-items-center justify-content-center">
+        <div class="w-6rem"><img src="https://d19m59y37dris4.cloudfront.net/sell/1-2-2/img/brand/brand-2.svg"
+                                 alt="Brand 2" class="img-fluid"></div>
+      </div>
+      <!-- item-->
+      <div class="item d-flex align-items-center justify-content-center">
+        <div class="w-6rem"><img src="https://d19m59y37dris4.cloudfront.net/sell/1-2-2/img/brand/brand-3.svg"
+                                 alt="Brand 3" class="img-fluid"></div>
+      </div>
+      <!-- item-->
+      <div class="item d-flex align-items-center justify-content-center">
+        <div class="w-6rem"><img src="https://d19m59y37dris4.cloudfront.net/sell/1-2-2/img/brand/brand-4.svg"
+                                 alt="Brand 4" class="img-fluid"></div>
+      </div>
+    </div>
+  </div>
+</section>
