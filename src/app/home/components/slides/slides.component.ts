@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SiteService } from '@shared/services';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-slides',
@@ -83,8 +84,8 @@ export class SlidesComponent implements OnInit {
   getSlides() {
     this.siteService.getSlides()
       .subscribe(result => {
-        this.slides = result['data'].map(slide => {
-          slide.image = `${result['fileBaseUrl']}${slide.image}`;
+        this.slides = result.map(slide => {
+          slide.image = `${environment.CDN_URL}${slide.image}`;
           return slide;
         });
       }, err => {

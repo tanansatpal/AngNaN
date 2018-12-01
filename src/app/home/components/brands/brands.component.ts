@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ProductSectionService } from '@shared/services';
+import { environment } from '../../../../environments/environment';
 
 @Component({
   selector: 'app-brands',
@@ -24,9 +25,9 @@ export class BrandsComponent implements OnInit {
     };
     this.productService.getBrands()
       .subscribe(result => {
-        this.brands = result['data'].filter(brand => {
+        this.brands = result.filter(brand => {
           if (brand.images && brand.images.length) {
-            brand.image = `${result['fileBaseUrl']}${brand.images[0].image}`;
+            brand.image = `${environment.CDN_URL}${brand.images[0].image}`;
             return true;
           } else {
             return false;
