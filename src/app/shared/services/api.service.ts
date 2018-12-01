@@ -31,7 +31,7 @@ export class ApiService {
   get(url, options = {}) {
     return this.http.get(url, options)
       .pipe(
-        map(response => response.data),
+        map(response => response['data']),
         catchError(this.handleError('url', []))
       );
   }
