@@ -32,7 +32,7 @@ export class ProductSectionService {
   }
 
   getProducts(filters = null) {
-    return this.api.get(`${this.API_URL}entity/ms.products`, {params: {q: JSON.stringify(filters)}});
+    return this.api.get(`${this.API_URL}entity/ms.products`, {params: {filters: JSON.stringify(filters)}});
   }
 
 }

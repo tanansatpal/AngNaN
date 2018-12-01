@@ -56,6 +56,8 @@ $font-family-sans-serif: "HK Grotesk", sans-serif !default;
 $font-family-monospace: Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
 $font-size-base: .9rem;
 
+$headings-font-weight: 700;
+
 // This variable affects the `.h-*` and `.w-*` classes.
 $sizes: () !default;
 // stylelint-disable-next-line scss/dollar-variable-default
@@ -93,6 +95,10 @@ $spacers: map-merge(
     ),
     $spacers
 );
+
+owl-carousel {
+  width: 100%;
+}
 
 .top-bar {
   color: $color_abbey_approx;

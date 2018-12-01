@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ProductSectionService } from '@shared/services';
-import { flatMap } from 'rxjs/operators';
+import { mergeMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-collection-products',
@@ -18,15 +18,11 @@ export class CollectionProductsComponent implements OnInit {
 
   ngOnInit() {
     this.sliderOptions = {
-      items: 1,
+      items: 4,
       margin: 10,
-      navText: [
-        '<img src="../../../../assets/img/prev.svg" alt="" width="50">',
-        '<img src="../../../../assets/img/next.svg" alt="" width="50">'
-      ],
-      dots: false,
+      dots: true,
       responsiveClass: true,
-      nav: true,
+      nav: false,
       autoHeight: true
     };
     this.getCollection();
@@ -36,15 +32,16 @@ export class CollectionProductsComponent implements OnInit {
     this.productService.getCollections({alias: this.collectionAlias})
       .subscribe(result => {
         this.collection = result[0];
+        this.getProducts();
       }, err => {
 
       });
   }
 
   getProducts() {
-    this.productService.getProducts({collection: this.collectionAlias})
+    this.productService.getProducts([{field: 'collections', value: [this.collection.alias], operator: 'in'}])
       .subscribe(result => {
-        this.collection = result['data'][0];
+        this.products = result;
       }, err => {
 
       });
