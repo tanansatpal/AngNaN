@@ -1,51 +1,71 @@
+<!-- Hero Section-->
+<section class="hero">
+  <div class="container">
+    <!-- Breadcrumbs -->
+    <ol class="breadcrumb justify-content-center">
+      <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+      <li class="breadcrumb-item active">Customer zone        </li>
+    </ol>
+    <!-- Hero Content-->
+    <div class="hero-content pb-5 text-center">
+      <h1 class="hero-heading mb-0">Customer zone</h1>
+    </div>
+  </div>
+</section>
+<!-- customer login-->
 <section>
   <div class="container">
-    <div class="row">
-      <div id="login" class="login col-md-6 offset-md-3 col-sm-12">
-        <div class="panel panel-default shadow">
-          <div class="panel-heading ">
-            <div class="panel-title h3">Sign In
-              <div class="float-right login-context-info">
-                <a routerLink="/auth/register">
-                  Sign Up
-                </a>
-              </div>
-            </div>
+    <div class="row justify-content-center">
+      <div class="col-lg-5">
+        <div class="block">
+          <div class="block-header">
+            <h6 class="text-uppercase mb-0">Login</h6>
           </div>
-          <div class="panel-body">
-            <form id="loginform" class="form-horizontal">
+          <div class="block-body">
+            <p class="lead">Already our customer?</p>
+            <p class="text-muted">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+            <hr>
+            <form action="customer-orders.html" method="get">
               <div class="form-group">
-                <div class="col-md-12">
-                  <label for="email-sign-in">Email</label>
-                  <input type="text" class="form-control" id="email-sign-in" placeholder="Email Address">
-                </div>
+                <label for="email" class="form-label">Email</label>
+                <input id="email" type="text" class="form-control">
               </div>
               <div class="form-group">
-                <div class="col-md-12">
-                  <label for="password-sign-in">Password</label>
-                  <input type="password" class="form-control" id="password-sign-in" placeholder="Password">
-                </div>
+                <label for="password" class="form-label">Password</label>
+                <input id="password" type="password" class="form-control">
               </div>
-
-              <div class="custom-checkbox custom-checkbox-primary pull-left">
-                <input id="custom-checkbox2" class="styled" type="checkbox" checked>
-                <label for="custom-checkbox2"> Remember Me
-                </label>
+              <div class="form-group text-center">
+                <button type="submit" class="btn btn-outline-dark"><i class="fa fa-sign-in-alt mr-2"></i> Log in</button>
               </div>
-
-
+            </form>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-5">
+        <div class="block">
+          <div class="block-header">
+            <h6 class="text-uppercase mb-0">New account</h6>
+          </div>
+          <div class="block-body">
+            <p class="lead">Not our registered customer yet?</p>
+            <p class="text-muted">With registration with us new world of fashion, fantastic discounts and much more opens to you! The whole process will not take you more than a minute!</p>
+            <p class="text-muted">If you have any questions, please feel free to <a href="contact.html">contact us</a>, our customer service center is working for you 24/7.</p>
+            <hr>
+            <form action="customer-orders.html" method="get">
               <div class="form-group">
-                <!-- Button -->
-                <div class="col-md-12 login-btn">
-                  <a id="btn-sign-in" href="#" class="btn btn-primary">Login </a>
-                  <a id="btn-fb-sign-in" href="#" class="btn btn-default">Facebook sign in</a>
-                  <a id="btn-gp-sign-in" href="#" class="btn btn-default">Google sign in</a>
-                </div>
+                <label for="name" class="form-label">Name</label>
+                <input id="name" type="text" class="form-control">
               </div>
               <div class="form-group">
-                <div class="col-md-12">
-                  <a href="#">password recovery</a>
-                </div>
+                <label for="email" class="form-label">Email</label>
+                <input id="email" type="text" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="password" class="form-label">Password</label>
+                <input id="password" type="password" class="form-control">
+              </div>
+              <div class="form-group text-center">
+                <button type="submit" class="btn btn-outline-dark"><i class="far fa-user mr-2"></i>Register                                </button>
               </div>
             </form>
           </div>

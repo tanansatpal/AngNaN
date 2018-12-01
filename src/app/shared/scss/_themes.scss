@@ -96,6 +96,14 @@ $spacers: map-merge(
     $spacers
 );
 
+$breadcrumb-padding-y: 2rem;
+$breadcrumb-padding-x: 0;
+$breadcrumb-margin-bottom: 0;
+$breadcrumb-bg: rgba(0, 0, 0, 0);
+$breadcrumb-border-radius: 0;
+
+$h1-font-size: 4.05rem;
+
 owl-carousel {
   width: 100%;
 }
@@ -328,18 +336,23 @@ owl-carousel {
     border-color: rgba(0, 0, 0, 0);
   }
   .navbar-toggler-icon {
-    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0,0,0,0.65)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox=' 0 0 30 30 ' xmlns='http:
+
+//www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0,0,0,0.65)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
   }
   .navbar-text {
     color: $black_65;
   }
+
   .navbar-icon-link {
     color: $black_95;
   }
+
   .navbar-icon-link-badge {
     background: $color_tuna_approx;
     color: $white;
   }
+
 }
 
 .megamenu {
