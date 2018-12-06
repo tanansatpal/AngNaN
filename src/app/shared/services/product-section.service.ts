@@ -18,10 +18,8 @@ export class ProductSectionService {
   constructor(private api: ApiService, private commonService: CommonService) {
   }
 
-
   /**
    * Call the Brands API.
-   * @returns slides - Slides from the response of the API;
    */
   getBrands(filters = null) {
     return this.api.get(`${this.API_URL}entity/ms.brands`);
