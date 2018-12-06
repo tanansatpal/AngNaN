@@ -1,33 +1,68 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { FormControl, FormGroup } from '@angular/forms';
+import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '@shared/services';
+import { Subscription } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent implements OnInit, OnDestroy {
 
-  loginForm = new FormGroup({
-    email: new FormControl(''),
-    password: new FormControl('')
-  });
+  loginForm: FormGroup;
+  returnUrl: string;
+  $loginSubs: Subscription;
 
-  constructor(private auth: AuthService, private router: Router) {
+  constructor(private auth: AuthService, private router: Router, private route: ActivatedRoute) {
+    this.redirectIfUserLoggedIn();
   }
 
   ngOnInit() {
+    this.loginForm = new FormGroup({
+      email: new FormControl('', Validators.required),
+      password: new FormControl('', Validators.required)
+    });
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+  }
+
+  redirectIfUserLoggedIn() {
+  }
+
+  private pushErrorFor(ctrl_name: string, msg: string) {
+    this.loginForm.controls[ctrl_name].setErrors({ 'msg': msg });
+  }
+
+  validate() {
+    const values = this.loginForm.value;
+    const keys = Object.keys(values);
+    keys.forEach(val => {
+      const ctrl = this.loginForm.controls[val];
+      if (!ctrl.valid) {
+        this.pushErrorFor(val, null);
+        ctrl.markAsTouched();
+      }
+    });
+    return this.loginForm.valid;
   }
 
   login() {
-    console.log(this.loginForm.value);
-    this.auth.login(this.loginForm.value)
-      .subscribe(user => {
-        this.router.navigateByUrl('/');
-      }, err => {
-        console.error(err);
-      });
+    const formValid = this.validate();
+    if (!formValid) {
+      return false;
+    }
+    this.$loginSubs = this.auth
+      .login(this.loginForm.value).pipe(
+        tap(() => this.router.navigate([this.returnUrl]), err => {
+          console.error(err);
+        })).subscribe();
+  }
+
+  ngOnDestroy() {
+    if (this.$loginSubs) {
+      this.$loginSubs.unsubscribe();
+    }
   }
 }
