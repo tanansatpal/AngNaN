@@ -1,11 +1,10 @@
 import * as AuthActions from '../actions/auth.actions';
+import { AuthState } from './auth.state';
 
-export interface AuthState {
-  isLoggedIn: boolean;
-  user: any;
-}
-
-export const initialState: AuthState = {isLoggedIn: false, user: {}};
+export const initialState: AuthState = {
+  isLoggedIn: false,
+  user: {}
+};
 
 export function AuthReducer(state = initialState, action: AuthActions.AuthUnion) {
 

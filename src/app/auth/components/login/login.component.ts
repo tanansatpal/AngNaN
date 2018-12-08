@@ -2,8 +2,9 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '@shared/services';
-import { Store } from '@ngrx/store';
+import { select, Store } from '@ngrx/store';
 import { Login } from '@app/auth/actions/auth.actions';
+import { getAuthStatus } from '../../reducers/selectors';
 
 @Component({
   selector: 'app-login',
@@ -28,6 +29,14 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   redirectIfUserLoggedIn() {
+    this.store.pipe(select(getAuthStatus)).subscribe(
+      isLoggedIn => {
+        console.log(isLoggedIn);
+        if (isLoggedIn) {
+          return this.router.navigateByUrl(this.returnUrl);
+        }
+      }
+    );
   }
 
   private pushErrorFor(ctrl_name: string, msg: string) {

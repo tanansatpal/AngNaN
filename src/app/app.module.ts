@@ -16,6 +16,7 @@ import { LayoutModule } from '@app/layout';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { AppReducer } from './app.reducer';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,7 @@ import { AppComponent } from './app.component';
     BrowserModule,
     HttpClientModule,
     FontAwesomeModule,
-    StoreModule.forRoot({}),
+    StoreModule.forRoot(AppReducer),
     EffectsModule.forRoot([]),
     AppRoutingModule,
     UserModule,
@@ -34,7 +35,7 @@ import { AppComponent } from './app.component';
     AuthModule,
     HomeModule,
     LayoutModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
   ],
   providers: [],
   bootstrap: [AppComponent]

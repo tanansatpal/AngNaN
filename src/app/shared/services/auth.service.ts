@@ -4,7 +4,6 @@ import { environment } from '../../../environments/environment';
 import { map } from 'rxjs/operators';
 import { User } from '@shared/models/user.model';
 import { Store } from '@ngrx/store';
-import { LoginSuccess, GetCurrentUserSuccess } from '@app/auth/actions/auth.actions';
 
 @Injectable({
   providedIn: 'root'

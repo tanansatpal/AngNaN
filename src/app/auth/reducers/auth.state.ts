@@ -1,4 +1,4 @@
 export interface AuthState {
-  isAuthenticated: boolean;
-  currentUser: any;
+  isLoggedIn: boolean;
+  user: any;
 }
