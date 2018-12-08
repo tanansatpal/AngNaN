@@ -15,7 +15,6 @@ import { LayoutModule } from '@app/layout';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { AppReducer } from './app.reducer';
 
 @NgModule({
   declarations: [
@@ -25,7 +24,7 @@ import { AppReducer } from './app.reducer';
     BrowserModule,
     HttpClientModule,
     FontAwesomeModule,
-    StoreModule.forRoot(AppReducer),
+    StoreModule.forRoot({}),
     AppRoutingModule,
     UserModule,
     ProductModule,

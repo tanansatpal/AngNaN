@@ -4,8 +4,7 @@ import { environment } from '../../../environments/environment';
 import { map } from 'rxjs/operators';
 import { User } from '@shared/models/user.model';
 import { Store } from '@ngrx/store';
-import { AppState } from '@app/interfaces';
-import { AuthActions } from '@app/auth/actions/auth.actions';
+import { LoginSuccess, GetCurrentUserSuccess } from '@app/auth/actions/auth.actions';
 
 @Injectable({
   providedIn: 'root'
@@ -18,9 +17,8 @@ export class AuthService {
    * Creates an instance of AuthService
    * @param api - HTTP service to call the APIS
    * @param store - Store
-   * @param actions - AuthActions
    * */
-  constructor(private api: ApiService, private store: Store<AppState>, private actions: AuthActions) {
+  constructor(private api: ApiService, private store: Store<{ auth }>) {
   }
 
   /**
@@ -40,14 +38,14 @@ export class AuthService {
    * @param password - password of the user;
    * @returns user - User from the response of the API;
    */
-  login({ email, password }) {
-    const params = { data: { 'email': email, 'password': password } };
+  login({email, password}) {
+    const params = {data: {'username': email, 'password': password}};
     return this.api.post(`${this.API_URL}entity/ms.users/_/login`, params)
       .pipe(
         map(user => {
           AuthService.setAuthToken(user, 'user');
-          this.store.dispatch(this.actions.getCurrentUserSuccess(user));
-          this.store.dispatch(this.actions.loginSuccess());
+          this.store.dispatch(new GetCurrentUserSuccess(user));
+          this.store.dispatch(new LoginSuccess());
           return user;
         })
       );

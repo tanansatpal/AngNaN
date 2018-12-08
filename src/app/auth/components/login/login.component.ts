@@ -2,6 +2,8 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '@shared/services';
+import { Store } from '@ngrx/store';
+import { Login } from '@app/auth/actions/auth.actions';
 import { Subscription } from 'rxjs';
 import { tap } from 'rxjs/operators';
 
@@ -16,13 +18,13 @@ export class LoginComponent implements OnInit, OnDestroy {
   returnUrl: string;
   $loginSubs: Subscription;
 
-  constructor(private auth: AuthService, private router: Router, private route: ActivatedRoute) {
+  constructor(private auth: AuthService, private router: Router, private route: ActivatedRoute, private store: Store<{ auth }>) {
     this.redirectIfUserLoggedIn();
   }
 
   ngOnInit() {
     this.loginForm = new FormGroup({
-      email: new FormControl('', Validators.required),
+      username: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required)
     });
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
@@ -32,7 +34,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   private pushErrorFor(ctrl_name: string, msg: string) {
-    this.loginForm.controls[ctrl_name].setErrors({ 'msg': msg });
+    this.loginForm.controls[ctrl_name].setErrors({'msg': msg});
   }
 
   validate() {

@@ -1,23 +1,34 @@
-import { Action } from '@ngrx/store';
-import { AuthActions } from '../actions/auth.actions';
-import { AuthState } from './auth.state';
+import * as AuthActions from '../actions/auth.actions';
+
+export interface AuthState {
+  isAuthenticated: boolean;
+  currentUser: any;
+}
 
 export const initialState: AuthState = {
   isAuthenticated: false,
-  currentUser: {}
+  currentUser: {},
 };
 
-export function AuthReducer(state = initialState, { type, payload }: Action & { payload }): AuthState {
+export function AuthReducer(state = initialState, action: AuthActions.AuthUnion) {
 
-  switch (type) {
-    case AuthActions.LOGIN_SUCCESS: {
-      return Object.assign(state, { isAuthenticated: true });
+  switch (action.type) {
+    case AuthActions.AuthActionsTypes.LOGIN: {
+      return state;
     }
 
-    case AuthActions.GET_CURRENT_USER_SUCCESS: {
-      return Object.assign(state, {
-        currentUser: payload,
-      });
+    case AuthActions.AuthActionsTypes.LOGIN_SUCCESS: {
+      return {
+        ...state,
+        isAuthenticated: true,
+      };
+    }
+
+    case AuthActions.AuthActionsTypes.LOGOUT_SUCCESS: {
+      return {
+        ...state,
+        isAuthenticated: false,
+      };
     }
 
     default:
