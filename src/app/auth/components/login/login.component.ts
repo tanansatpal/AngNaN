@@ -55,11 +55,7 @@ export class LoginComponent implements OnInit, OnDestroy {
     if (!formValid) {
       return false;
     }
-    this.$loginSubs = this.auth
-      .login(this.loginForm.value).pipe(
-        tap(() => this.router.navigate([this.returnUrl]), err => {
-          console.error(err);
-        })).subscribe();
+    this.store.dispatch(new Login(this.loginForm.value));
   }
 
   ngOnDestroy() {
