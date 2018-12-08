@@ -4,8 +4,6 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '@shared/services';
 import { Store } from '@ngrx/store';
 import { Login } from '@app/auth/actions/auth.actions';
-import { Subscription } from 'rxjs';
-import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
@@ -16,7 +14,6 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   loginForm: FormGroup;
   returnUrl: string;
-  $loginSubs: Subscription;
 
   constructor(private auth: AuthService, private router: Router, private route: ActivatedRoute, private store: Store<{ auth }>) {
     this.redirectIfUserLoggedIn();
@@ -56,16 +53,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       return false;
     }
     this.store.dispatch(new Login(this.loginForm.value));
-    // this.$loginSubs = this.auth
-    //   .login(this.loginForm.value).pipe(
-    //     tap(() => this.router.navigate([this.returnUrl]), err => {
-    //       console.error(err);
-    //     })).subscribe();
   }
 
-  ngOnDestroy() {
-    if (this.$loginSubs) {
-      this.$loginSubs.unsubscribe();
-    }
-  }
+  ngOnDestroy() {}
 }

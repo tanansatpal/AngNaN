@@ -1,14 +1,11 @@
 import * as AuthActions from '../actions/auth.actions';
 
 export interface AuthState {
-  isAuthenticated: boolean;
-  currentUser: any;
+  isLoggedIn: boolean;
+  user: any;
 }
 
-export const initialState: AuthState = {
-  isAuthenticated: false,
-  currentUser: {},
-};
+export const initialState: AuthState = {isLoggedIn: false, user: {}};
 
 export function AuthReducer(state = initialState, action: AuthActions.AuthUnion) {
 
@@ -20,14 +17,27 @@ export function AuthReducer(state = initialState, action: AuthActions.AuthUnion)
     case AuthActions.AuthActionsTypes.LOGIN_SUCCESS: {
       return {
         ...state,
-        isAuthenticated: true,
+        isLoggedIn: true,
+        user: action.payload
       };
+    }
+
+    case AuthActions.AuthActionsTypes.LOGIN_FAILED: {
+      return {
+        ...state,
+        ...action.payload
+      };
+    }
+
+    case AuthActions.AuthActionsTypes.GET_CURRENT_USER: {
+      return state.user;
     }
 
     case AuthActions.AuthActionsTypes.LOGOUT_SUCCESS: {
       return {
         ...state,
-        isAuthenticated: false,
+        isLoggedIn: false,
+        user: {}
       };
     }
 

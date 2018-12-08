@@ -3,9 +3,10 @@ import { Action } from '@ngrx/store';
 export enum AuthActionsTypes {
   LOGIN = '[Login Page] Login',
   LOGIN_SUCCESS = '[Auth API] Login Success',
+  LOGIN_FAILED = '[Auth API] Login Failed',
   LOGOUT = '[Header] Logout',
   LOGOUT_SUCCESS = '[Auth API] Logout Success',
-  GET_CURRENT_USER_SUCCESS = 'GET_CURRENT_USER_SUCCESS',
+  GET_CURRENT_USER = 'GET_CURRENT_USER',
 }
 
 export class Login implements Action {
@@ -22,6 +23,13 @@ export class LoginSuccess implements Action {
   }
 }
 
+export class LoginFailed implements Action {
+  readonly type = AuthActionsTypes.LOGIN_FAILED;
+
+  constructor(public payload: { error: any }) {
+  }
+}
+
 export class Logout implements Action {
   readonly type = AuthActionsTypes.LOGOUT;
 }
@@ -33,11 +41,8 @@ export class LogoutSuccess implements Action {
   }
 }
 
-export class GetCurrentUserSuccess implements Action {
-  readonly type = AuthActionsTypes.GET_CURRENT_USER_SUCCESS;
-
-  constructor(public payload: { user: any }) {
-  }
+export class GetCurrentUser implements Action {
+  readonly type = AuthActionsTypes.GET_CURRENT_USER;
 }
 
-export type AuthUnion = Login | LoginSuccess | GetCurrentUserSuccess | Logout | LogoutSuccess;
+export type AuthUnion = Login | LoginSuccess | LoginFailed | GetCurrentUser | Logout | LogoutSuccess;
