@@ -44,8 +44,6 @@ export class AuthService {
       .pipe(
         map(user => {
           AuthService.setAuthToken(user, 'user');
-          this.store.dispatch(new GetCurrentUserSuccess(user));
-          this.store.dispatch(new LoginSuccess());
           return user;
         })
       );
