@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 import { HttpClientModule } from '@angular/common/http';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
@@ -25,6 +26,7 @@ import { AppComponent } from './app.component';
     HttpClientModule,
     FontAwesomeModule,
     StoreModule.forRoot({}),
+    EffectsModule.forRoot([]),
     AppRoutingModule,
     UserModule,
     ProductModule,

@@ -56,6 +56,11 @@ export class LoginComponent implements OnInit, OnDestroy {
       return false;
     }
     this.store.dispatch(new Login(this.loginForm.value));
+    // this.$loginSubs = this.auth
+    //   .login(this.loginForm.value).pipe(
+    //     tap(() => this.router.navigate([this.returnUrl]), err => {
+    //       console.error(err);
+    //     })).subscribe();
   }
 
   ngOnDestroy() {

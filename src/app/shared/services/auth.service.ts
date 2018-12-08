@@ -38,8 +38,8 @@ export class AuthService {
    * @param password - password of the user;
    * @returns user - User from the response of the API;
    */
-  login({email, password}) {
-    const params = {data: {'username': email, 'password': password}};
+  login({username, password}) {
+    const params = {data: {'username': username, 'password': password}};
     return this.api.post(`${this.API_URL}entity/ms.users/_/login`, params)
       .pipe(
         map(user => {
