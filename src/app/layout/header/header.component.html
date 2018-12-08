@@ -44,7 +44,7 @@
   <nav [ngClass]="{'navbar-dark':homeHeader}"
        class="navbar navbar-expand-lg bg-transparent navbar-sticky navbar-airy bg-hover-white bg-fixed-white navbar-hover-light navbar-fixed-light">
     <div class="container-fluid">
-      <!-- Navbar Header  --><a href="../index.html" class="navbar-brand">
+      <!-- Navbar Header  --><a routerLink="/" class="navbar-brand">
       <svg class="navbar-brand-svg" viewBox="0 0 65 16" width="85" height="20" fill="none"
            xmlns="http://www.w3.org/2000/svg">
         <path class="navbar-brand-svg-text"
@@ -60,7 +60,7 @@
       <!-- Navbar Collapse -->
       <div id="navbarCollapse" class="collapse navbar-collapse">
         <ul class="navbar-nav mx-auto">
-          <li class="nav-item dropdown"><a id="homeDropdownMenuLink" href="index.html" data-toggle="dropdown"
+          <li class="nav-item dropdown"><a id="homeDropdownMenuLink" routerLink="/" data-toggle="dropdown"
                                            aria-haspopup="true" aria-expanded="false" class="nav-link active">
 
             Home<i class="fa fa-angle-down"></i></a>
@@ -318,7 +318,7 @@
           </div>
           <!-- User Not Logged - link to login page-->
           <div class="nav-item">
-            <a routerLink="/auth/login" class="navbar-icon-link">
+            <a [routerLink]="isAuthenticated$ ? '/user' : '/auth/login'" class="navbar-icon-link">
               <svg class="svg-icon">
                 <use xlink:href="#male-user-1"></use>
               </svg>
