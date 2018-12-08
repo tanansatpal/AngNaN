@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 })
 export class HeaderComponent implements OnInit {
 
-  homeHeader: boolean = false;
+  homeHeader = false;
   isAuthenticated$: Observable<boolean>;
 
   constructor(private router: Router, private store: Store<{ auth }>) {
