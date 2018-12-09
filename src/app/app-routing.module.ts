@@ -21,6 +21,10 @@ const routes: Routes = [
   {
     path: 'product',
     loadChildren: './product/index#ProductModule',
+  },
+  {
+    path: 'category',
+    loadChildren: './category/index#CategoryModule',
   }
 ];
 

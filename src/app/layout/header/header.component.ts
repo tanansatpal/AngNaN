@@ -29,7 +29,7 @@ export class HeaderComponent implements OnInit {
   }
 
   @HostListener('window:scroll', ['$event'])
-  onWindowScroll(e) {
+  onWindowScroll() {
     const topbar = document.getElementById('topbar').offsetHeight;
     if (window.pageYOffset > topbar) {
       const element = document.getElementById('navbar');
