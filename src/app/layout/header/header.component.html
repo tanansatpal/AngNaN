@@ -1,7 +1,7 @@
 <app-icons></app-icons>
 <header class="header" [ngClass]="{'header-absolute':homeHeader}">
   <!-- Top Bar-->
-  <div class="top-bar">
+  <div id="topbar" class="top-bar">
     <div class="container-fluid">
       <div class="row d-flex align-items-center">
         <div class="col-sm-7 d-none d-sm-block">
@@ -41,7 +41,7 @@
   </div>
   <!-- Top Bar End-->
   <!-- Navbar-->
-  <nav [ngClass]="{'navbar-dark':homeHeader}"
+  <nav id="navbar" [ngClass]="{'navbar-dark':homeHeader}"
        class="navbar navbar-expand-lg bg-transparent navbar-sticky navbar-airy bg-hover-white bg-fixed-white navbar-hover-light navbar-fixed-light">
     <div class="container-fluid">
       <!-- Navbar Header  --><a routerLink="/" class="navbar-brand">

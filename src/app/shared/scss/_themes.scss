@@ -104,6 +104,8 @@ $breadcrumb-border-radius: 0;
 
 $h1-font-size: 4.05rem;
 
+$navbar-padding-y: 1.1rem;
+
 owl-carousel {
   width: 100%;
 }
@@ -113,25 +115,31 @@ owl-carousel {
   background: $color_alabaster_approx;
   padding: 1rem;
   font-weight: 300;
+
   .dropdown-item {
     color: $color_abbey_approx;
     font-weight: 300;
   }
+
   .topbar-link {
     color: $color_abbey_approx;
     text-decoration: none;
   }
+
   .topbar-flag {
     margin-right: 10px;
     width: 20px;
   }
+
   .dropdown-menu {
     margin-top: 1.3rem;
   }
+
   .dropdown-toggle {
     color: inherit;
     text-decoration: none;
   }
+
   .dropdown-toggle::after {
     margin-left: 5px;
   }
@@ -139,9 +147,11 @@ owl-carousel {
 
 .navbar-brand-svg {
   margin-top: -5px;
+
   .navbar-brand-svg-text {
     fill: currentColor;
   }
+
   .text-primary {
     fill: $color_medium_purple_approx;
   }
@@ -159,6 +169,7 @@ owl-carousel {
 .bg-hover-white {
   //Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
   transition: all .2s ease-out;
+
   &:hover {
     background: $white !important;
   }
@@ -168,29 +179,36 @@ owl-carousel {
   &.fixed-top {
     //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
     box-shadow: 2px 2px 2px $black_10;
+
     &.bg-fixed-white {
       background: $white !important;
     }
   }
+
   .nav-item {
     position: relative;
   }
+
   .nav-link {
     color: $color_abbey_approx;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: .15em;
     font-size: .9rem;
+
     i {
       margin-left: 5px;
     }
+
     svg {
       margin-left: 5px;
     }
   }
+
   .dropdown-menu {
     margin-top: 1.1rem;
   }
+
   .megamenu {
     margin-top: 0;
   }
@@ -208,6 +226,7 @@ owl-carousel {
     text-align: left;
     padding-top: 0;
     padding-bottom: 0;
+
     &:last-of-type {
       border: none;
     }
@@ -298,48 +317,61 @@ owl-carousel {
 .navbar-light {
   .navbar-brand {
     color: $black_95;
+
     &:hover {
       color: $black_95;
     }
+
     &:focus {
       color: $black_95;
     }
   }
+
   .navbar-nav {
     .nav-link {
       color: $black_65;
+
       &:hover {
         color: $black_95;
       }
+
       &:focus {
         color: $black_95;
       }
+
       &.disabled {
         color: $black_30;
       }
+
       &.show {
         color: $black_95;
       }
+
       &.active {
         color: $black_95;
       }
     }
+
     .show > .nav-link {
       color: $black_95;
     }
+
     .active > .nav-link {
       color: $black_95;
     }
   }
+
   .navbar-toggler {
     color: $black_65;
     border-color: rgba(0, 0, 0, 0);
   }
+
   .navbar-toggler-icon {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox=' 0 0 30 30 ' xmlns='http:
 
 //www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0,0,0,0.65)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
   }
+
   .navbar-text {
     color: $black_65;
   }
@@ -360,26 +392,32 @@ owl-carousel {
   z-index: 9999;
   border: none !important;
   overflow: hidden;
+
   .megamenu-list {
     padding: 0;
     margin-bottom: 1.5rem;
     font-size: 0.8rem;
   }
+
   .megamenu-list-item {
     margin-bottom: 5px;
   }
+
   .megamenu-list-link {
     padding: 5px 0;
     text-decoration: none;
     color: $color_oslo_gray_approx;
+
     &:hover {
       background: none;
       color: $color_shark_approx;
     }
   }
+
   .megamenu-services {
     padding: 1rem 3rem;
     background: $color_alabaster_approx;
+
     .megamenu-services-item {
       display: flex;
       align-items: center;
@@ -388,6 +426,7 @@ owl-carousel {
       margin-left: auto;
       margin-right: auto;
     }
+
     .megamenu-services-icon {
       width: 30px;
       height: 30px;
@@ -406,6 +445,7 @@ owl-carousel {
   cursor: pointer;
   font-size: 1.2rem;
   line-height: 1.5;
+
   .svg-icon {
     width: 25px;
     height: 25px;
@@ -435,6 +475,7 @@ owl-carousel {
   .navbar-icon-link {
     color: $white;
   }
+
   .navbar-icon-link-badge {
     background: $white;
     color: $color_tuna_approx;
@@ -444,15 +485,18 @@ owl-carousel {
 @media(max-width: 575.98px) {
   .navbar-expand-sm {
     padding: .6rem 1rem;
+
     .dropdown-menu {
       margin-top: 0;
       //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
       box-shadow: none;
       border: none;
     }
+
     &.navbar-sticky .navbar-collapse {
       max-height: 80vh;
       overflow-y: auto;
+
       &.collapsing {
         overflow-y: hidden;
       }
@@ -466,15 +510,18 @@ owl-carousel {
 @media(max-width: 767.98px) {
   .navbar-expand-md {
     padding: .6rem 1rem;
+
     .dropdown-menu {
       margin-top: 0;
       //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
       box-shadow: none;
       border: none;
     }
+
     &.navbar-sticky .navbar-collapse {
       max-height: 80vh;
       overflow-y: auto;
+
       &.collapsing {
         overflow-y: hidden;
       }
@@ -504,15 +551,18 @@ owl-carousel {
 @media(max-width: 991.98px) {
   .navbar-expand-lg {
     padding: .6rem 1rem;
+
     .dropdown-menu {
       margin-top: 0;
       //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
       box-shadow: none;
       border: none;
     }
+
     &.navbar-sticky .navbar-collapse {
       max-height: 80vh;
       overflow-y: auto;
+
       &.collapsing {
         overflow-y: hidden;
       }
@@ -522,6 +572,7 @@ owl-carousel {
     &.split-screen-heading {
       font-size: 2.025rem;
     }
+
     &.hero-heading {
       font-size: 2.025rem;
     }
@@ -530,6 +581,7 @@ owl-carousel {
     &.split-screen-heading {
       font-size: 1.35rem;
     }
+
     &.hero-heading {
       font-size: 1.35rem;
     }
@@ -538,6 +590,7 @@ owl-carousel {
     &.split-screen-heading {
       font-size: .9rem;
     }
+
     &.hero-heading {
       font-size: .9rem;
     }
@@ -550,6 +603,7 @@ owl-carousel {
   }
   .quickview {
     text-align: center;
+
     .detail-quantity {
       margin-left: auto;
       margin-right: auto;
@@ -558,9 +612,11 @@ owl-carousel {
   .custom-nav .nav-item {
     width: 100% !important;
     margin-bottom: 5px;
+
     .nav-link {
       border-right: none;
     }
+
     .nav-link::after {
       display: none;
     }
@@ -570,15 +626,18 @@ owl-carousel {
 @media(max-width: 1199.98px) {
   .navbar-expand-xl {
     padding: .6rem 1rem;
+
     .dropdown-menu {
       margin-top: 0;
       //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
       box-shadow: none;
       border: none;
     }
+
     &.navbar-sticky .navbar-collapse {
       max-height: 80vh;
       overflow-y: auto;
+
       &.collapsing {
         overflow-y: hidden;
       }
@@ -588,15 +647,18 @@ owl-carousel {
 
 .navbar-expand {
   padding: .6rem 1rem;
+
   .dropdown-menu {
     margin-top: 0;
     //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
     box-shadow: none;
     border: none;
   }
+
   &.navbar-sticky .navbar-collapse {
     max-height: 80vh;
     overflow-y: auto;
+
     &.collapsing {
       overflow-y: hidden;
     }
@@ -612,17 +674,21 @@ owl-carousel {
   padding-top: .6rem;
   padding-bottom: .6rem;
   border-bottom: 1px solid $color_gallery_approx;
+
   &:last-of-type {
     border-bottom: none;
   }
+
   .navbar-cart-product-image {
     max-width: 70px;
   }
+
   .navbar-cart-product-link {
     font-weight: bold;
     text-decoration: none;
     color: $color_tuna_approx;
     padding: 0;
+
     &:hover {
       background: none;
       text-decoration: none;
@@ -643,6 +709,7 @@ owl-carousel {
 
 .navbar-fullscreen {
   position: static;
+
   &.fixed-top {
     position: fixed;
   }
@@ -654,6 +721,7 @@ owl-carousel {
     //Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
     transition: none;
   }
+
   &.collapse.show {
     position: fixed;
     right: 0;
@@ -689,11 +757,14 @@ owl-carousel {
     background: $white_95;
     color: $black_95;
   }
+
   .nav-fullscreen-link {
     color: $black_95;
+
     &:hover {
       color: $black_95;
     }
+
     &:focus {
       color: $black_95;
     }
@@ -705,20 +776,26 @@ owl-carousel {
     background: $color_shark_98_approx;
     color: $white;
   }
+
   .nav-fullscreen-link {
     color: $white;
+
     &:hover {
       color: $white;
     }
+
     &:focus {
       color: $white;
     }
   }
+
   .fullscreen-close {
     color: $white;
+
     &:hover {
       color: $white !important;
     }
+
     &:focus {
       color: $white !important;
     }
@@ -727,6 +804,7 @@ owl-carousel {
 
 .dropdown-submenu {
   position: relative;
+
   > .dropdown-menu {
     top: 0;
     left: 100%;
@@ -746,11 +824,13 @@ owl-carousel {
   top: 0;
   left: 0;
   z-index: 9999;
+
   .search-area-form {
     width: 100%;
     max-width: 700px;
     margin: 20px;
   }
+
   .search-area-input {
     width: 100%;
     padding: 1rem 0;
@@ -761,6 +841,7 @@ owl-carousel {
     border: none;
     border-bottom: 1px solid $color_silver_chalice_approx;
   }
+
   .search-area-button {
     position: absolute;
     right: 0;
@@ -770,6 +851,7 @@ owl-carousel {
     outline: none;
     cursor: pointer;
   }
+
   .close-btn {
     position: absolute;
     top: 20px;
@@ -812,10 +894,12 @@ owl-carousel {
   cursor: pointer;
   //Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
   transition: border-color .1s;
+
   &:hover {
     //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
     box-shadow: inset 0 0 0 5px $white, 0 0 0 1px $color_oslo_gray_approx;
   }
+
   &.active {
     //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
     box-shadow: inset 0 0 0 5px $white, 0 0 0 2px $color_abbey_approx;
@@ -824,6 +908,7 @@ owl-carousel {
 
 .breadcrumb {
   font-size: .7875rem;
+
   a {
     color: $color_shark_approx;
   }
@@ -833,9 +918,11 @@ owl-carousel {
   padding-top: 2rem;
   padding-bottom: 2rem;
   border-bottom: 1px solid $color_gallery_approx;
+
   &:last-of-type {
     border-bottom: none;
   }
+
   &:first-of-type {
     padding-top: 0;
   }
@@ -862,10 +949,12 @@ owl-carousel {
 
 .nav-link {
   color: $color_tuna_approx;
+
   &:hover .sidebar-badge {
     background: $white;
     color: $color_shark_approx;
   }
+
   &.active .sidebar-badge {
     background: $white;
     color: $color_shark_approx;
@@ -886,6 +975,7 @@ owl-carousel {
 
 .home-full-slider {
   position: relative;
+
   .owl-nav {
     width: 100%;
     position: absolute;
@@ -895,6 +985,7 @@ owl-carousel {
     transform: translateY(-50%);
     height: 45px;
     margin-top: 0;
+
     .owl-next {
       position: absolute;
       top: 0;
@@ -906,6 +997,7 @@ owl-carousel {
       left: auto;
       right: 40px;
     }
+
     .owl-prev {
       position: absolute;
       top: 0;
@@ -916,12 +1008,14 @@ owl-carousel {
       margin: 0;
     }
   }
+
   .home-full-item {
     padding-top: 125px;
     padding-bottom: 62.5px;
     min-height: 600px;
     height: auto;
   }
+
   p.lead {
     font-size: .9rem;
   }
@@ -935,6 +1029,7 @@ owl-carousel {
     .home-full-item {
       min-height: 100vh;
     }
+
     p.lead {
       font-size: 1.215rem;
     }
@@ -992,10 +1087,12 @@ owl-carousel {
 
 .product-slider {
   position: relative;
+
   .product-slider-item {
     margin-left: .8rem;
     margin-right: .8rem;
   }
+
   .owl-nav {
     .owl-prev {
       top: 35%;
@@ -1006,6 +1103,7 @@ owl-carousel {
       position: absolute;
       left: -80px;
     }
+
     .owl-next {
       top: 35%;
       background: none;
@@ -1037,6 +1135,7 @@ owl-carousel {
   flex-wrap: wrap;
   margin-bottom: 1rem;
   color: $color_oslo_gray_approx;
+
   strong {
     color: $color_abbey_approx;
   }
@@ -1047,13 +1146,16 @@ owl-carousel {
   padding: .3rem;
   color: $color_abbey_approx;
   margin-right: .5rem;
+
   &.active {
     border-bottom: solid 2px $color_abbey_approx;
   }
+
   &:hover {
     text-decoration: none;
     border-bottom: solid 2px $color_abbey_approx;
   }
+
   &:focus {
     text-decoration: none;
     border-bottom: solid 2px $color_abbey_approx;
@@ -1067,11 +1169,14 @@ owl-carousel {
 .product-image {
   position: relative;
   border-bottom: 2px solid $color_abbey_approx;
+
   &:hover {
     border-bottom: 2px solid $color_medium_purple_approx;
+
     .product-hover-overlay {
       opacity: 1;
     }
+
     .btn {
       //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
       transform: none !important;
@@ -1093,9 +1198,11 @@ owl-carousel {
   opacity: 0;
   //Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
   transition: all 0.5s;
+
   .product-hover-overlay-buttons {
     z-index: 3;
   }
+
   .btn {
     width: 40px;
     height: 40px;
@@ -1104,16 +1211,19 @@ owl-carousel {
     padding: 0;
     //Instead of the line below you could use @include transition($transition-1, $transition-2, $transition-3, $transition-4, $transition-5, $transition-6, $transition-7, $transition-8, $transition-9, $transition-10)
     transition: all 0.3s;
+
     &.btn-product-left {
       //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
       transform: translateX(-20px);
       opacity: 0;
     }
+
     &.btn-product-right {
       //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
       transform: translateX(20px);
       opacity: 0;
     }
+
     &.btn-buy {
       width: auto;
       padding-left: 2rem;
@@ -1122,6 +1232,7 @@ owl-carousel {
       margin-right: .5rem;
     }
   }
+
   .product-hover-overlay-link {
     position: absolute;
     width: 100%;
@@ -1187,6 +1298,7 @@ owl-carousel {
   cursor: pointer;
   outline: none !important;
   padding: 0;
+
   &.active {
     opacity: 1;
   }
@@ -1194,13 +1306,16 @@ owl-carousel {
 
 .detail-carousel {
   position: relative;
+
   .ribbon {
     position: absolute;
     top: 20px;
     left: 4px;
     z-index: 999;
+
     + .ribbon {
       top: 80px;
+
       + .ribbon {
         top: 145px;
       }
@@ -1213,6 +1328,7 @@ owl-carousel {
   letter-spacing: 0.1em;
   font-size: .9rem;
   color: $color_abbey_approx;
+
   span {
     font-weight: normal;
     font-size: .8rem;
@@ -1224,6 +1340,7 @@ owl-carousel {
 
 .detail-option-btn-label {
   position: relative;
+
   &.active {
     //Instead of the line below you could use @include box-shadow($shadow-1, $shadow-2, $shadow-3, $shadow-4, $shadow-5, $shadow-6, $shadow-7, $shadow-8, $shadow-9, $shadow-10)
     box-shadow: none !important;
@@ -1252,9 +1369,11 @@ owl-carousel {
   padding-left: 1rem;
   padding-right: 1rem;
   border-bottom: 1px solid $color_gallery_approx;
+
   &:first-of-type {
     padding-top: 1rem;
   }
+
   &:last-of-type {
     margin-bottom: 0;
     border-bottom: none;
@@ -1290,10 +1409,13 @@ owl-carousel {
   padding: 3px 15px 5px;
   color: $white;
   text-align: center;
+
   + .ribbon {
     top: 60px;
+
     + .ribbon {
       top: 110px;
+
       + .ribbon {
         top: 160px;
       }
@@ -1471,6 +1593,7 @@ owl-carousel {
 .cart-footer {
   background: $color_alabaster_approx;
   padding: 0 2rem;
+
   .cart-item {
     padding-top: 1rem;
     padding-bottom: 1rem;
@@ -1481,6 +1604,7 @@ owl-carousel {
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
   border-bottom: 1px solid $color_gallery_approx;
+
   &:last-of-type {
     border-bottom: none;
   }
@@ -1522,6 +1646,7 @@ owl-carousel {
   line-height: 1.5;
   //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
   border-radius: 0;
+
   &.btn-items {
     color: $color_oslo_gray_approx;
     padding-left: .2rem;
@@ -1542,11 +1667,13 @@ owl-carousel {
     border-radius: 0;
     overflow: hidden;
   }
+
   .nav-link {
     &:hover {
       color: $color_shark_approx;
       background-color: $color_gallery_approx;
     }
+
     &:focus {
       color: $color_shark_approx;
       background-color: $color_gallery_approx;
@@ -1558,15 +1685,18 @@ owl-carousel {
   .nav-item {
     background: $color_alabaster_approx;
     align-self: stretch;
+
     &:last-of-type {
       .nav-link {
         border-right: none !important;
       }
+
       .nav-link::after {
         display: none;
       }
     }
   }
+
   .nav-link {
     position: relative;
     height: 100%;
@@ -1580,19 +1710,23 @@ owl-carousel {
     text-transform: uppercase;
     letter-spacing: 0.1em;
     color: $color_abbey_approx;
+
     &.active {
       background: $color_abbey_approx;
       color: $white;
     }
+
     &.active::after {
       display: none;
     }
+
     &.disabled {
       cursor: not-allowed !important;
       background: $color_alabaster_approx;
       color: $color_mountain_mist_approx;
     }
   }
+
   .nav-link::after {
     content: '';
     width: 1px;
@@ -1628,30 +1762,39 @@ owl-carousel {
   h1 {
     margin-bottom: 2rem;
   }
+
   h2 {
     margin-bottom: 2rem;
   }
+
   h3 {
     margin-bottom: 2rem;
   }
+
   h4 {
     margin-bottom: 2rem;
   }
+
   h5 {
     margin-bottom: 2rem;
   }
+
   h6 {
     margin-bottom: 2rem;
   }
+
   p {
     margin-bottom: 2rem;
   }
+
   ul {
     margin-bottom: 2rem;
   }
+
   ol {
     margin-bottom: 2rem;
   }
+
   blockquote {
     margin-bottom: 2rem;
   }
@@ -1707,13 +1850,16 @@ owl-carousel {
 
 .quickview {
   background: $white_20;
+
   .ribbon {
     position: absolute;
     top: 30px;
     left: -12px;
     z-index: 999;
+
     + .ribbon {
       top: 80px;
+
       + .ribbon {
         top: 145px;
       }
@@ -1728,9 +1874,11 @@ owl-carousel {
   text-align: center;
   padding-top: 2rem;
   padding-bottom: 2rem;
+
   &:first-of-type {
     padding-top: 0;
   }
+
   &:last-of-type {
     padding-bottom: 0;
   }
@@ -1786,9 +1934,11 @@ owl-carousel {
     box-shadow: none;
     outline: none;
   }
+
   .noUi-handle::before {
     display: none;
   }
+
   .noUi-handle::after {
     display: none;
   }
@@ -1801,20 +1951,24 @@ owl-carousel {
 .owl-theme {
   button {
     outline: none;
+
     &:focus {
       background: none;
       outline: none;
     }
+
     &:hover {
       background: none;
       outline: none;
     }
   }
+
   .owl-item {
     touch-action: initial !important;
     //Instead of the line below you could use @include perspective($p)
     perspective: 1000px !important;
   }
+
   .owl-nav {
     position: absolute;
     width: 100%;
@@ -1824,6 +1978,7 @@ owl-carousel {
     //Instead of the line below you could use @include transform($scale, $rotate, $transx, $transy, $skewx, $skewy, $originx, $originy)
     transform: translateY(-50%);
     text-align: center;
+
     [class*='owl-'] {
       position: absolute;
       top: 0;
@@ -1837,30 +1992,37 @@ owl-carousel {
       cursor: pointer;
       //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
       border-radius: 3px;
+
       &:hover {
         background: $color_mantle_approx;
         color: $white;
         text-decoration: none;
       }
     }
+
     .owl-next {
       left: auto;
       right: 40px;
     }
+
     .disabled {
       opacity: .5;
       cursor: default;
     }
+
     &.disabled + .owl-dots {
       margin-top: 10px;
     }
   }
+
   .owl-dots {
     text-align: center;
+
     .owl-dot {
       display: inline-block;
       zoom: 1;
       *display: inline;
+
       span {
         display: inline-block;
         width: 8px;
@@ -1874,19 +2036,23 @@ owl-carousel {
         //Instead of the line below you could use @include border-radius($radius, $vertical-radius)
         border-radius: 30px;
       }
+
       &.active span {
         background: $color_tuna_approx;
       }
+
       &:hover span {
         background: $color_tuna_approx;
       }
     }
   }
+
   &.owl-dots-modern .owl-dots {
     position: absolute;
     width: 100%;
     bottom: 20px;
     left: 0;
+
     .owl-dot.active span {
       background: $white;
       position: relative;
@@ -1895,10 +2061,12 @@ owl-carousel {
       height: 12px !important;
     }
   }
+
   &.owl-dots-primary .owl-dots .owl-dot {
     span {
       background: $color_mercury_approx;
     }
+
     &.active span {
       background: $color_medium_purple_approx;
     }
@@ -1910,14 +2078,17 @@ owl-carousel {
     background: none !important;
     color: $color_medium_purple_approx !important;
     font-size: 2em !important;
+
     &.disabled {
       color: $color_silver_chalice_approx !important;
     }
   }
+
   .owl-next {
     background: none !important;
     color: $color_medium_purple_approx !important;
     font-size: 2em !important;
+
     &.disabled {
       color: $color_silver_chalice_approx !important;
     }
@@ -1928,15 +2099,19 @@ owl-carousel {
   .modal-header {
     padding: 0;
   }
+
   .modal-title {
     display: none;
   }
+
   .nav-arrow {
     flex-grow: 0;
   }
+
   .nav-arrow-right {
     justify-self: right;
   }
+
   .close {
     position: absolute;
     width: 50px;
@@ -1955,6 +2130,7 @@ owl-carousel {
     z-index: 999;
     cursor: pointer;
     outline: none;
+
     span {
       display: inline-block;
       position: relative;
@@ -1964,10 +2140,12 @@ owl-carousel {
       font-weight: normal;
     }
   }
+
   .modal-footer {
     justify-content: center;
     padding-top: 0;
   }
+
   .ekko-lightbox-nav-overlay span {
     padding: 0 .5rem;
   }
@@ -2087,6 +2265,7 @@ owl-carousel {
   &:focus {
     color: $color_medium_purple_approx !important;
   }
+
   &:hover {
     color: $color_medium_purple_approx !important;
   }
@@ -2096,6 +2275,7 @@ owl-carousel {
   &:focus {
     color: $color_oslo_gray_approx !important;
   }
+
   &:hover {
     color: $color_oslo_gray_approx !important;
   }
@@ -2105,6 +2285,7 @@ owl-carousel {
   &:focus {
     color: $color_sea_green_approx !important;
   }
+
   &:hover {
     color: $color_sea_green_approx !important;
   }
@@ -2114,6 +2295,7 @@ owl-carousel {
   &:focus {
     color: $color_eastern_blue_approx !important;
   }
+
   &:hover {
     color: $color_eastern_blue_approx !important;
   }
@@ -2123,6 +2305,7 @@ owl-carousel {
   &:focus {
     color: $color_dandelion_approx !important;
   }
+
   &:hover {
     color: $color_dandelion_approx !important;
   }
@@ -2132,6 +2315,7 @@ owl-carousel {
   &:focus {
     color: $color_amaranth_approx !important;
   }
+
   &:hover {
     color: $color_amaranth_approx !important;
   }
@@ -2141,6 +2325,7 @@ owl-carousel {
   &:focus {
     color: $color_alabaster_approx !important;
   }
+
   &:hover {
     color: $color_alabaster_approx !important;
   }
@@ -2150,6 +2335,7 @@ owl-carousel {
   &:focus {
     color: $color_tuna_approx !important;
   }
+
   &:hover {
     color: $color_tuna_approx !important;
   }
@@ -2159,6 +2345,7 @@ owl-carousel {
   &:focus {
     color: $color_alabaster_approx !important;
   }
+
   &:hover {
     color: $color_alabaster_approx !important;
   }
@@ -2168,6 +2355,7 @@ owl-carousel {
   &:focus {
     color: $color_gallery_approx !important;
   }
+
   &:hover {
     color: $color_gallery_approx !important;
   }
@@ -2177,6 +2365,7 @@ owl-carousel {
   &:focus {
     color: $color_mercury_approx !important;
   }
+
   &:hover {
     color: $color_mercury_approx !important;
   }
@@ -2186,6 +2375,7 @@ owl-carousel {
   &:focus {
     color: $color_mischka_approx !important;
   }
+
   &:hover {
     color: $color_mischka_approx !important;
   }
@@ -2195,6 +2385,7 @@ owl-carousel {
   &:focus {
     color: $color_bombay_approx !important;
   }
+
   &:hover {
     color: $color_bombay_approx !important;
   }
@@ -2204,6 +2395,7 @@ owl-carousel {
   &:focus {
     color: $color_oslo_gray_approx !important;
   }
+
   &:hover {
     color: $color_oslo_gray_approx !important;
   }
@@ -2213,6 +2405,7 @@ owl-carousel {
   &:focus {
     color: $color_abbey_approx !important;
   }
+
   &:hover {
     color: $color_abbey_approx !important;
   }
@@ -2222,6 +2415,7 @@ owl-carousel {
   &:focus {
     color: $color_tuna_approx !important;
   }
+
   &:hover {
     color: $color_tuna_approx !important;
   }
@@ -2231,6 +2425,7 @@ owl-carousel {
   &:focus {
     color: $color_shark_approx !important;
   }
+
   &:hover {
     color: $color_shark_approx !important;
   }
@@ -2270,6 +2465,7 @@ owl-carousel {
 img {
   vertical-align: middle;
   border-style: none;
+
   &.bg-image {
     object-fit: cover;
   }
@@ -2352,12 +2548,14 @@ img {
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: $color_oslo_gray_approx;
+
   &:focus {
     color: $color_shark_approx;
     text-decoration: none;
     color: $color_shark_approx;
     text-decoration: none;
   }
+
   &:hover {
     color: $color_shark_approx;
     text-decoration: none;
@@ -2391,9 +2589,11 @@ img {
   stroke: currentColor;
   stroke-width: 3;
   vertical-align: text-bottom;
+
   &.svg-icon-light {
     stroke-width: 2;
   }
+
   &.svg-icon-heavy {
     stroke-width: 4;
   }
@@ -2437,6 +2637,7 @@ img {
   background: $white;
   border: solid 1px $color_mischka_approx;
   z-index: 2000;
+
   h4 {
     color: $color_abbey_approx;
   }
@@ -2446,15 +2647,19 @@ img {
   padding: 2.5rem 0;
   border-bottom: 1px solid $color_mercury_approx;
   margin-bottom: .5rem;
+
   &:first-of-type {
     padding-top: 0;
   }
+
   &:last-of-type {
     border-bottom: none;
   }
+
   .docs-desc {
     font-size: 1.125rem;
     color: $color_oslo_gray_approx;
+
     p.lead {
       color: $color_shark_approx;
     }
@@ -2464,52 +2669,67 @@ img {
 .navbar-hover-light:hover {
   .navbar-brand {
     color: $black_95;
+
     &:hover {
       color: $black_95;
     }
+
     &:focus {
       color: $black_95;
     }
   }
+
   .navbar-nav {
     .nav-link {
       color: $black_65;
+
       &:hover {
         color: $black_95;
       }
+
       &:focus {
         color: $black_95;
       }
+
       &.disabled {
         color: $black_30;
       }
+
       &.show {
         color: $black_95;
       }
+
       &.active {
         color: $black_95;
       }
     }
+
     .show > .nav-link {
       color: $black_95;
     }
+
     .active > .nav-link {
       color: $black_95;
     }
   }
+
   .navbar-toggler {
     color: $black_65;
     border-color: rgba(0, 0, 0, 0);
   }
+
   .navbar-toggler-icon {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0,0,0,0.65)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
   }
+
   .navbar-text {
     color: $black_65;
   }
+
   .navbar-icon-link {
     color: $black_95;
   }
+
   .navbar-icon-link-badge {
     background: $color_tuna_approx;
     color: $white;
@@ -2519,52 +2739,67 @@ img {
 .navbar-fixed-light.fixed-top {
   .navbar-brand {
     color: $black_95;
+
     &:hover {
       color: $black_95;
     }
+
     &:focus {
       color: $black_95;
     }
   }
+
   .navbar-nav {
     .nav-link {
       color: $black_65;
+
       &:hover {
         color: $black_95;
       }
+
       &:focus {
         color: $black_95;
       }
+
       &.disabled {
         color: $black_30;
       }
+
       &.show {
         color: $black_95;
       }
+
       &.active {
         color: $black_95;
       }
     }
+
     .show > .nav-link {
       color: $black_95;
     }
+
     .active > .nav-link {
       color: $black_95;
     }
   }
+
   .navbar-toggler {
     color: $black_65;
     border-color: rgba(0, 0, 0, 0);
   }
+
   .navbar-toggler-icon {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(0,0,0,0.65)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
   }
+
   .navbar-text {
     color: $black_65;
   }
+
   .navbar-icon-link {
     color: $black_95;
   }
+
   .navbar-icon-link-badge {
     background: $color_tuna_approx;
     color: $white;
@@ -2591,14 +2826,17 @@ img {
   font-size: .8rem;
   padding: 1rem 1.5rem;
   font-weight: 700;
+
   &.active {
     color: $color_tuna_approx;
     border-color: $white $white $color_tuna_approx !important;
   }
+
   &:hover {
     color: $color_tuna_approx;
     border-color: $white $white $color_tuna_approx !important;
   }
+
   &:focus {
     color: $color_tuna_approx;
     border-color: $white $white $color_tuna_approx !important;
@@ -2609,12 +2847,15 @@ img {
   color: $color_abbey_approx;
   font-size: 0.9rem;
   border-color: $color_gallery_approx;
+
   &:hover {
     background: $color_alabaster_approx;
   }
+
   &:focus {
     background: $color_alabaster_approx;
   }
+
   &.active {
     background: $color_gallery_approx;
     border-color: $color_gallery_approx;
@@ -2641,6 +2882,7 @@ a.accordion-link {
   color: $color_tuna_approx;
   text-transform: uppercase;
   letter-spacing: 0.1em;
+
   &:focus {
     text-decoration: none;
     color: $color_tuna_approx;
@@ -2662,6 +2904,7 @@ a.accordion-link {
   z-index: 999;
   cursor: pointer;
   outline: none;
+
   &:hover {
     opacity: 1 !important;
   }
