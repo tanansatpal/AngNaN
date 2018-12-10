@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-user-sidebar',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserSidebarComponent implements OnInit {
 
-  constructor() { }
+  constructor(private route: ActivatedRoute) {
+    route.params.subscribe(params => console.log('side menu id parameter', params['id']));
+  }
 
   ngOnInit() {
   }
