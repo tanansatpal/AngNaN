@@ -36,7 +36,7 @@
 <div class="block mb-5">
   <div class="block-header"><strong class="text-uppercase">Personal details</strong></div>
   <div class="block-body">
-    <form [formGroup]="profileForm">
+    <form [formGroup]="profileForm" (ngSubmit)="updateProfile()">
       <div class="row">
         <div class="col-sm-6">
           <div class="form-group">
@@ -57,11 +57,11 @@
           <label for="gender" class="form-label">Gender</label>
           <div class="form-group">
             <div class="form-check form-check-inline">
-              <input class="form-check-input" formControlName="gender" type="radio" name="gender" id="male" value="male">
+              <input class="form-check-input" formControlName="gender" type="radio" id="male" value="male">
               <label class="form-check-label" for="male">M</label>
             </div>
             <div class="form-check form-check-inline">
-              <input class="form-check-input" formControlName="gender" type="radio" name="inlineRadioOptions" id="female" value="female">
+              <input class="form-check-input" formControlName="gender" type="radio" id="female" value="female">
               <label class="form-check-label" for="female">F</label>
             </div>
           </div>

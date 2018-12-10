@@ -33,4 +33,8 @@ export class ProfileComponent implements OnInit {
   updatePassword() {
     console.warn(this.passwordForm.value);
   }
+
+  updateProfile() {
+    console.warn(this.profileForm.value);
+  }
 }

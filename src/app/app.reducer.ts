@@ -1,12 +1,14 @@
 import { AppState } from './app.state';
 
 import * as fromAuth from './auth/reducers/auth.reducer';
+import * as fromUser from './user/reducers/user.reducer';
 
 import { combineReducers, ActionReducer } from '@ngrx/store';
 import { environment } from '../environments/environment';
 
 const reducers = {
-  auth: fromAuth.AuthReducer
+  auth: fromAuth.AuthReducer,
+  user: fromUser.UserReducer
 };
 
 export const developmentReducer: ActionReducer<AppState> = combineReducers(reducers);

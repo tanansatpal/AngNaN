@@ -15,3 +15,5 @@ export class GetUserSuccess implements Action {
   constructor(public payload: { user: any }) {
   }
 }
+
+export type UserUnion = GetUser | GetUserSuccess;
