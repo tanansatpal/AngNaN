@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../shared/services';
+import { UserService } from '@shared/services';
 
 @Component({
   selector: 'app-overview',

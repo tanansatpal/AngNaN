@@ -334,10 +334,15 @@
   dependencies:
     "@fortawesome/fontawesome-common-types" "^0.2.7"
 
-"@ngrx/store@^6.1.0":
-  version "6.1.0"
-  resolved "https://registry.yarnpkg.com/@ngrx/store/-/store-6.1.0.tgz#5b027647a797bf027912568214b10375dd75af38"
-  integrity sha512-H5BGym1WtAX84/R4pTQ2MrrP87qYfXc6CoPghCZCK9LYxCodsI7KeQfpyNCg5qapxdH2EDqlHXTBJfMTLRiRGg==
+"@ngrx/effects@^6.1.2":
+  version "6.1.2"
+  resolved "https://registry.yarnpkg.com/@ngrx/effects/-/effects-6.1.2.tgz#602f3ee9798e00179075ddef030ded88c28b1aa1"
+  integrity sha512-RUuQ5/7ofxGEZnRRdlC1oE9ugVlTYGm92MVj7c6IirHrVN9W5yQjjMTYEYceVCDOYsiXP7Pyw0dcPp6J5wD2EQ==
+
+"@ngrx/store@^6.1.2":
+  version "6.1.2"
+  resolved "https://registry.yarnpkg.com/@ngrx/store/-/store-6.1.2.tgz#20fb5ab4d79571b804a348093aa11a167fe2946f"
+  integrity sha512-W9MbXrwhIRmN1BlINF9BT+rHR046e1HNk7GqykcDJrK9wW74PJW3aE5iuPb2sTPipBMjPHsXzc73E4U/+OTAyw==
 
 "@ngtools/webpack@7.0.3":
   version "7.0.3"
@@ -383,13 +388,6 @@
   dependencies:
     "@types/jasmine" "*"
 
-"@types/jquery@^3.3.22":
-  version "3.3.22"
-  resolved "https://registry.yarnpkg.com/@types/jquery/-/jquery-3.3.22.tgz#cde55dc8f83207dffd16205b05f97ce824581735"
-  integrity sha512-a4JDcIhJhHYnoWCkG3xT2CZxXZeA92JeREESorg0DMQ3ZsjuKF48h7XK4l5Gl2GRa/ItGRpKMT0pyK88yRgqXQ==
-  dependencies:
-    "@types/sizzle" "*"
-
 "@types/node@^6.0.46":
   version "6.14.0"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-6.14.0.tgz#85c6998293fc6f2945915419296c7fbb63384f66"
@@ -409,11 +407,6 @@
   version "3.0.12"
   resolved "https://registry.yarnpkg.com/@types/selenium-webdriver/-/selenium-webdriver-3.0.12.tgz#6affe5aed1ba379175075a889adbe2bc3aa62159"
   integrity sha512-hYn+eoOehVUIdMwp5h34ZsGAO1ydja10GDup4BwyoFCdcH5MQ35nQq+AInSaBMEMopD5hEooFCyKo2Pajbe1ag==
-
-"@types/sizzle@*":
-  version "2.3.2"
-  resolved "https://registry.yarnpkg.com/@types/sizzle/-/sizzle-2.3.2.tgz#a811b8c18e2babab7d542b3365887ae2e4d9de47"
-  integrity sha512-7EJYyKTL7tFR8+gDbB6Wwz/arpGa0Mywk1TJbNzKzHtzbwVmY4HR9WqS5VV7dsBUKQmPNr192jHr/VpBluj/hg==
 
 "@webassemblyjs/ast@1.7.6":
   version "1.7.6"
