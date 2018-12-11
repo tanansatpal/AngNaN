@@ -31,7 +31,6 @@ export class LoginComponent implements OnInit, OnDestroy {
   redirectIfUserLoggedIn() {
     this.store.pipe(select(getAuthStatus)).subscribe(
       isLoggedIn => {
-        console.log(isLoggedIn);
         if (isLoggedIn) {
           return this.router.navigateByUrl(this.returnUrl);
         }

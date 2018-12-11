@@ -36,8 +36,8 @@ export class ApiService {
       );
   }
 
-  post(url, options = {}) {
-    return this.http.post(url, options)
+  post(url, data, httpOptions = {}) {
+    return this.http.post(url, data, httpOptions)
       .pipe(
         map(response => response['data']),
         catchError(this.handleError('url', []))

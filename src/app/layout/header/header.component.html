@@ -318,7 +318,7 @@
           </div>
           <!-- User Not Logged - link to login page-->
           <div class="nav-item">
-            <a [routerLink]="isAuthenticated$ ? '/user' : '/auth/login'" class="navbar-icon-link">
+            <a [routerLink]="isAuthenticated ? '/user' : '/auth/login'" class="navbar-icon-link">
               <svg class="svg-icon">
                 <use xlink:href="#male-user-1"></use>
               </svg>
