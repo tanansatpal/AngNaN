@@ -7,7 +7,7 @@ import { ProductsComponent } from './components/products/products.component';
 import { CheckboxFiltersComponent } from './components/checkbox-filters/checkbox-filters.component';
 import { RadioFiltersComponent } from './components/radio-filters/radio-filters.component';
 import { RangeFiltersComponent } from './components/range-filters/range-filters.component';
-import { CategoryComponent } from './components/category/category.component';
+import { CategoryComponent } from './category.component';
 
 @NgModule({
   declarations: [

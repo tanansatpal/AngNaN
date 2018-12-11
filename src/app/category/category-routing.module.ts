@@ -1,4 +1,4 @@
-import { CategoryComponent } from './components/category/category.component';
+import { CategoryComponent } from './category.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
