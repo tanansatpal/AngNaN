@@ -3,17 +3,14 @@
     <!-- Breadcrumbs -->
     <ol class="breadcrumb justify-content-center">
       <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
-      <li class="breadcrumb-item active">Your profile</li>
+      <li class="breadcrumb-item active">Your {{selectedSection.title}}</li>
     </ol>
     <!-- Hero Content-->
     <div class="hero-content pb-5 text-center">
-      <h1 class="hero-heading">Your profile</h1>
-      <div class="row">
+      <h1 class="hero-heading">Your {{selectedSection.title}}</h1>
+      <div class="row" *ngIf="selectedSection.description">
         <div class="col-xl-8 offset-xl-2">
-          <p class="lead text-muted">
-            Maecenas sollicitudin. In rutrum. In convallis.
-            Nunc tincidunt ante vitae massa. Cras pede libero, dapibus nec,
-            pretium sit amet, tempor quis. Fusce dui leo, imperdiet in.
+          <p class="lead text-muted" [textContent]=selectedSection.description>
           </p>
         </div>
       </div>

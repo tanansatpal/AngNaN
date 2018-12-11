@@ -1,15 +1,26 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { UserService } from '@shared/services';
+import { NavigationEnd, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-overview',
   templateUrl: './user.component.html',
   styleUrls: ['./user.component.scss']
 })
-export class UserComponent implements OnInit {
+export class UserComponent implements OnInit, OnDestroy {
   sidebarSections: any;
+  currentUrl: string;
+  selectedSection: any;
+  router$: Subscription;
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private router: Router) {
+    this.router$ = router.events.subscribe(event => {
+      if (event instanceof NavigationEnd) {
+        this.currentUrl = event.urlAfterRedirects;
+        this.setSelectedSection();
+      }
+    });
   }
 
   ngOnInit() {
@@ -23,6 +34,9 @@ export class UserComponent implements OnInit {
       {
         url: '/user/profile',
         title: 'Profile',
+        description: `Maecenas sollicitudin. In rutrum. In convallis.
+            Nunc tincidunt ante vitae massa. Cras pede libero, dapibus nec,
+            pretium sit amet, tempor quis. Fusce dui leo, imperdiet in.`,
         icon: '#male-user-1'
       },
       {
@@ -31,6 +45,18 @@ export class UserComponent implements OnInit {
         icon: '#navigation-map-1'
       }
     ];
+    this.setSelectedSection();
+  }
+
+
+  setSelectedSection() {
+    if (this.sidebarSections) {
+      this.selectedSection = this.sidebarSections.filter(section => section.url === this.currentUrl).shift();
+    }
+  }
+
+  ngOnDestroy() {
+    this.router$.unsubscribe();
   }
 
 }
