@@ -20,7 +20,7 @@ export class OrdersComponent implements OnInit, OnDestroy {
   }
 
   getOrders() {
-    this.userService.getOrders().subscribe(result => {
+    this.orders$ = this.userService.getOrders().subscribe(result => {
       console.log(result);
     }, err => {
       console.error(err);
