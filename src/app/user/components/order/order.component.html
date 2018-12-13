@@ -1,0 +1,64 @@
+<ng-container *ngIf="order">
+  <div class="cart">
+    <div class="cart-wrapper">
+      <div class="cart-header text-center">
+        <div class="row">
+          <div class="col-6">Item</div>
+          <div class="col-2">Price</div>
+          <div class="col-2">Quantity</div>
+          <div class="col-2">Total</div>
+        </div>
+      </div>
+      <div class="cart-body">
+        <ng-container *ngFor="let item of order.items;">
+          <app-cart-item [item]="item"></app-cart-item>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+  <div class="row my-5">
+    <div class="col-md-6">
+      <div class="block mb-5">
+        <div class="block-header">
+          <h6 class="text-uppercase mb-0">Order Summary</h6>
+        </div>
+        <div class="block-body bg-light pt-1">
+          <p class="text-sm">Shipping and additional costs are calculated based on values you have entered.</p>
+          <ul class="order-summary mb-0 list-unstyled">
+            <li class="order-summary-item"><span>Order Subtotal </span><span>{{order.sub_total | currency}}</span></li>
+            <li class="order-summary-item">
+              <span>Shipping and handling</span><span>{{order.shipping_total | currency}}</span></li>
+            <li class="order-summary-item"><span>Tax</span><span>{{order.taxes_total | currency}}</span></li>
+            <li class="order-summary-item border-0"><span>Total</span><strong class="order-summary-total">
+              {{order.total | currency}}</strong>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="block-header">
+        <h6 class="text-uppercase mb-0">Invoice address</h6>
+      </div>
+      <div class="block-body bg-light pt-1">
+        <p>{{order.billing_address.full_name}}<br>
+          {{order.billing_address.address}}<br>
+          {{order.billing_address.city}}<br>
+          {{order.billing_address.state}}<br>
+          <strong>{{order.billing_address.country}}</strong> - <span>{{order.shipping_address.zip}}</span>
+        </p>
+      </div>
+      <div class="block-header">
+        <h6 class="text-uppercase mb-0">Shipping address</h6>
+      </div>
+      <div class="block-body bg-light pt-1">
+        <p>{{order.shipping_address.full_name}}<br>
+          {{order.shipping_address.address}}<br>
+          {{order.shipping_address.city}}<br>
+          {{order.shipping_address.state}}<br>
+          <strong>{{order.shipping_address.country}}</strong> - <span>{{order.shipping_address.zip}}</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</ng-container>

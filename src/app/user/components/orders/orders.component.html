@@ -1,3 +1,27 @@
-<p>
-  orders works!
-</p>
+<table class="table table-borderless table-hover table-responsive-md">
+  <thead class="bg-light">
+  <tr>
+    <th class="py-4 text-uppercase text-sm">Order #</th>
+    <th class="py-4 text-uppercase text-sm">Date</th>
+    <th class="py-4 text-uppercase text-sm">Total</th>
+    <th class="py-4 text-uppercase text-sm">Status</th>
+    <th class="py-4 text-uppercase text-sm">Action</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let order of orders;">
+    <th class="py-4 align-middle"># {{order.order_id}}</th>
+    <td class="py-4 align-middle">{{order.created_on |date :'mediumDate'}}</td>
+    <td class="py-4 align-middle">{{order.total | currency}}</td>
+    <td class="py-4 align-middle"><span
+      [ngClass]="{'badge-info':order.status === 'open',
+      'badge-success':order.status === 'closed',
+      'badge-danger':order.status === 'cancelled'}"
+      class="badge text-uppercase p-2">{{order.status}}</span>
+    </td>
+    <td class="py-4 align-middle">
+      <a [routerLink]="[order._id]" class="btn btn-outline-dark btn-sm">View</a>
+    </td>
+  </tr>
+  </tbody>
+</table>

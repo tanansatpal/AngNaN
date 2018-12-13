@@ -13,6 +13,8 @@ export class UserComponent implements OnInit, OnDestroy {
   currentUrl: string;
   selectedSection: any;
   router$: Subscription;
+  orderCount: number;
+  orderCount$: Subscription;
 
   constructor(private userService: UserService, private router: Router) {
     this.router$ = router.events.subscribe(event => {
@@ -24,28 +26,31 @@ export class UserComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.sidebarSections = [
-      {
-        url: '/user/orders',
-        title: 'Orders',
-        icon: '#paper-bag-1',
-        extra: `<div class="badge badge-pill badge-dark font-weight-normal px-3">5</div>`
-      },
-      {
-        url: '/user/profile',
-        title: 'Profile',
-        description: `Maecenas sollicitudin. In rutrum. In convallis.
+    this.orderCount$ = this.userService.getOrdersCount().subscribe(count => {
+      this.orderCount = count;
+      this.sidebarSections = [
+        {
+          url: '/user/orders',
+          title: 'Orders',
+          icon: '#paper-bag-1',
+          extra: `<div class="badge badge-pill badge-dark font-weight-normal px-3">${this.orderCount}</div>`
+        },
+        {
+          url: '/user/profile',
+          title: 'Profile',
+          description: `Maecenas sollicitudin. In rutrum. In convallis.
             Nunc tincidunt ante vitae massa. Cras pede libero, dapibus nec,
             pretium sit amet, tempor quis. Fusce dui leo, imperdiet in.`,
-        icon: '#male-user-1'
-      },
-      {
-        url: '/user/address',
-        title: 'Addresses',
-        icon: '#navigation-map-1'
-      }
-    ];
-    this.setSelectedSection();
+          icon: '#male-user-1'
+        },
+        {
+          url: '/user/address',
+          title: 'Addresses',
+          icon: '#navigation-map-1'
+        }
+      ];
+      this.setSelectedSection();
+    });
   }
 
 
@@ -56,7 +61,12 @@ export class UserComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
-    this.router$.unsubscribe();
+    if (this.router$) {
+      this.router$.unsubscribe();
+    }
+    if (this.orderCount$) {
+      this.orderCount$.unsubscribe();
+    }
   }
 
 }

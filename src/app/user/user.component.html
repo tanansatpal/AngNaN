@@ -1,12 +1,12 @@
 <section class="hero">
   <div class="container">
     <!-- Breadcrumbs -->
-    <ol class="breadcrumb justify-content-center">
+    <ol class="breadcrumb justify-content-center" *ngIf="selectedSection">
       <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
       <li class="breadcrumb-item active">Your {{selectedSection.title}}</li>
     </ol>
     <!-- Hero Content-->
-    <div class="hero-content pb-5 text-center">
+    <div class="hero-content pb-5 text-center" *ngIf="selectedSection">
       <h1 class="hero-heading">Your {{selectedSection.title}}</h1>
       <div class="row" *ngIf="selectedSection.description">
         <div class="col-xl-8 offset-xl-2">
