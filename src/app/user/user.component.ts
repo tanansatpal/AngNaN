@@ -32,6 +32,7 @@ export class UserComponent implements OnInit, OnDestroy {
         {
           url: '/user/orders',
           title: 'Orders',
+          description: 'Your orders in one place.',
           icon: '#paper-bag-1',
           extra: `<div class="badge badge-pill badge-dark font-weight-normal px-3">${this.orderCount}</div>`
         },
