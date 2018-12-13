@@ -7,10 +7,10 @@
     </ol>
     <!-- Hero Content-->
     <div class="hero-content pb-5 text-center">
-      <h1 class="hero-heading">Your {{selectedSection.title}}</h1>
+      <h1 class="hero-heading">{{selectedSection.title}}</h1>
       <div class="row" *ngIf="selectedSection.description">
         <div class="col-xl-8 offset-xl-2">
-          <p class="lead text-muted" [textContent]=selectedSection.description>
+          <p class="lead text-muted" [innerHTML]=selectedSection.description>
           </p>
         </div>
       </div>

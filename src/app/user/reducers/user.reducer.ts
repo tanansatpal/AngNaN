@@ -1,7 +1,5 @@
 import * as UserActions from '../actions/user.actions';
 import { UserState } from './user.state';
-import { createSelector } from '@ngrx/store';
-import { AppState } from '@app/app.state';
 
 export const initialState: UserState = {
   order: null,
@@ -38,8 +36,15 @@ export function UserReducer(state = initialState, action: UserActions.UserUnion)
       return state;
     }
 
-    case UserActions.UserActionTypes.GET_ORDER_FAILED: {
+    case UserActions.UserActionTypes.GET_SELECTED_SECTION: {
       return state;
+    }
+
+    case UserActions.UserActionTypes.SET_SELECTED_SECTION: {
+      return {
+        ...state,
+        selectedSection: action.payload
+      };
     }
 
     default:

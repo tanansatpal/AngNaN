@@ -2,6 +2,9 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { UserService } from '@shared/services';
 import { NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { select, Store } from '@ngrx/store';
+import { GetSelectedSection } from '@app/user/actions/user.actions';
+import { getSelectedSection } from '@app/user/reducers/selectors';
 
 @Component({
   selector: 'app-overview',
@@ -12,14 +15,16 @@ export class UserComponent implements OnInit, OnDestroy {
   sidebarSections: any;
   currentUrl: string;
   selectedSection: any;
+  selectedSection$: Subscription;
   router$: Subscription;
   orderCount: number;
   orderCount$: Subscription;
 
-  constructor(private userService: UserService, private router: Router) {
+  constructor(private userService: UserService, private router: Router, private store: Store<{ user }>) {
     this.router$ = router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
         this.currentUrl = event.urlAfterRedirects;
+        this.store.dispatch(new GetSelectedSection(this.currentUrl));
         this.setSelectedSection();
       }
     });
@@ -54,11 +59,10 @@ export class UserComponent implements OnInit, OnDestroy {
     });
   }
 
-
   setSelectedSection() {
-    if (this.sidebarSections) {
-      this.selectedSection = this.sidebarSections.filter(section => section.url === this.currentUrl).shift();
-    }
+    this.selectedSection$ = this.store.pipe(select(getSelectedSection)).subscribe(result => {
+      this.selectedSection = result;
+    });
   }
 
   ngOnDestroy() {
@@ -67,6 +71,9 @@ export class UserComponent implements OnInit, OnDestroy {
     }
     if (this.orderCount$) {
       this.orderCount$.unsubscribe();
+    }
+    if (this.selectedSection$) {
+      this.selectedSection$.unsubscribe();
     }
   }
 

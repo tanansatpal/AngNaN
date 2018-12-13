@@ -6,7 +6,9 @@ export enum UserActionTypes {
   GET_USER_SUCCESS = '[User API] Get User Success',
   GET_ORDER_SUCCESS = '[Order API] Get Order Success',
   GET_USER_FAILED = '[User API] Get User Failed',
-  GET_ORDER_FAILED = '[Order API] Get Order Failed'
+  GET_ORDER_FAILED = '[Order API] Get Order Failed',
+  GET_SELECTED_SECTION = '[User Page] Get Selected Section',
+  SET_SELECTED_SECTION = '[Section Effect] Set Selected Section'
 }
 
 export class GetUser implements Action {
@@ -42,4 +44,26 @@ export class GetOrderFailed implements Action {
   readonly type = UserActionTypes.GET_ORDER_FAILED;
 }
 
-export type UserUnion = GetUser | GetUserSuccess | GetOrder | GetOrderSuccess | GetUserFailed | GetOrderFailed;
+export class GetSelectedSection implements Action {
+  readonly type = UserActionTypes.GET_SELECTED_SECTION;
+
+  constructor(public payload: string) {
+  }
+}
+
+export class SetSelectedSection implements Action {
+  readonly type = UserActionTypes.SET_SELECTED_SECTION;
+
+  constructor(public payload: any) {
+  }
+}
+
+export type UserUnion =
+  GetUser
+  | GetUserSuccess
+  | GetOrder
+  | GetOrderSuccess
+  | GetUserFailed
+  | GetOrderFailed
+  | GetSelectedSection
+  | SetSelectedSection;

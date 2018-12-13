@@ -31,7 +31,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         if (request.url.match(/\/api\/1\/entity\/ms.orders\/_\/count$/) && request.method === 'GET') {
           // check for fake auth token in header and return user if valid, this security is implemented server side in a real application
           if (request.headers.get('Authorization') === 'Bearer fake-jwt-token') {
-            return of(new HttpResponse({ status: 200, body: { data: orderResponse.data.length } }));
+            return of(new HttpResponse({status: 200, body: {data: orderResponse.data.length}}));
           } else {
             // return 401 not authorised if token is null or invalid
             return throwError('Unauthorised');
@@ -42,8 +42,10 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         if (request.url.match(/\/api\/1\/entity\/ms.orders\/\w+$/) && request.method === 'GET') {
           // check for fake auth token in header and return user if valid, this security is implemented server side in a real application
           if (request.headers.get('Authorization') === 'Bearer fake-jwt-token') {
-            const data = orderResponse.data[0];
-            return of(new HttpResponse({ status: 200, body: { data } }));
+            const orderId = request.url.match(/\/api\/1\/entity\/ms.orders\/(\w+)$/)[1];
+            const order = orderResponse.data.find(o => o._id === orderId);
+            const data = JSON.parse(JSON.stringify(order));
+            return of(new HttpResponse({status: 200, body: {data}}));
           } else {
             // return 401 not authorised if token is null or invalid
             return throwError('Unauthorised');
