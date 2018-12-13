@@ -21,7 +21,6 @@ export class OrdersComponent implements OnInit, OnDestroy {
 
   getOrders() {
     this.orders$ = this.userService.getOrders().subscribe(result => {
-      console.log(result);
       this.orders = result;
     }, err => {
       console.error(err);

@@ -5,6 +5,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { UserRoutingModule } from './user-routing.module';
 import { UserReducer } from './reducers/user.reducer';
+import { UserEffects } from './reducers/user.effects';
 
 import { OrdersComponent } from './components/orders/orders.component';
 import { UserComponent } from './user.component';
@@ -19,7 +20,7 @@ import { CartItemComponent } from './components/order/cart-item/cart-item.compon
   imports: [
     CommonModule,
     StoreModule.forFeature('user', UserReducer),
-    EffectsModule.forFeature([]),
+    EffectsModule.forFeature([UserEffects]),
     FormsModule,
     ReactiveFormsModule,
     UserRoutingModule

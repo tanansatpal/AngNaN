@@ -5,6 +5,7 @@ import { AuthService } from '@shared/services';
 import { select, Store } from '@ngrx/store';
 import { Login } from '@app/auth/actions/auth.actions';
 import { getAuthStatus } from '../../reducers/selectors';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -15,6 +16,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   loginForm: FormGroup;
   returnUrl: string;
+  status$: Subscription;
 
   constructor(private auth: AuthService, private router: Router, private route: ActivatedRoute, private store: Store<{ auth }>) {
     this.redirectIfUserLoggedIn();
@@ -29,7 +31,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   redirectIfUserLoggedIn() {
-    this.store.pipe(select(getAuthStatus)).subscribe(
+    this.status$ = this.store.pipe(select(getAuthStatus)).subscribe(
       isLoggedIn => {
         if (isLoggedIn) {
           return this.router.navigateByUrl(this.returnUrl);
@@ -63,5 +65,9 @@ export class LoginComponent implements OnInit, OnDestroy {
     this.store.dispatch(new Login(this.loginForm.value));
   }
 
-  ngOnDestroy() {}
+  ngOnDestroy() {
+    if (this.status$) {
+      this.status$.unsubscribe();
+    }
+  }
 }

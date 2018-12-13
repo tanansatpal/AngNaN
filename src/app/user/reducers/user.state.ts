@@ -1,4 +1,4 @@
 export interface UserState {
-  isLoggedIn: boolean;
-  user: any;
+  order: any;
+  selectedSection: any;
 }
