@@ -19,6 +19,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AppReducer } from './app.reducer';
 
+import { fakeBackendProvider } from '@shared/interceptors/fake-backend.interceptor';
+import { responseProvider } from '@shared/interceptors/response.interceptor';
+import { tokenProvider } from '@shared/interceptors/token.interceptor';
+
 @NgModule({
   declarations: [
     AppComponent
@@ -37,9 +41,13 @@ import { AppReducer } from './app.reducer';
     HomeModule,
     LayoutModule,
     CategoryModule,
-    ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
-  providers: [],
+  providers: [
+    tokenProvider,
+    responseProvider,
+    fakeBackendProvider,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {
