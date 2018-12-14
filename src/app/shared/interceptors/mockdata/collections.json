@@ -1,0 +1,49 @@
+{
+  "messages": [
+    {
+      "name": "ms.entity.collections.list",
+      "level": "success",
+      "key": "ms.entity.collections.list",
+      "message": ""
+    },
+    {
+      "name": "ms.entity.webhooks.executeWebhook",
+      "level": "warning",
+      "key": "ms.entity.webhooks.executeWebhook",
+      "message": ""
+    }
+  ],
+  "fileBaseUrl": "https://cdn.storehippo.com/s/53f2ec180505e61b200c8e72/",
+  "data": [
+    {
+      "_id": "5bfff07878623733971d1f21",
+      "_metadata": {
+        "i18n": {
+          "EN": {}
+        }
+      },
+      "type": "manual",
+      "default_sort_order": "-created_on",
+      "images": [],
+      "SEO": {
+        "description": "Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua."
+      },
+      "substore": [],
+      "facet_group": "",
+      "name": "YOUR FAVOURITES",
+      "alias": "your-favourites",
+      "filters": [],
+      "sort_order": 0,
+      "created_on": "2018-11-29T13:58:16.923Z",
+      "_created_by": "5b39d8722282ab532a326bc7",
+      "updated_on": "2018-12-01T11:18:42.480Z",
+      "_updated_by": "5b39d8722282ab532a326bc7"
+    }
+  ],
+  "paging": {
+    "limit": 50,
+    "start": 0,
+    "count": 1,
+    "total": 1
+  }
+}

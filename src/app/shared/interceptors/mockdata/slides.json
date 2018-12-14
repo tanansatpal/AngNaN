@@ -1,0 +1,227 @@
+{
+  "messages": [
+    {
+      "name": "ms.entity.slides.list",
+      "level": "success",
+      "key": "ms.entity.slides.list",
+      "message": ""
+    },
+    {
+      "name": "ms.entity.webhooks.executeWebhook",
+      "level": "warning",
+      "key": "ms.entity.webhooks.executeWebhook",
+      "message": ""
+    }
+  ],
+  "fileBaseUrl": "https://cdn.storehippo.com/s/53f2ec180505e61b200c8e72/",
+  "data": [
+    {
+      "_id": "5bffacdf0baf3b019ace1836",
+      "_metadata": {
+        "i18n": {
+          "EN": {}
+        },
+        "image": {
+          "name": "matheus-ferrero-334418-unsplash.jpg",
+          "type": "image/jpeg",
+          "size": 244213,
+          "versioning": true,
+          "_id": "5bffacda0baf3b019ace17f0"
+        }
+      },
+      "publish": "1",
+      "tags": [],
+      "substore": [],
+      "image": "ms.slides/5bffacda0baf3b019ace17f0.jpg",
+      "description": "<div class=\"container-fluid h-100 py-5\">\n<div class=\"row align-items-center h-100\">\n<div class=\"col-lg-8 col-xl-6 mx-auto text-white text-center\">\n<h5 class=\"text-uppercase text-white font-weight-light mb-4 letter-spacing-5\">Just arrived</h5>\n<h1 class=\"mb-5 display-2 font-weight-bold text-serif\">Denim Jackets</h1>\n<p class=\"lead mb-4\">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>\n<p><a href=\"category.html\" class=\"btn btn-light\">View collection</a></p>\n</div>\n</div>\n</div>",
+      "sort_order": 0,
+      "created_on": "2018-11-29T09:09:52.801Z",
+      "_created_by": "5b39d8722282ab532a326bc7",
+      "title": "Denim Jackets",
+      "updated_on": "2018-11-29T09:15:33.968Z",
+      "_updated_by": "5b39d8722282ab532a326bc7"
+    },
+    {
+      "_id": "5bffaccbd204a301a395b81e",
+      "_metadata": {
+        "i18n": {
+          "EN": {}
+        },
+        "image": {
+          "name": "ian-dooley-347942-unsplash.jpg",
+          "type": "image/jpeg",
+          "size": 296986,
+          "versioning": true,
+          "_id": "5bffacc09f05300251de8e1b"
+        }
+      },
+      "publish": "1",
+      "tags": [],
+      "substore": [],
+      "image": "ms.slides/5bffacc09f05300251de8e1b.jpg",
+      "description": "<div class=\"container-fluid h-100\">\n<div class=\"row align-items-center h-100\">\n<div class=\"col-lg-8 col-xl-6 mx-auto text-white text-center overlay-content\">\n<h1 class=\"mb-4 display-2 text-uppercase font-weight-bold\">Skeleton Tees</h1>\n<p class=\"lead mb-5\">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>\n<p><a href=\"category.html\" class=\"btn btn-light\">Start shopping</a></p>\n</div>\n</div>\n</div>",
+      "sort_order": 0,
+      "created_on": "2018-11-29T09:09:32.239Z",
+      "_created_by": "5b39d8722282ab532a326bc7",
+      "subtitle": "Skeleton Tees",
+      "updated_on": "2018-11-29T09:15:13.087Z",
+      "_updated_by": "5b39d8722282ab532a326bc7"
+    },
+    {
+      "_id": "5bffacb49f05300251de8dd7",
+      "_metadata": {
+        "i18n": {
+          "EN": {}
+        },
+        "image": {
+          "name": "haley-phelps-62815-unsplash.jpg",
+          "type": "image/jpeg",
+          "size": 221114,
+          "versioning": true,
+          "_id": "5bffac91d204a301a395b62d"
+        }
+      },
+      "publish": "1",
+      "tags": [],
+      "substore": [],
+      "description": "<div class=\"container-fluid h-100\">\n<div class=\"row align-items-center h-100\">\n<div class=\"col-lg-8 col-xl-6 mx-auto text-white text-center\">\n<h5 class=\"text-uppercase font-weight-light mb-4 letter-spacing-5\">Our bestseller</h5>\n<h1 class=\"mb-5 display-1 font-weight-bold text-serif\">Skinny Jeans</h1>\n<p><a href=\"category.html\" class=\"btn btn-light\">View collection</a></p>\n</div>\n</div>\n</div>",
+      "image": "ms.slides/5bffac91d204a301a395b62d.jpg",
+      "sort_order": 0,
+      "created_on": "2018-11-29T09:09:09.720Z",
+      "_created_by": "5b39d8722282ab532a326bc7",
+      "title": "Skinny Jeans",
+      "updated_on": "2018-11-29T09:15:20.909Z",
+      "_updated_by": "5b39d8722282ab532a326bc7"
+    },
+    {
+      "_id": "5a743f94b2379c2cbc5890be",
+      "_metadata": {
+        "i18n": {
+          "EN": {}
+        },
+        "image": {
+          "name": "11029 Bathroom Set Liquid Soap Dispenser, Soap Dish, Toothbrush Holder, Glass, & Toilet Brush With Holder.JPG",
+          "type": "image/jpeg",
+          "size": 221891,
+          "versioning": true,
+          "_id": "5a743f49b2379c2cbc5890bb"
+        }
+      },
+      "publish": "0",
+      "tags": [],
+      "image": "ms.slides/5a743f49b2379c2cbc5890bb.JPG",
+      "sort_order": 0,
+      "created_on": "2018-02-02T10:38:18.492Z",
+      "_created_by": "58a2f75a71dd86af6f86b028",
+      "substore": [],
+      "updated_on": "2018-11-29T09:10:11.904Z",
+      "_updated_by": "5b39d8722282ab532a326bc7"
+    },
+    {
+      "_id": "5973298132640c7e2be34853",
+      "_metadata": {
+        "i18n": {
+          "EN": {}
+        },
+        "image": {
+          "_id": "59732891aaf5a17a6c5645b9",
+          "name": "jewellery-1633124_1920.jpg",
+          "tmp_path": "/tmp/f8a582f19b96e4a9b04c05072fcf59a1",
+          "size": 400003,
+          "type": "image/jpeg",
+          "image_quality": null
+        }
+      },
+      "publish": "0",
+      "tags": [],
+      "description": "",
+      "image": "ms.slides/59732891aaf5a17a6c5645b9.jpg",
+      "sort_order": 0,
+      "created_on": "2017-07-22T10:31:37.225Z",
+      "_created_by": "58a2f75a71dd86af6f86b028",
+      "substore": [],
+      "updated_on": "2018-11-29T09:10:28.097Z",
+      "_updated_by": "5b39d8722282ab532a326bc7"
+    },
+    {
+      "_id": "5414521801859fc5404d272f",
+      "image": "ms.slides/54145197c9807a040423dd4c.png",
+      "title": "COSMETICS",
+      "subtitle": "CURABITUR VELIT",
+      "description": "<p>Velit in leo tempus velit in leo fermentum congue odio ac nunc sollicitudin</p>",
+      "url": "/",
+      "_metadata": {
+        "image": {
+          "_id": "54145197c9807a040423dd4c",
+          "name": "image1.png",
+          "size": 284484,
+          "type": "image/png"
+        },
+        "i18n": {
+          "AR": {
+            "title": "مستحضرات التجميل",
+            "subtitle": "CURABITUR VELIT",
+            "description": "الأسد الأسد في الموسم في الهواء الطلق في الهواء الطلق الحار والكراهية التخطيط والآن يهمني"
+          },
+          "auto_updated": true,
+          "GU": {
+            "title": "કોસ્મેટિકસ",
+            "subtitle": "શૈક્ષણિક આઉટડોર",
+            "description": "આઉટડોર આયોજન ગરમ ધિક્કાર અને હવે કાળજી આઉટડોર સિઝનની સિંહ સિંહ"
+          }
+        }
+      },
+      "sort_order": 1,
+      "created_on": "2014-09-13T14:18:08.964Z",
+      "_created_by": "530d7f8bc6b8283a11000002",
+      "publish": "0",
+      "updated_on": "2018-11-29T09:10:33.339Z",
+      "tags": [],
+      "substore": [],
+      "_updated_by": "5b39d8722282ab532a326bc7"
+    },
+    {
+      "_id": "5414525e2abff4cc405c33f0",
+      "title": "COSMETICS",
+      "image": "ms.slides/54145232c9807a040423dd4e.png",
+      "description": "<p>Velit in leo tempus velit in leo fermentum congue odio ac nunc sollicitudin</p>",
+      "url": "/",
+      "subtitle": "CURABITUR VELIT",
+      "_metadata": {
+        "image": {
+          "_id": "54145232c9807a040423dd4e",
+          "name": "image2.png",
+          "size": 442726,
+          "type": "image/png"
+        },
+        "i18n": {
+          "AR": {
+            "title": "مستحضرات التجميل",
+            "description": "الأسد الأسد في الموسم في الهواء الطلق في الهواء الطلق الحار والكراهية التخطيط والآن يهمني",
+            "subtitle": "CURABITUR VELIT"
+          },
+          "auto_updated": true,
+          "GU": {
+            "title": "કોસ્મેટિકસ",
+            "description": "આઉટડોર આયોજન ગરમ ધિક્કાર અને હવે કાળજી આઉટડોર સિઝનની સિંહ સિંહ",
+            "subtitle": "શૈક્ષણિક આઉટડોર"
+          }
+        }
+      },
+      "sort_order": 2,
+      "created_on": "2014-09-13T14:27:12.819Z",
+      "_created_by": "530d7f8bc6b8283a11000002",
+      "publish": "0",
+      "updated_on": "2018-11-29T09:10:38.767Z",
+      "tags": [],
+      "substore": [],
+      "_updated_by": "5b39d8722282ab532a326bc7"
+    }
+  ],
+  "paging": {
+    "limit": 50,
+    "start": 0,
+    "count": 7,
+    "total": 7
+  }
+}

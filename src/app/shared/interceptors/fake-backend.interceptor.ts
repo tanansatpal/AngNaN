@@ -1,9 +1,38 @@
 import { Injectable } from '@angular/core';
-import { HttpRequest, HttpResponse, HttpHandler, HttpEvent, HttpInterceptor, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { of, Observable, throwError } from 'rxjs';
-import { mergeMap, materialize, delay, dematerialize } from 'rxjs/operators';
+import { HTTP_INTERCEPTORS, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest, HttpResponse } from '@angular/common/http';
+import { Observable, of, throwError } from 'rxjs';
+import { delay, dematerialize, materialize, mergeMap } from 'rxjs/operators';
 
-import { orderResponse } from './mockdata/orders';
+import { brandsResponse, collectionsResponse, orderResponse, productsResponse, slidesResponse } from './mockdata';
+
+const applyFilters = function (request, data) {
+  const newData = JSON.parse(JSON.stringify(data));
+  let filters = request.params.get('filters');
+  if (!filters) {
+    return newData;
+  }
+  filters = JSON.parse(filters);
+  const allRecords = newData.data;
+  newData.data = allRecords.filter(record => {
+    let addRecord = true;
+    for (const key in filters) {
+      if (filters.hasOwnProperty(key)) {
+        if (record[key] && Array.isArray(record[key])) {
+          if (!record[key].includes(filters[key])) {
+            addRecord = false;
+            break;
+          }
+        } else if (record[key] !== filters[key]) {
+          addRecord = false;
+          break;
+        }
+      }
+    }
+    return addRecord;
+  });
+  return newData;
+};
+
 
 @Injectable()
 export class FakeBackendInterceptor implements HttpInterceptor {
@@ -16,8 +45,29 @@ export class FakeBackendInterceptor implements HttpInterceptor {
     // wrap in delayed observable to simulate server api call
     return of(null).pipe(mergeMap(() => {
 
+        // get slides
+        if (request.url.match(/\/api\/v1\/slides$/) && request.method === 'GET') {
+          return of(new HttpResponse({ status: 200, body: applyFilters(request, slidesResponse) }));
+        }
+
+        // get brands
+        if (request.url.match(/\/api\/v1\/brands$/) && request.method === 'GET') {
+          return of(new HttpResponse({ status: 200, body: applyFilters(request, brandsResponse) }));
+        }
+
+        // get collections
+        if (request.url.match(/\/api\/v1\/collections$/) && request.method === 'GET') {
+          return of(new HttpResponse({ status: 200, body: applyFilters(request, collectionsResponse) }));
+        }
+
+        // get products
+        if (request.url.match(/\/api\/v1\/products$/) && request.method === 'GET') {
+          return of(new HttpResponse({ status: 200, body: applyFilters(request, productsResponse) }));
+        }
+
+
         // get orders by user
-        if (request.url.match(/\/api\/1\/entity\/ms.orders$/) && request.method === 'GET') {
+        if (request.url.match(/\/api\/v1\/orders$/) && request.method === 'GET') {
           // check for fake auth token in header and return user if valid, this security is implemented server side in a real application
           if (request.headers.get('Authorization') === 'Bearer fake-jwt-token') {
             return of(new HttpResponse({ status: 200, body: orderResponse }));
@@ -28,10 +78,10 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         }
 
         // get orders by user
-        if (request.url.match(/\/api\/1\/entity\/ms.orders\/_\/count$/) && request.method === 'GET') {
+        if (request.url.match(/\/api\/v1\/orders\/count$/) && request.method === 'GET') {
           // check for fake auth token in header and return user if valid, this security is implemented server side in a real application
           if (request.headers.get('Authorization') === 'Bearer fake-jwt-token') {
-            return of(new HttpResponse({status: 200, body: {data: orderResponse.data.length}}));
+            return of(new HttpResponse({ status: 200, body: { data: orderResponse.data.length } }));
           } else {
             // return 401 not authorised if token is null or invalid
             return throwError('Unauthorised');
@@ -39,13 +89,13 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         }
 
         // get order
-        if (request.url.match(/\/api\/1\/entity\/ms.orders\/\w+$/) && request.method === 'GET') {
+        if (request.url.match(/\/api\/v1\/orders\/\w+$/) && request.method === 'GET') {
           // check for fake auth token in header and return user if valid, this security is implemented server side in a real application
           if (request.headers.get('Authorization') === 'Bearer fake-jwt-token') {
             const orderId = request.url.match(/\/api\/1\/entity\/ms.orders\/(\w+)$/)[1];
             const order = orderResponse.data.find(o => o._id === orderId);
             const data = JSON.parse(JSON.stringify(order));
-            return of(new HttpResponse({status: 200, body: {data}}));
+            return of(new HttpResponse({ status: 200, body: { data } }));
           } else {
             // return 401 not authorised if token is null or invalid
             return throwError('Unauthorised');

@@ -13,14 +13,14 @@ export class UserService {
   }
 
   getOrders(params = {}) {
-    return this.api.get(`${this.API_URL}entity/ms.orders`, params);
+    return this.api.get(`${this.API_URL}orders`, params);
   }
 
   getOrder(id) {
-    return this.api.get(`${this.API_URL}entity/ms.orders/${id}`);
+    return this.api.get(`${this.API_URL}orders/${id}`);
   }
 
   getOrdersCount() {
-    return this.api.get(`${this.API_URL}entity/ms.orders/_/count`);
+    return this.api.get(`${this.API_URL}orders/count`);
   }
 }

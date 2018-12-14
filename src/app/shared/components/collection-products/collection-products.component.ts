@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { ProductSectionService } from '@shared/services';
-import { mergeMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-collection-products',
@@ -8,7 +7,7 @@ import { mergeMap } from 'rxjs/operators';
   styleUrls: ['./collection-products.component.scss']
 })
 export class CollectionProductsComponent implements OnInit {
-  @Input('collection') collectionAlias: string;
+  @Input() collectionAlias: string;
   products: any = [];
   sliderOptions: any = {};
   collection: any = {};
@@ -29,21 +28,17 @@ export class CollectionProductsComponent implements OnInit {
   }
 
   getCollection() {
-    this.productService.getCollections({alias: this.collectionAlias})
+    this.productService.getCollections({ alias: this.collectionAlias })
       .subscribe(result => {
         this.collection = result[0];
         this.getProducts();
-      }, err => {
-
       });
   }
 
   getProducts() {
-    this.productService.getProducts([{field: 'collections', value: [this.collection.alias], operator: 'in'}])
+    this.productService.getProducts({ collections: this.collectionAlias })
       .subscribe(result => {
         this.products = result;
-      }, err => {
-
       });
   }
 

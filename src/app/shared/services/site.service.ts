@@ -24,6 +24,6 @@ export class SiteService {
    */
   getSlides() {
     // console.log(this.api.get)
-    return this.api.get(`${this.API_URL}entity/ms.slides`)
+    return this.api.get(`${this.API_URL}slides`);
   }
 }
