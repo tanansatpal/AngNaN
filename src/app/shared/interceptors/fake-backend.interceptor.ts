@@ -3,7 +3,7 @@ import { HTTP_INTERCEPTORS, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest
 import { Observable, of, throwError } from 'rxjs';
 import { delay, dematerialize, materialize, mergeMap } from 'rxjs/operators';
 
-import { brandsResponse, collectionsResponse, orderResponse, productsResponse, slidesResponse } from './mockdata';
+import { brandsResponse, collectionsResponse, orderResponse, productsResponse, slidesResponse, usersResponse } from './mockdata';
 
 const applyFilters = function (request, data) {
   const newData = JSON.parse(JSON.stringify(data));
@@ -65,6 +65,32 @@ export class FakeBackendInterceptor implements HttpInterceptor {
           return of(new HttpResponse({ status: 200, body: applyFilters(request, productsResponse) }));
         }
 
+        if (request.url.endsWith('/v1/login') && request.method === 'POST') {
+          // find if any user matches login credentials
+          const users = usersResponse.data;
+          const filteredUser = users.filter(user => {
+            return user.email === request.body.data.username && user.password === request.body.data.password;
+          }).shift();
+
+          if (filteredUser) {
+            // if login details are valid return 200 OK with user details and fake jwt token
+            const body = {
+              id: filteredUser._id,
+              email: filteredUser.email,
+              firstName: filteredUser.first_name,
+              lastName: filteredUser.last_name,
+              currency: { 'name': 'INR', 'conversion_rate': 1, 'decimal_points': 0 },
+              language: 'EN',
+              role: 'member',
+              token: 'fake-jwt-token'
+            };
+
+            return of(new HttpResponse({ status: 200, body: { data: body } }));
+          } else {
+            // else return 400 bad request
+            return throwError('Username or password is incorrect');
+          }
+        }
 
         // get orders by user
         if (request.url.match(/\/api\/v1\/orders$/) && request.method === 'GET') {

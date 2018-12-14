@@ -25,19 +25,14 @@ export class AuthService {
    * @param data - data to be stored;
    * @param keyName - name of the key in which data will be stored;
    */
-  private static setAuthToken(data: User, keyName: string): void {
-    const jsonData = JSON.stringify(data);
+  private static setAuthToken(data: string, keyName: string): void {
     // todo @AngularUniversalSupport
-    localStorage.setItem(keyName, jsonData);
+    localStorage.setItem(keyName, data);
   }
 
   static getAuthToken() {
     // todo @AngularUniversalSupport
-    const user = localStorage.getItem('user');
-    if (user) {
-      return 'fake-jwt-token';
-    }
-    return '';
+    return localStorage.getItem('token');
   }
 
   /**
@@ -48,10 +43,10 @@ export class AuthService {
    */
   login({ username, password }) {
     const params = { data: { 'username': username, 'password': password } };
-    return this.api.post(`${this.API_URL}entity/ms.users/_/login`, params)
+    return this.api.post(`${this.API_URL}login`, params)
       .pipe(
         map(user => {
-          AuthService.setAuthToken(user, 'user');
+          AuthService.setAuthToken(user.token, 'token');
           return user;
         })
       );
