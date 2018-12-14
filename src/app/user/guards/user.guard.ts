@@ -27,7 +27,7 @@ export class UserGuard implements CanActivate {
     this.auth.returnUrl = url;
 
     // Navigate to the login page with extras
-    this.router.navigate(['auth', 'login']);
+    this.router.navigate(['auth', 'login']).then();
     return false;
   }
 }

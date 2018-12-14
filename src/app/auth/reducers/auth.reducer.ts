@@ -1,8 +1,9 @@
 import * as AuthActions from '../actions/auth.actions';
 import { AuthState } from './auth.state';
+import { AuthService } from '@shared/services';
 
 export const initialState: AuthState = {
-  isLoggedIn: false,
+  isLoggedIn: !!AuthService.getAuthToken(),
   user: {}
 };
 
