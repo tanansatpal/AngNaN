@@ -27,7 +27,7 @@ export class LoginComponent implements OnInit, OnDestroy {
       username: new FormControl('', Validators.required),
       password: new FormControl('', Validators.required)
     });
-    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    this.returnUrl = this.auth.returnUrl || '/';
   }
 
   redirectIfUserLoggedIn() {
@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   private pushErrorFor(ctrl_name: string, msg: string) {
-    this.loginForm.controls[ctrl_name].setErrors({'msg': msg});
+    this.loginForm.controls[ctrl_name].setErrors({ 'msg': msg });
   }
 
   validate() {

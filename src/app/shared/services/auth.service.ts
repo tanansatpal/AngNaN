@@ -12,6 +12,8 @@ export class AuthService {
 
   private API_URL = environment.API_URL;
 
+  returnUrl: string;
+
   /**
    * Creates an instance of AuthService
    * @param api - HTTP service to call the APIS

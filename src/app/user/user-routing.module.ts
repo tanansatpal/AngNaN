@@ -7,11 +7,14 @@ import { WishlistComponent } from './components/wishlist/wishlist.component';
 
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { UserGuard } from '@app/user/guards/user.guard';
+
 
 const UserRoutes: Routes = [
   {
     path: '',
     component: UserComponent,
+    canActivate: [UserGuard],
     children: [
       { path: 'profile', component: ProfileComponent },
       { path: 'address', component: AddressComponent },
