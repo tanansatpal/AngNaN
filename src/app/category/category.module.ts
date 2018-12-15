@@ -8,14 +8,23 @@ import { CheckboxFiltersComponent } from './components/checkbox-filters/checkbox
 import { RadioFiltersComponent } from './components/radio-filters/radio-filters.component';
 import { RangeFiltersComponent } from './components/range-filters/range-filters.component';
 import { CategoryComponent } from './category.component';
+import { BannerComponent } from './components/banner/banner.component';
+import { PaginationComponent } from './components/pagination/pagination.component';
+import { CategoryHeaderComponent } from './components/category-header/category-header.component';
+import { StoreModule } from '@ngrx/store';
+import { CategoryReducer } from '@app/category/reducers/category.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { CategoryEffects } from '@app/category/reducers/category.effects';
 
 @NgModule({
   declarations: [
     FiltersComponent, ProductsComponent,
     CheckboxFiltersComponent, RadioFiltersComponent,
-    RangeFiltersComponent, CategoryComponent],
+    RangeFiltersComponent, CategoryComponent, BannerComponent, PaginationComponent, CategoryHeaderComponent],
   imports: [
     CommonModule,
+    StoreModule.forFeature('category', CategoryReducer),
+    EffectsModule.forFeature([CategoryEffects]),
     CategoryRoutingModule
   ]
 })

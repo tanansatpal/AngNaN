@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductSectionService } from '@shared/services';
+import { select, Store } from '@ngrx/store';
+import { GetCategory } from '@app/category/actions/category.actions';
+import { getCurrentCategory } from '@app/category/actions/category.selectors';
 
 @Component({
   selector: 'app-category',
@@ -7,9 +11,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategoryComponent implements OnInit {
 
-  constructor() { }
+  category: any;
+
+  constructor(private categoryService: ProductSectionService, private store: Store<{ category }>) {
+    this.store.dispatch(new GetCategory('ldnasd'));
+  }
 
   ngOnInit() {
+    this.store.pipe(select(getCurrentCategory)).subscribe(result => {
+      this.category = result;
+    });
+    this.categoryService.getCategoryDetail('asdsad').subscribe(result => {
+
+    });
   }
 
 }

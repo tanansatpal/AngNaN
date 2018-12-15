@@ -1,3 +1,159 @@
-<p>
-  filters works!
-</p>
+<div class="sidebar-block px-3 px-lg-0 mr-lg-4">
+  <a data-toggle="collapse" href="#categoriesMenu" aria-expanded="false" aria-controls="categoriesMenu"
+     class="d-lg-none block-toggler">Product Categories</a>
+  <div id="categoriesMenu" class="expand-lg collapse">
+    <div class="nav nav-pills flex-column mt-4 mt-lg-0"><a href="#"
+                                                           class="nav-link d-flex justify-content-between mb-2 "><span>Jackets</span><span
+      class="sidebar-badge"> 120</span></a>
+      <div class="nav nav-pills flex-column ml-3"><a href="#" class="nav-link mb-2">Lorem ipsum</a><a href="#"
+                                                                                                      class="nav-link mb-2">Dolor</a><a
+        href="#" class="nav-link mb-2">Sit amet</a><a href="#" class="nav-link mb-2">Donec vitae</a>
+      </div>
+      <a href="#"
+         class="nav-link d-flex justify-content-between mb-2 active"><span>Jeans &amp; chinos</span><span
+        class="sidebar-badge"> 55</span></a>
+      <div class="nav nav-pills flex-column ml-3"><a href="#" class="nav-link mb-2">Lorem ipsum</a><a href="#"
+                                                                                                      class="nav-link mb-2">Dolor</a><a
+        href="#" class="nav-link mb-2">Sit amet</a><a href="#" class="nav-link mb-2">Donec vitae</a>
+      </div>
+      <a href="#" class="nav-link d-flex justify-content-between mb-2 "><span>Accessories</span><span
+        class="sidebar-badge"> 80</span></a>
+      <div class="nav nav-pills flex-column ml-3"><a href="#" class="nav-link mb-2">Sit amet</a><a href="#"
+                                                                                                   class="nav-link mb-2">Donec
+        vitae</a><a href="#" class="nav-link mb-2">Lorem ipsum</a><a href="#" class="nav-link mb-2">Dolor</a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="sidebar-block px-3 px-lg-0 mr-lg-4"><a data-toggle="collapse" href="#priceFilterMenu"
+                                                   aria-expanded="false" aria-controls="priceFilterMenu"
+                                                   class="d-lg-none block-toggler">Filter by price</a>
+  <div id="priceFilterMenu" class="expand-lg collapse">
+    <h6 class="sidebar-heading d-none d-lg-block">Price </h6>
+    <div id="slider-snap" class="mt-4 mt-lg-0"></div>
+    <div class="nouislider-values">
+      <div class="min">From $<span id="slider-snap-value-lower"></span></div>
+      <div class="max">To $<span id="slider-snap-value-upper"></span></div>
+    </div>
+  </div>
+</div>
+<div class="sidebar-block px-3 px-lg-0 mr-lg-4"><a data-toggle="collapse" href="#brandFilterMenu"
+                                                   aria-expanded="true" aria-controls="brandFilterMenu"
+                                                   class="d-lg-none block-toggler">Filter by brand</a>
+  <!-- Brand filter menu - this menu has .show class, so is expanded by default-->
+  <div id="brandFilterMenu" class="expand-lg collapse show">
+    <h6 class="sidebar-heading d-none d-lg-block">Brands </h6>
+    <form action="#" class="mt-4 mt-lg-0">
+      <div class="form-group mb-1">
+        <div class="custom-control custom-checkbox">
+          <input id="brand0" type="checkbox" name="clothes-brand" checked class="custom-control-input">
+          <label for="brand0" class="custom-control-label">Calvin Klein
+            <small>(18)</small>
+          </label>
+        </div>
+      </div>
+      <div class="form-group mb-1">
+        <div class="custom-control custom-checkbox">
+          <input id="brand1" type="checkbox" name="clothes-brand" checked class="custom-control-input">
+          <label for="brand1" class="custom-control-label">Levi Strauss
+            <small>(30)</small>
+          </label>
+        </div>
+      </div>
+      <div class="form-group mb-1">
+        <div class="custom-control custom-checkbox">
+          <input id="brand2" type="checkbox" name="clothes-brand" class="custom-control-input">
+          <label for="brand2" class="custom-control-label">Hugo Boss
+            <small>(120)</small>
+          </label>
+        </div>
+      </div>
+      <div class="form-group mb-1">
+        <div class="custom-control custom-checkbox">
+          <input id="brand3" type="checkbox" name="clothes-brand" class="custom-control-input">
+          <label for="brand3" class="custom-control-label">Tomi Hilfiger
+            <small>(70)</small>
+          </label>
+        </div>
+      </div>
+      <div class="form-group mb-1">
+        <div class="custom-control custom-checkbox">
+          <input id="brand4" type="checkbox" name="clothes-brand" class="custom-control-input">
+          <label for="brand4" class="custom-control-label">Tom Ford
+            <small>(110)</small>
+          </label>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="sidebar-block px-3 px-lg-0 mr-lg-4"><a data-toggle="collapse" href="#sizeFilterMenu"
+                                                   aria-expanded="false" aria-controls="sizeFilterMenu"
+                                                   class="d-lg-none block-toggler">Filter by size</a>
+  <!-- Size filter menu-->
+  <div id="sizeFilterMenu" class="expand-lg collapse">
+    <h6 class="sidebar-heading d-none d-lg-block">Size </h6>
+    <form action="#" class="mt-4 mt-lg-0">
+      <div class="form-group mb-1">
+        <div class="custom-control custom-radio">
+          <input id="size0" type="radio" name="size" checked class="custom-control-input">
+          <label for="size0" class="custom-control-label">Small</label>
+        </div>
+      </div>
+      <div class="form-group mb-1">
+        <div class="custom-control custom-radio">
+          <input id="size1" type="radio" name="size" class="custom-control-input">
+          <label for="size1" class="custom-control-label">Medium</label>
+        </div>
+      </div>
+      <div class="form-group mb-1">
+        <div class="custom-control custom-radio">
+          <input id="size2" type="radio" name="size" class="custom-control-input">
+          <label for="size2" class="custom-control-label">Large</label>
+        </div>
+      </div>
+      <div class="form-group mb-1">
+        <div class="custom-control custom-radio">
+          <input id="size3" type="radio" name="size" class="custom-control-input">
+          <label for="size3" class="custom-control-label">X-Large</label>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<div class="sidebar-block px-3 px-lg-0 mr-lg-4"><a data-toggle="collapse" href="#colourFilterMenu"
+                                                   aria-expanded="false" aria-controls="colourFilterMenu"
+                                                   class="d-lg-none block-toggler">Filter by colour</a>
+  <!-- Size filter menu-->
+  <div id="colourFilterMenu" class="expand-lg collapse">
+    <h6 class="sidebar-heading d-none d-lg-block">Colour </h6>
+    <div class="mt-4 mt-lg-0">
+      <ul class="list-inline mb-0 colours-wrapper">
+        <li class="list-inline-item">
+          <label for="colour_sidebar_Blue" style="background-color: #668cb9" data-allow-multiple
+                 class="btn-colour"> </label>
+          <input type="checkbox" name="colour" value="value_sidebar_Blue" id="colour_sidebar_Blue"
+                 class="input-invisible">
+        </li>
+        <li class="list-inline-item">
+          <label for="colour_sidebar_White" style="background-color: #fff" data-allow-multiple
+                 class="btn-colour"> </label>
+          <input type="checkbox" name="colour" value="value_sidebar_White" id="colour_sidebar_White"
+                 class="input-invisible">
+        </li>
+        <li class="list-inline-item">
+          <label for="colour_sidebar_Violet" style="background-color: #8b6ea4" data-allow-multiple
+                 class="btn-colour"> </label>
+          <input type="checkbox" name="colour" value="value_sidebar_Violet" id="colour_sidebar_Violet"
+                 class="input-invisible">
+        </li>
+        <li class="list-inline-item">
+          <label for="colour_sidebar_Red" style="background-color: #dd6265" data-allow-multiple
+                 class="btn-colour"> </label>
+          <input type="checkbox" name="colour" value="value_sidebar_Red" id="colour_sidebar_Red"
+                 class="input-invisible">
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

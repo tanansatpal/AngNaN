@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { environment } from '../../../environments/environment';
+import { environment } from '@env/environment';
 import { CommonService } from './common.service';
 import { ApiService } from './api.service';
 
@@ -26,11 +26,15 @@ export class ProductSectionService {
   }
 
   getCollections(filters = null) {
-    return this.api.get(`${this.API_URL}collections`, { params: { filters: JSON.stringify(filters) } });
+    return this.api.get(`${this.API_URL}collections`, {params: {filters: JSON.stringify(filters)}});
   }
 
   getProducts(filters = null) {
-    return this.api.get(`${this.API_URL}products`, { params: { filters: JSON.stringify(filters) } });
+    return this.api.get(`${this.API_URL}products`, {params: {filters: JSON.stringify(filters)}});
+  }
+
+  getCategoryDetail(id) {
+    return this.api.get(`${this.API_URL}categories/${id}`);
   }
 
 }
