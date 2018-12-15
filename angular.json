@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "AngHippo": {
+    "AngNaN": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/AngHippo",
+            "outputPath": "dist/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -64,21 +64,29 @@
             }
           }
         },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/server",
+            "main": "src/main.server.ts",
+            "tsConfig": "src/tsconfig.server.json"
+          }
+        },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "AngHippo:build"
+            "browserTarget": "AngNaN:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "AngHippo:build:production"
+              "browserTarget": "AngNaN:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "AngHippo:build"
+            "browserTarget": "AngNaN:build"
           }
         },
         "test": {
@@ -113,7 +121,7 @@
         }
       }
     },
-    "AngHippo-e2e": {
+    "AngNaN-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "prefix": "",
@@ -122,11 +130,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "AngHippo:serve"
+            "devServerTarget": "AngNaN:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "AngHippo:serve:production"
+              "devServerTarget": "AngNaN:serve:production"
             }
           }
         },
@@ -142,7 +150,7 @@
       }
     }
   },
-  "defaultProject": "AngHippo",
+  "defaultProject": "AngNaN",
   "cli": {
     "packageManager": "yarn"
   }

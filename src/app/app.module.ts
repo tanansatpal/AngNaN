@@ -5,8 +5,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { HttpClientModule } from '@angular/common/http';
 import { ServiceWorkerModule } from '@angular/service-worker';
-import { environment } from '../environments/environment';
-import 'bootstrap';
+import { environment } from '@env/environment';
 import { UserModule } from '@app/user/user.module';
 import { ProductModule } from '@app/product';
 import { CartModule } from '@app/cart';
@@ -28,7 +27,7 @@ import { tokenProvider } from '@shared/interceptors/token.interceptor';
     AppComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({appId: 'ang-nan'}),
     HttpClientModule,
     FontAwesomeModule,
     StoreModule.forRoot(AppReducer),

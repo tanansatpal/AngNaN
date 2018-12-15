@@ -6,7 +6,7 @@ import { Component, OnInit, Renderer2 } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'AngHippo';
+  title = 'AngNaN';
 
   constructor() {
 

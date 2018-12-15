@@ -5,9 +5,9 @@ import * as collections from './collections.json';
 import * as products from './products.json';
 import * as users from './users.json';
 
-export const orderResponse = orders['default'];
-export const slidesResponse = slides['default'];
-export const brandsResponse = brands['default'];
-export const collectionsResponse = collections['default'];
-export const productsResponse = products['default'];
-export const usersResponse = users['default'];
+export const orderResponse: any = orders;
+export const slidesResponse: any = slides;
+export const brandsResponse: any = brands;
+export const collectionsResponse: any = collections;
+export const productsResponse: any = products;
+export const usersResponse: any = users;

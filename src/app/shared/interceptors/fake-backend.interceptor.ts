@@ -118,7 +118,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         if (request.url.match(/\/api\/v1\/orders\/\w+$/) && request.method === 'GET') {
           // check for fake auth token in header and return user if valid, this security is implemented server side in a real application
           if (request.headers.get('Authorization') === 'Bearer fake-jwt-token') {
-            const orderId = request.url.match(/\/api\/1\/entity\/ms.orders\/(\w+)$/)[1];
+            const orderId = request.url.match(/\/api\/v1\/orders\/(\w+)$/)[1];
             const order = orderResponse.data.find(o => o._id === orderId);
             const data = JSON.parse(JSON.stringify(order));
             return of(new HttpResponse({ status: 200, body: { data } }));

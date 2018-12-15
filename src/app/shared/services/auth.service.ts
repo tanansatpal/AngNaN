@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
 import { environment } from '../../../environments/environment';
 import { map } from 'rxjs/operators';
-import { User } from '@shared/models/user.model';
 import { Store } from '@ngrx/store';
 
 @Injectable({
@@ -29,12 +28,13 @@ export class AuthService {
    */
   private static setAuthToken(data: string, keyName: string): void {
     // todo @AngularUniversalSupport
-    localStorage.setItem(keyName, data);
+    // localStorage.setItem(keyName, data);
   }
 
   static getAuthToken() {
     // todo @AngularUniversalSupport
-    return localStorage.getItem('token');
+    return 'fake-jwt-token';
+    // return localStorage.getItem('token');
   }
 
   /**
