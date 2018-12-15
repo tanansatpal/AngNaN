@@ -1,6 +1,8 @@
-import { Injectable } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
+import { PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { ApiService } from './api.service';
-import { environment } from '../../../environments/environment';
+import { environment } from '@env/environment';
 import { map } from 'rxjs/operators';
 import { Store } from '@ngrx/store';
 
@@ -8,17 +10,17 @@ import { Store } from '@ngrx/store';
   providedIn: 'root'
 })
 export class AuthService {
-
   private API_URL = environment.API_URL;
 
   returnUrl: string;
 
   /**
    * Creates an instance of AuthService
+   * @param platformId - platformId
    * @param api - HTTP service to call the APIS
    * @param store - Store
    * */
-  constructor(private api: ApiService, private store: Store<{ auth }>) {
+  constructor(@Inject(PLATFORM_ID) private platformId: any, private api: ApiService, private store: Store<{ auth }>) {
   }
 
   /**
@@ -26,15 +28,17 @@ export class AuthService {
    * @param data - data to be stored;
    * @param keyName - name of the key in which data will be stored;
    */
-  private static setAuthToken(data: string, keyName: string): void {
-    // todo @AngularUniversalSupport
-    // localStorage.setItem(keyName, data);
+  private setAuthToken(data: string, keyName: string): void {
+    if (isPlatformBrowser(this.platformId)) {
+      localStorage.setItem(keyName, data);
+    }
   }
 
-  static getAuthToken() {
-    // todo @AngularUniversalSupport
-    return 'fake-jwt-token';
-    // return localStorage.getItem('token');
+  getAuthToken() {
+    if (isPlatformBrowser(this.platformId)) {
+      return localStorage.getItem('token');
+    }
+    return null;
   }
 
   /**
@@ -43,12 +47,12 @@ export class AuthService {
    * @param password - password of the user;
    * @returns user - User from the response of the API;
    */
-  login({ username, password }) {
-    const params = { data: { 'username': username, 'password': password } };
+  login({username, password}) {
+    const params = {data: {'username': username, 'password': password}};
     return this.api.post(`${this.API_URL}login`, params)
       .pipe(
         map(user => {
-          AuthService.setAuthToken(user.token, 'token');
+          this.setAuthToken(user.token, 'token');
           return user;
         })
       );

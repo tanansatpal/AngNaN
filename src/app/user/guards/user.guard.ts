@@ -19,7 +19,7 @@ export class UserGuard implements CanActivate {
   }
 
   checkLogin(url: string): boolean {
-    if (AuthService.getAuthToken()) {
+    if (this.auth.getAuthToken()) {
       return true;
     }
 
