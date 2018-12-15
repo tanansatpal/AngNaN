@@ -32,6 +32,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     });
   }
 
+  // todo universal support
   @HostListener('window:scroll', ['$event'])
   onWindowScroll() {
     const topbar = document.getElementById('topbar').offsetHeight;

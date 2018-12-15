@@ -5,6 +5,10 @@
     "ng": "./node_modules/@angular/cli/bin/ng",
     "start": "ng serve --aot",
     "build": "ng build --aot",
+    "build:ssr": "npm run build:client-and-server-bundles && npm run webpack:server",
+    "serve:ssr": "node dist/server.js",
+    "build:client-and-server-bundles": "ng build --prod && ng run AngNaN:server",
+    "webpack:server": "webpack --config webpack.server.config.js --progress --colors",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
