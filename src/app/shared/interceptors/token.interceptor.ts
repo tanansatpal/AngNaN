@@ -9,11 +9,14 @@ export class TokenInterceptor implements HttpInterceptor {
   }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    request = request.clone({
-      setHeaders: {
-        Authorization: `Bearer ${this.auth.getAuthToken()}`
-      }
-    });
+    // todo hack to be removed
+    if (!request.url.match(/entity\/ms./)) {
+      request = request.clone({
+        setHeaders: {
+          Authorization: `Bearer ${this.auth.getAuthToken()}`
+        }
+      });
+    }
     return next.handle(request);
   }
 }

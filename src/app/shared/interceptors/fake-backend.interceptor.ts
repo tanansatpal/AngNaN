@@ -15,7 +15,7 @@ import {
 
 const applyFilters = function (request, data) {
   const newData = JSON.parse(JSON.stringify(data));
-  let filters = request.params.get('filters');
+  let filters = request.params.get('q');
   if (!filters) {
     return newData;
   }
@@ -73,11 +73,10 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         }
 
         // get products
-        if (request.url.match(/\/api\/v1\/categories\/\w+$/) && request.method === 'GET') {
-          const categoryAlias = request.url.match(/\/api\/v1\/categories\/(\w+)$/)[1];
-          const category = categoriesResponse.data.find(o => o.alias === categoryAlias);
-          const data = JSON.parse(JSON.stringify(category));
-          return of(new HttpResponse({status: 200, body: {data}}));
+        if (request.url.match(/\/api\/v1\/categories\/_\/getCategoryDetail$/) && request.method === 'GET') {
+          const categoryDetailResponse = applyFilters(request, categoriesResponse);
+          categoryDetailResponse.data = categoryDetailResponse.data.shift();
+          return of(new HttpResponse({status: 200, body: categoryDetailResponse}));
         }
 
         if (request.url.endsWith('/v1/login') && request.method === 'POST') {

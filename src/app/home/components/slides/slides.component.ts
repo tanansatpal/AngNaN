@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SiteService } from '@shared/services';
-import { environment } from '../../../../environments/environment';
+import { environment } from '@env/environment';
 
 @Component({
   selector: 'app-slides',
@@ -88,8 +88,6 @@ export class SlidesComponent implements OnInit {
           slide.image = `${environment.CDN_URL}${slide.image}`;
           return slide;
         });
-      }, err => {
-
       });
   }
 

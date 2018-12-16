@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "./node_modules/@angular/cli/bin/ng",
-    "start": "ng serve --aot",
+    "start": "ng serve --aot --host 0.0.0.0",
     "build": "ng build --aot",
     "build:ssr": "npm run build:client-and-server-bundles && npm run webpack:server",
     "serve:ssr": "node dist/server.js",
