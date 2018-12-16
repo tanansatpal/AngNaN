@@ -31,6 +31,10 @@ export function CategoryReducer(state = initialState, action: CategoryActions.Ca
       return {...state, page_size: action.payload};
     }
 
+    case CategoryActions.CategoryActionsTypes.SET_SORT: {
+      return {...state, sort: action.payload};
+    }
+
     default:
       return state;
   }

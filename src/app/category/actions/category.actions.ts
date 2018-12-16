@@ -1,11 +1,11 @@
 import { Action } from '@ngrx/store';
 
 export enum CategoryActionsTypes {
-  GET_CATEGORY = '[Category Page] Get Category Success',
-  GET_CATEGORY_SUCCESS = '[Category API] Category Page',
+  GET_CATEGORY = '[Category Page] Get Category API',
+  GET_CATEGORY_SUCCESS = '[Get Category API] Category Page',
   GET_CATEGORY_FAILED = '[Category API] Message',
-
-  SET_PAGE_SIZE = '[Category Page] Category State',
+  SET_PAGE_SIZE = '[Category Header Component] Product API',
+  SET_SORT = '[Category Header Component] Get Sorted Product',
 }
 
 export class GetCategory implements Action {
@@ -31,7 +31,13 @@ export class SetPageSize implements Action {
 
   constructor(public payload: number) {
   }
-
 }
 
-export type CategoryUnion = GetCategory | GetCategorySuccess | GetCategoryFailed | SetPageSize;
+export class SetSort implements Action {
+  readonly type = CategoryActionsTypes.SET_SORT;
+
+  constructor(public payload: string) {
+  }
+}
+
+export type CategoryUnion = GetCategory | GetCategorySuccess | GetCategoryFailed | SetPageSize | SetSort;

@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
-import { SetPageSize } from '@app/category/actions/category.actions';
+import { SetPageSize, SetSort } from '@app/category/actions/category.actions';
 import { getCategoryPageSize } from '@app/category/actions/category.selectors';
 import { Subscription } from 'rxjs';
 
@@ -27,6 +27,11 @@ export class CategoryHeaderComponent implements OnInit, OnDestroy {
 
   setPageSize(pageSize) {
     this.store.dispatch(new SetPageSize(pageSize));
+  }
+
+  changeSort(event) {
+    const sort = event.target.value;
+    this.store.dispatch(new SetSort(sort));
   }
 
   ngOnDestroy(): void {

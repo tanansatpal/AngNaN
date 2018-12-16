@@ -29,7 +29,7 @@ export class ProductSectionService {
     return this.api.get(`${this.API_URL}collections`, {params: {q: JSON.stringify(filters)}});
   }
 
-  getProducts(filters = null, sort = null, start = 0, limit = 12) {
+  getProducts(filters = null, sort = '', start = 0, limit = 12) {
     return this.api.get(`${this.API_URL}products`, {params: {q: JSON.stringify(filters), sort, start, limit}});
   }
 
