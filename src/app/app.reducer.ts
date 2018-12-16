@@ -3,6 +3,7 @@ import { AppState } from './app.state';
 import * as fromAuth from './auth/reducers/auth.reducer';
 import * as fromUser from './user/reducers/user.reducer';
 import * as fromCategory from './category/reducers/category.reducer';
+import * as fromCart from './cart/reducers/cart.reducer';
 
 import { combineReducers, ActionReducer } from '@ngrx/store';
 import { environment } from '@env/environment';
@@ -10,7 +11,8 @@ import { environment } from '@env/environment';
 const reducers = {
   auth: fromAuth.AuthReducer,
   user: fromUser.UserReducer,
-  category: fromCategory.CategoryReducer
+  category: fromCategory.CategoryReducer,
+  cart: fromCart.CartReducer
 };
 
 export const developmentReducer: ActionReducer<AppState> = combineReducers(reducers);
