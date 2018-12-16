@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { environment } from '../../../../environments/environment';
+import { environment } from '@env/environment';
 
 @Component({
   selector: 'app-product-grid-item',
@@ -14,7 +14,11 @@ export class ProductGridItemComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.product.image = `${environment.CDN_URL}${this.product.images[0].image}`;
+    if (this.product.images && this.product.images.length) {
+      this.product.image = `${environment.CDN_URL}${this.product.images[0].image}`;
+    } else {
+      this.product.image = null;
+    }
   }
 
 }

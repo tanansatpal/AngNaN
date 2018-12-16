@@ -4,10 +4,9 @@
     Showing <strong>1-12 </strong>of <strong>158 </strong>products
   </div>
   <div class="mr-3 mb-3"><span class="mr-2">Show</span>
-    <a href="#"
-       class="product-grid-header-show active">12 </a>
-    <a href="#" class="product-grid-header-show ">24 </a>
-    <a href="#" class="product-grid-header-show ">All </a>
+    <ng-container *ngFor="let ps of pageSizes;">
+      <a class="product-grid-header-show" [ngClass]="{'active':pageSize == ps}" (click)="setPageSize(ps)">{{ps}}</a>
+    </ng-container>
   </div>
   <div class="mb-3 d-flex align-items-center">
     <span class="d-inline-block mr-1">Sort by</span>

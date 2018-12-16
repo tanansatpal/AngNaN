@@ -3,7 +3,15 @@ import { HTTP_INTERCEPTORS, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest
 import { Observable, of, throwError } from 'rxjs';
 import { delay, dematerialize, materialize, mergeMap } from 'rxjs/operators';
 
-import { brandsResponse, collectionsResponse, orderResponse, productsResponse, slidesResponse, usersResponse } from './mockdata';
+import {
+  brandsResponse,
+  collectionsResponse,
+  orderResponse,
+  productsResponse,
+  slidesResponse,
+  usersResponse,
+  categoriesResponse
+} from './mockdata';
 
 const applyFilters = function (request, data) {
   const newData = JSON.parse(JSON.stringify(data));
@@ -33,7 +41,6 @@ const applyFilters = function (request, data) {
   return newData;
 };
 
-
 @Injectable()
 export class FakeBackendInterceptor implements HttpInterceptor {
 
@@ -47,22 +54,30 @@ export class FakeBackendInterceptor implements HttpInterceptor {
 
         // get slides
         if (request.url.match(/\/api\/v1\/slides$/) && request.method === 'GET') {
-          return of(new HttpResponse({ status: 200, body: applyFilters(request, slidesResponse) }));
+          return of(new HttpResponse({status: 200, body: applyFilters(request, slidesResponse)}));
         }
 
         // get brands
         if (request.url.match(/\/api\/v1\/brands$/) && request.method === 'GET') {
-          return of(new HttpResponse({ status: 200, body: applyFilters(request, brandsResponse) }));
+          return of(new HttpResponse({status: 200, body: applyFilters(request, brandsResponse)}));
         }
 
         // get collections
         if (request.url.match(/\/api\/v1\/collections$/) && request.method === 'GET') {
-          return of(new HttpResponse({ status: 200, body: applyFilters(request, collectionsResponse) }));
+          return of(new HttpResponse({status: 200, body: applyFilters(request, collectionsResponse)}));
         }
 
         // get products
         if (request.url.match(/\/api\/v1\/products$/) && request.method === 'GET') {
-          return of(new HttpResponse({ status: 200, body: applyFilters(request, productsResponse) }));
+          return of(new HttpResponse({status: 200, body: applyFilters(request, productsResponse)}));
+        }
+
+        // get products
+        if (request.url.match(/\/api\/v1\/categories\/\w+$/) && request.method === 'GET') {
+          const categoryAlias = request.url.match(/\/api\/v1\/categories\/(\w+)$/)[1];
+          const category = categoriesResponse.data.find(o => o.alias === categoryAlias);
+          const data = JSON.parse(JSON.stringify(category));
+          return of(new HttpResponse({status: 200, body: {data}}));
         }
 
         if (request.url.endsWith('/v1/login') && request.method === 'POST') {
@@ -79,13 +94,13 @@ export class FakeBackendInterceptor implements HttpInterceptor {
               email: filteredUser.email,
               firstName: filteredUser.first_name,
               lastName: filteredUser.last_name,
-              currency: { 'name': 'INR', 'conversion_rate': 1, 'decimal_points': 0 },
+              currency: {'name': 'INR', 'conversion_rate': 1, 'decimal_points': 0},
               language: 'EN',
               role: 'member',
               token: 'fake-jwt-token'
             };
 
-            return of(new HttpResponse({ status: 200, body: { data: body } }));
+            return of(new HttpResponse({status: 200, body: {data: body}}));
           } else {
             // else return 400 bad request
             return throwError('Username or password is incorrect');
@@ -96,7 +111,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         if (request.url.match(/\/api\/v1\/orders$/) && request.method === 'GET') {
           // check for fake auth token in header and return user if valid, this security is implemented server side in a real application
           if (request.headers.get('Authorization') === 'Bearer fake-jwt-token') {
-            return of(new HttpResponse({ status: 200, body: orderResponse }));
+            return of(new HttpResponse({status: 200, body: orderResponse}));
           } else {
             // return 401 not authorised if token is null or invalid
             return throwError('Unauthorised');
@@ -107,7 +122,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
         if (request.url.match(/\/api\/v1\/orders\/count$/) && request.method === 'GET') {
           // check for fake auth token in header and return user if valid, this security is implemented server side in a real application
           if (request.headers.get('Authorization') === 'Bearer fake-jwt-token') {
-            return of(new HttpResponse({ status: 200, body: { data: orderResponse.data.length } }));
+            return of(new HttpResponse({status: 200, body: {data: orderResponse.data.length}}));
           } else {
             // return 401 not authorised if token is null or invalid
             return throwError('Unauthorised');
@@ -121,7 +136,7 @@ export class FakeBackendInterceptor implements HttpInterceptor {
             const orderId = request.url.match(/\/api\/v1\/orders\/(\w+)$/)[1];
             const order = orderResponse.data.find(o => o._id === orderId);
             const data = JSON.parse(JSON.stringify(order));
-            return of(new HttpResponse({ status: 200, body: { data } }));
+            return of(new HttpResponse({status: 200, body: {data}}));
           } else {
             // return 401 not authorised if token is null or invalid
             return throwError('Unauthorised');

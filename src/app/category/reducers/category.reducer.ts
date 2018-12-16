@@ -24,9 +24,11 @@ export function CategoryReducer(state = initialState, action: CategoryActions.Ca
     }
 
     case CategoryActions.CategoryActionsTypes.GET_CATEGORY_FAILED: {
-      return {
-        ...state
-      };
+      return state;
+    }
+
+    case CategoryActions.CategoryActionsTypes.SET_PAGE_SIZE: {
+      return {...state, page_size: action.payload};
     }
 
     default:
