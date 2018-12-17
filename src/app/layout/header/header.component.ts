@@ -1,6 +1,7 @@
 import { Component, OnInit, HostListener, Inject, OnDestroy } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { select, Store } from '@ngrx/store';
+import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { getAuthStatus } from '@app/auth/reducers/selectors';
 import { Subscription } from 'rxjs';
 import { DOCUMENT } from '@angular/common';
@@ -12,6 +13,7 @@ import { DOCUMENT } from '@angular/common';
 })
 export class HeaderComponent implements OnInit, OnDestroy {
 
+  faBars = faBars;
   homeHeader = false;
   isAuthenticated = false;
   isAuthenticated$: Subscription;
