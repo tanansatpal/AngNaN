@@ -96,6 +96,17 @@ $spacers: map-merge(
     $spacers
 );
 
+$theme-colors: () !default;
+$theme-colors: map-merge(
+    (
+      "gray-100": $color_alabaster_approx,
+      "gray-200": $color_gallery_approx,
+      "gray-300": $color_mercury_approx
+    ),
+    $theme-colors
+);
+
+
 $breadcrumb-padding-y: 2rem;
 $breadcrumb-padding-x: 0;
 $breadcrumb-margin-bottom: 0;
