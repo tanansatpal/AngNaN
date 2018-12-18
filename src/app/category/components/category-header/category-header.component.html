@@ -11,9 +11,9 @@
   <div class="mb-3 d-flex align-items-center">
     <span class="d-inline-block mr-1">Sort by</span>
     <select class="custom-select w-auto border-0" (change)="changeSort($event)">
+      <option value="-created_on" selected>Newest first</option>
       <option value="name">Name - A to Z</option>
       <option value="-name">Name - Z to A</option>
-      <option value="-created_on">Newest first</option>
       <option value="-price">Price - High to Low</option>
       <option value="price">Price - Low to High</option>
     </select>

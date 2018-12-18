@@ -6,6 +6,7 @@ export enum CategoryActionsTypes {
   GET_CATEGORY_FAILED = '[Category API] Message',
   SET_PAGE_SIZE = '[Category Header Component] Product API',
   SET_SORT = '[Category Header Component] Get Sorted Product',
+  SET_FACETS = '[Category API] Filters Category State',
 }
 
 export class GetCategory implements Action {
@@ -40,4 +41,11 @@ export class SetSort implements Action {
   }
 }
 
-export type CategoryUnion = GetCategory | GetCategorySuccess | GetCategoryFailed | SetPageSize | SetSort;
+export class SetFacets implements Action {
+  readonly type = CategoryActionsTypes.SET_FACETS;
+
+  constructor(public payload: any) {
+  }
+}
+
+export type CategoryUnion = GetCategory | GetCategorySuccess | GetCategoryFailed | SetPageSize | SetSort | SetFacets;

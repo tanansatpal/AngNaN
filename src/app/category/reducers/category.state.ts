@@ -1,5 +1,6 @@
 export interface CategoryState {
   category: any;
+  facets: any;
   filters: any;
   sort: any;
   page_size: number;

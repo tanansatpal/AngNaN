@@ -29,8 +29,8 @@ export class ProductSectionService {
     return this.api.get(`${this.API_URL}collections`, {params: {q: JSON.stringify(filters)}});
   }
 
-  getProducts(filters = null, sort = '', start = 0, limit = 12) {
-    return this.api.get(`${this.API_URL}products`, {params: {q: JSON.stringify(filters), sort, start, limit}});
+  getProducts(filters = null, facets = false, facetgroup = 'default_category_facet', sort = '', start = 0, limit = 12) {
+    return this.api.get(`${this.API_URL}products`, {params: {q: JSON.stringify(filters), facets, facetgroup, sort, start, limit}});
   }
 
   getCategoryDetail(alias) {

@@ -50,7 +50,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
       filters = {};
     }
     filters['categories'] = this.category.alias;
-    this.products$ = this.productService.getProducts(filters, sort, 0, limit).subscribe(result => {
+    this.products$ = this.productService.getProducts(filters, true, this.category.facet_group, sort, 0, limit).subscribe(result => {
       this.products = result;
     });
   }

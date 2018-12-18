@@ -4,6 +4,7 @@ import { CategoryState } from './category.state';
 export const initialState: CategoryState = {
   category: null,
   filters: null,
+  facets: null,
   sort: '',
   page_size: 12,
   page: 1
@@ -33,6 +34,10 @@ export function CategoryReducer(state = initialState, action: CategoryActions.Ca
 
     case CategoryActions.CategoryActionsTypes.SET_SORT: {
       return {...state, sort: action.payload};
+    }
+
+    case CategoryActions.CategoryActionsTypes.SET_FACETS: {
+      return {...state, facets: action.payload};
     }
 
     default:
