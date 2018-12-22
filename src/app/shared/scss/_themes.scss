@@ -101,7 +101,8 @@ $theme-colors: map-merge(
     (
       "gray-100": $color_alabaster_approx,
       "gray-200": $color_gallery_approx,
-      "gray-300": $color_mercury_approx
+      "gray-300": $color_mercury_approx,
+      "gray-800": $color_tuna_approx
     ),
     $theme-colors
 );
@@ -234,9 +235,9 @@ owl-carousel {
   }
   .service-column {
     border-right: 1px solid $color_abbey_approx;
-    text-align: left;
-    padding-top: 0;
-    padding-bottom: 0;
+    text-align: left!important;
+    padding-top: 0!important;
+    padding-bottom: 0!important;
 
     &:last-of-type {
       border: none;
