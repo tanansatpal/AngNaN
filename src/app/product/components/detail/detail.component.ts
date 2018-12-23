@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductSectionService } from '@shared/services';
+import { ActivatedRoute } from '@angular/router';
+import { environment } from '@env/environment';
 
 @Component({
   selector: 'app-detail',
@@ -6,10 +9,44 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./detail.component.scss']
 })
 export class DetailComponent implements OnInit {
+  product: any = {};
+  productAlias: string;
+  sliderOptions: any;
 
-  constructor() { }
+  constructor(private productService: ProductSectionService, private route: ActivatedRoute) {
+    this.route.paramMap.subscribe(paramMap => {
+      this.productAlias = paramMap.get('alias');
+    });
+    this.sliderOptions = {
+      items: 1,
+      margin: 10,
+      navText: [
+        '<img src="../../../../assets/img/prev.svg" alt="" width="50">',
+        '<img src="../../../../assets/img/next.svg" alt="" width="50">'
+      ],
+      dots: true,
+      responsiveClass: true,
+      nav: true,
+      autoHeight: true
+    };
+  }
 
   ngOnInit() {
+    this.productService.getProduct(this.productAlias).subscribe(result => {
+      const product = result[0];
+      product.images = product.images.map(image => {
+        image.image = `${environment.CDN_URL}${image.image}`;
+        return image;
+      });
+      this.product = product;
+    });
+  }
+
+  getImage(image) {
+    return {
+      background: `center center url(${image.image}) no-repeat`,
+      'background-size': 'cover'
+    };
   }
 
 }

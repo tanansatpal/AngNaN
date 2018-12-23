@@ -34,6 +34,12 @@ export class ProductSectionService {
     );
   }
 
+  getProduct(alias) {
+    return this.api.get(`${this.API_URL}products`, {params: {q: JSON.stringify({alias})}}).pipe(
+      map(response => response['data'])
+    );
+  }
+
   getProducts(filters = null, facets = false, facetgroup = 'default_category_facet', sort = '', start = 0, limit = 12) {
     return this.api.get(`${this.API_URL}products`, {
       params: {
