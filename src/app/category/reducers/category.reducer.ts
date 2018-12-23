@@ -45,6 +45,10 @@ export function CategoryReducer(state = initialState, action: CategoryActions.Ca
       return {...state, total: action.payload};
     }
 
+    case CategoryActions.CategoryActionsTypes.SET_PAGE: {
+      return {...state, page: action.payload};
+    }
+
     default:
       return state;
   }

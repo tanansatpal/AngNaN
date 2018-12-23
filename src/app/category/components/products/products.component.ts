@@ -1,7 +1,7 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { ProductSectionService } from '@shared/services';
 import { select, Store } from '@ngrx/store';
-import { getCategoryFilters, getCategoryPageSize, getCategorySort } from '@app/category/actions/category.selectors';
+import { getCategoryFilters, getCategoryPage, getCategoryPageSize, getCategorySort } from '@app/category/actions/category.selectors';
 import { Subscription } from 'rxjs';
 import { SetFacets, SetTotal } from '@app/category/actions/category.actions';
 
@@ -12,50 +12,61 @@ import { SetFacets, SetTotal } from '@app/category/actions/category.actions';
 })
 export class ProductsComponent implements OnInit, OnDestroy {
   @Input() category: any;
+  @Input() paginationConfig: any;
 
   products: any;
   products$: Subscription;
-  filters: any;
+  filters: any = {};
   filters$: Subscription;
   sort: any;
   sort$: Subscription;
-  pageSize: any;
+  pageSize: number;
   pageSize$: Subscription;
+  page: number;
+  page$: Subscription;
 
   constructor(private productService: ProductSectionService, private store: Store<{ category }>) {
   }
 
   ngOnInit() {
     this.filters$ = this.store.pipe(select(getCategoryFilters)).subscribe(filters => {
-      this.filters = filters;
       if (filters) {
-        this.getProducts(this.filters, this.sort, this.pageSize);
+        this.filters = filters;
+        this.getProducts();
       }
     });
     this.sort$ = this.store.pipe(select(getCategorySort)).subscribe(sort => {
-      this.sort = sort;
       if (sort) {
-        this.getProducts(this.filters, this.sort, this.pageSize);
+        this.sort = sort;
+        this.getProducts();
+      }
+    });
+    this.page$ = this.store.pipe(select(getCategoryPage)).subscribe(page => {
+      this.page = page;
+      this.paginationConfig.currentPage = page;
+      if (page > 1) {
+        this.getProducts();
       }
     });
     this.pageSize$ = this.store.pipe(select(getCategoryPageSize)).subscribe(pageSize => {
-      this.pageSize = pageSize;
       if (pageSize) {
-        this.getProducts(this.filters, this.sort, this.pageSize);
+        this.pageSize = pageSize;
+        this.getProducts();
       }
     });
   }
 
-  getProducts(filters, sort, limit) {
-    if (!filters) {
-      filters = {};
-    }
-    filters['categories'] = this.category.alias;
-    this.products$ = this.productService.getProducts(filters, true, this.category.facet_group, sort, 0, limit).subscribe(result => {
-      this.products = result['data'];
-      this.store.dispatch(new SetFacets(result['facets']));
-      this.store.dispatch(new SetTotal(result['paging'].total));
-    });
+  getProducts() {
+    this.filters['categories'] = this.category.alias;
+    this.products$ = this.productService.getProducts(this.filters, true,
+      this.category.facet_group, this.sort,
+      (this.page * this.pageSize) - this.pageSize + 1,
+      this.pageSize)
+      .subscribe(result => {
+        this.products = result['data'];
+        this.store.dispatch(new SetFacets(result['facets']));
+        this.store.dispatch(new SetTotal(result['paging'].total));
+      });
   }
 
   ngOnDestroy(): void {
@@ -63,6 +74,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
     this.filters$.unsubscribe();
     this.sort$.unsubscribe();
     this.pageSize$.unsubscribe();
+    this.page$.unsubscribe();
   }
 
 }

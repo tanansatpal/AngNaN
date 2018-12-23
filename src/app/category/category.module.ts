@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CategoryRoutingModule } from './category-routing.module';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { FiltersComponent } from './components/filters/filters.component';
 import { ProductsComponent } from './components/products/products.component';
@@ -26,6 +27,7 @@ import { ComponentModule } from '@shared/components';
     CommonModule,
     StoreModule.forFeature('category', CategoryReducer),
     EffectsModule.forFeature([CategoryEffects]),
+    NgxPaginationModule,
     CategoryRoutingModule,
     ComponentModule
   ]
