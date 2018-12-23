@@ -1,21 +1,23 @@
-<nav aria-label="page navigation" class="d-flex justify-content-center mb-5 mt-3">
-  <ul class="pagination">
-    <li class="page-item">
-      <a (click)="next()" aria-label="Previous" class="page-link">
-        <span aria-hidden="true">Prev</span>
-        <span class="sr-only">Previous</span>
-      </a>
-    </li>
-    <li class="page-item active"><a href="#" class="page-link">1 </a></li>
-    <li class="page-item"><a (click)="setPage(2)" class="page-link">2 </a></li>
-    <li class="page-item"><a (click)="setPage(10)" class="page-link">3 </a></li>
-    <li class="page-item"><a href="#" class="page-link">4 </a></li>
-    <li class="page-item"><a href="#" class="page-link">5 </a></li>
-    <li class="page-item">
-      <a (click)="next()" aria-label="Next" class="page-link">
-        <span aria-hidden="true">Next</span>
-        <span class="sr-only">Next</span>
-      </a>
-    </li>
-  </ul>
-</nav>
+<pagination-template #p="paginationApi"
+                     [id]="config.id"
+                     (pageChange)="setPage($event)">
+  <nav aria-label="page navigation" class="d-flex justify-content-center mb-5 mt-3">
+    <ul class="pagination">
+      <li class="page-item" [class.disabled]="p.isFirstPage()">
+        <a *ngIf="!p.isFirstPage()" (click)="p.previous()" class="page-link"> Previous </a>
+        <a *ngIf="p.isFirstPage()" class="page-link"> Previous </a>
+      </li>
+      <li class="page-item" *ngFor="let page of p.pages" [class.active]="p.getCurrent() === page.value">
+        <a class="page-link" (click)="p.setCurrent(page.value)" *ngIf="p.getCurrent() !== page.value">
+          <span>{{ page.label }}</span>
+        </a>
+        <a class="page-link" *ngIf="p.getCurrent() === page.value">
+          <span>{{ page.label }}</span>
+        </a>
+      </li>
+      <li class="page-item" [class.disabled]="p.isLastPage()">
+        <a class="page-link" *ngIf="!p.isLastPage()" (click)="p.next()"> Next </a>
+      </li>
+    </ul>
+  </nav>
+</pagination-template>

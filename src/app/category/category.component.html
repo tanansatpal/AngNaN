@@ -6,8 +6,7 @@
         <div class="products-grid col-xl-9 col-lg-8 order-lg-2">
           <app-category-header></app-category-header>
           <app-products [category]="category" [paginationConfig]="paginationConfig"></app-products>
-          <pagination-controls [id]="paginationConfig.id" maxSize="5" directionLinks="true" (pageChange)="onPageChange($event)"></pagination-controls>
-          <!--<app-pagination [config]="paginationConfig"></app-pagination>-->
+          <app-pagination [config]="paginationConfig"></app-pagination>
         </div>
         <div class="sidebar col-xl-3 col-lg-4 order-lg-1">
           <app-filters></app-filters>

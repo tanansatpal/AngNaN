@@ -1,7 +1,13 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { ProductSectionService } from '@shared/services';
 import { select, Store } from '@ngrx/store';
-import { getCategoryFilters, getCategoryPage, getCategoryPageSize, getCategorySort } from '@app/category/actions/category.selectors';
+import {
+  getCategoryFilters,
+  getCategoryPage,
+  getCategoryPageSize,
+  getCategoryProductsTotal,
+  getCategorySort
+} from '@app/category/actions/category.selectors';
 import { Subscription } from 'rxjs';
 import { SetFacets, SetTotal } from '@app/category/actions/category.actions';
 
@@ -24,6 +30,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
   pageSize$: Subscription;
   page: number;
   page$: Subscription;
+  total$: Subscription;
 
   constructor(private productService: ProductSectionService, private store: Store<{ category }>) {
   }
@@ -49,10 +56,14 @@ export class ProductsComponent implements OnInit, OnDestroy {
       }
     });
     this.pageSize$ = this.store.pipe(select(getCategoryPageSize)).subscribe(pageSize => {
+      this.paginationConfig.itemsPerPage = pageSize;
       if (pageSize) {
         this.pageSize = pageSize;
         this.getProducts();
       }
+    });
+    this.total$ = this.store.pipe(select(getCategoryProductsTotal)).subscribe(result => {
+      this.paginationConfig.totalItems = result;
     });
   }
 
@@ -75,6 +86,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
     this.sort$.unsubscribe();
     this.pageSize$.unsubscribe();
     this.page$.unsubscribe();
+    this.total$.unsubscribe();
   }
 
 }
