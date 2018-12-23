@@ -35,9 +35,17 @@ export class ProductSectionService {
   }
 
   getProducts(filters = null, facets = false, facetgroup = 'default_category_facet', sort = '', start = 0, limit = 12) {
-    return this.api.get(`${this.API_URL}products`, {params: {q: JSON.stringify(filters), facets, facetgroup, sort, start, limit}}).pipe(
-      map(response => response['data'])
-    );
+    return this.api.get(`${this.API_URL}products`, {
+      params: {
+        q: JSON.stringify(filters),
+        facets,
+        facetgroup,
+        sort,
+        start,
+        limit,
+        total: '1'
+      }
+    });
   }
 
   getCategoryDetail(alias) {

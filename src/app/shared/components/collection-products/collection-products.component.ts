@@ -38,7 +38,7 @@ export class CollectionProductsComponent implements OnInit {
   getProducts() {
     this.productService.getProducts({ collections: this.collectionAlias })
       .subscribe(result => {
-        this.products = result;
+        this.products = result['data'];
       });
   }
 

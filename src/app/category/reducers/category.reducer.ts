@@ -7,7 +7,8 @@ export const initialState: CategoryState = {
   facets: null,
   sort: '',
   page_size: 12,
-  page: 1
+  page: 1,
+  total: 0
 };
 
 export function CategoryReducer(state = initialState, action: CategoryActions.CategoryUnion) {
@@ -38,6 +39,10 @@ export function CategoryReducer(state = initialState, action: CategoryActions.Ca
 
     case CategoryActions.CategoryActionsTypes.SET_FACETS: {
       return {...state, facets: action.payload};
+    }
+
+    case CategoryActions.CategoryActionsTypes.SET_TOTAL: {
+      return {...state, total: action.payload};
     }
 
     default:

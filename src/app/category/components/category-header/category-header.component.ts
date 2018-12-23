@@ -1,7 +1,7 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { SetPageSize, SetSort } from '@app/category/actions/category.actions';
-import { getCategoryPageSize } from '@app/category/actions/category.selectors';
+import { getCategoryPage, getCategoryPageSize, getCategoryProductsTotal } from '@app/category/actions/category.selectors';
 import { Subscription } from 'rxjs';
 
 @Component({
@@ -12,8 +12,14 @@ import { Subscription } from 'rxjs';
 export class CategoryHeaderComponent implements OnInit, OnDestroy {
 
   pageSize: number;
+  page: number;
+  total: number;
+  first: number;
+  last: number;
   pageSizes: any[];
   pageSize$: Subscription;
+  total$: Subscription;
+  page$: Subscription;
 
   constructor(private store: Store<{ category }>) {
     this.pageSizes = [12, 24, 'All'];
@@ -23,6 +29,14 @@ export class CategoryHeaderComponent implements OnInit, OnDestroy {
     this.pageSize$ = this.store.pipe(select(getCategoryPageSize)).subscribe(pageSize => {
       this.pageSize = pageSize;
     });
+    this.total$ = this.store.pipe(select(getCategoryProductsTotal)).subscribe(total => {
+      this.total = total;
+    });
+    this.page$ = this.store.pipe(select(getCategoryPage)).subscribe(page => {
+      this.page = page;
+    });
+    this.first = (this.page * this.pageSize) - this.pageSize + 1;
+    this.last = this.page * this.pageSize;
   }
 
   setPageSize(pageSize) {
@@ -35,9 +49,9 @@ export class CategoryHeaderComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    if (this.pageSize$) {
-      this.pageSize$.unsubscribe();
-    }
+    this.pageSize$.unsubscribe();
+    this.total$.unsubscribe();
+    this.page$.unsubscribe();
   }
 
 }

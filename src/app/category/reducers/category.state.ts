@@ -5,4 +5,5 @@ export interface CategoryState {
   sort: any;
   page_size: number;
   page: number;
+  total: number;
 }

@@ -3,6 +3,7 @@ import { ProductSectionService } from '@shared/services';
 import { select, Store } from '@ngrx/store';
 import { getCategoryFilters, getCategoryPageSize, getCategorySort } from '@app/category/actions/category.selectors';
 import { Subscription } from 'rxjs';
+import { SetFacets, SetTotal } from '@app/category/actions/category.actions';
 
 @Component({
   selector: 'app-products',
@@ -51,7 +52,9 @@ export class ProductsComponent implements OnInit, OnDestroy {
     }
     filters['categories'] = this.category.alias;
     this.products$ = this.productService.getProducts(filters, true, this.category.facet_group, sort, 0, limit).subscribe(result => {
-      this.products = result;
+      this.products = result['data'];
+      this.store.dispatch(new SetFacets(result['facets']));
+      this.store.dispatch(new SetTotal(result['paging'].total));
     });
   }
 
