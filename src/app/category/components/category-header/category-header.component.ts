@@ -22,21 +22,28 @@ export class CategoryHeaderComponent implements OnInit, OnDestroy {
   page$: Subscription;
 
   constructor(private store: Store<{ category }>) {
-    this.pageSizes = [12, 24, 'All'];
+    this.pageSizes = [12, 24, 36];
   }
 
   ngOnInit() {
     this.pageSize$ = this.store.pipe(select(getCategoryPageSize)).subscribe(pageSize => {
       this.pageSize = pageSize;
+      this.setPoints();
     });
     this.total$ = this.store.pipe(select(getCategoryProductsTotal)).subscribe(total => {
       this.total = total;
+      this.setPoints();
     });
     this.page$ = this.store.pipe(select(getCategoryPage)).subscribe(page => {
       this.page = page;
+      this.setPoints();
     });
+  }
+
+  private setPoints() {
     this.first = (this.page * this.pageSize) - this.pageSize + 1;
-    this.last = this.page * this.pageSize;
+    const total = this.page * this.pageSize;
+    this.last = total < this.total ? total : this.total;
   }
 
   setPageSize(pageSize) {

@@ -1,7 +1,7 @@
 <header class="product-grid-header">
   <div class="mr-3 mb-3">
 
-    Showing <strong>1-{{pageSize}} </strong>of <strong>{{total}} </strong>products
+    Showing <strong>{{first}}-{{last}} </strong>of <strong>{{total}} </strong>products
   </div>
   <div class="mr-3 mb-3"><span class="mr-2">Show</span>
     <ng-container *ngFor="let ps of pageSizes;">
@@ -10,12 +10,14 @@
   </div>
   <div class="mb-3 d-flex align-items-center">
     <span class="d-inline-block mr-1">Sort by</span>
-    <select class="custom-select w-auto border-0" (change)="changeSort($event)">
-      <option value="-created_on" selected>Newest first</option>
-      <option value="name">Name - A to Z</option>
-      <option value="-name">Name - Z to A</option>
-      <option value="-price">Price - High to Low</option>
-      <option value="price">Price - Low to High</option>
-    </select>
+    <label>
+      <select class="custom-select w-auto border-0" (change)="changeSort($event)">
+        <option value="-created_on" selected>Newest first</option>
+        <option value="name">Name - A to Z</option>
+        <option value="-name">Name - Z to A</option>
+        <option value="-price">Price - High to Low</option>
+        <option value="price">Price - Low to High</option>
+      </select>
+    </label>
   </div>
 </header>
