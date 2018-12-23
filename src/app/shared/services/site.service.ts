@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../../environments/environment';
 import { ApiService } from './api.service';
 import { CommonService } from './common.service';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -24,6 +25,8 @@ export class SiteService {
    */
   getSlides() {
     // console.log(this.api.get)
-    return this.api.get(`${this.API_URL}slides`);
+    return this.api.get(`${this.API_URL}slides`).pipe(
+      map(response => response['data'])
+    );
   }
 }
