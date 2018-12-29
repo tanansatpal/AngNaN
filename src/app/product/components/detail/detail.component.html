@@ -28,11 +28,21 @@
             </ul>
             <div class="d-flex align-items-center">
               <ul class="list-inline mr-2 mb-0">
-                <li class="list-inline-item mr-0"><i class="fa fa-star text-primary"></i></li>
-                <li class="list-inline-item mr-0"><i class="fa fa-star text-primary"></i></li>
-                <li class="list-inline-item mr-0"><i class="fa fa-star text-primary"></i></li>
-                <li class="list-inline-item mr-0"><i class="fa fa-star text-primary"></i></li>
-                <li class="list-inline-item mr-0"><i class="fa fa-star text-gray-300"></i></li>
+                <li class="list-inline-item mr-0">
+                  <fa-icon [icon]="faStar" class="text-primary"></fa-icon>
+                </li>
+                <li class="list-inline-item mr-0">
+                  <fa-icon [icon]="faStar" class="text-primary"></fa-icon>
+                </li>
+                <li class="list-inline-item mr-0">
+                  <fa-icon [icon]="faStar" class="text-primary"></fa-icon>
+                </li>
+                <li class="list-inline-item mr-0">
+                  <fa-icon [icon]="faStar" class="text-primary"></fa-icon>
+                </li>
+                <li class="list-inline-item mr-0">
+                  <fa-icon [icon]="faStar" class="text-gray-300"></fa-icon>
+                </li>
               </ul>
               <span class="text-muted text-uppercase text-sm">{{product.num_reviews}} reviews</span>
             </div>
@@ -118,47 +128,20 @@
 </section>
 <section class="mt-5">
   <div class="container">
-    <ul role="tablist" class="nav nav-tabs flex-column flex-sm-row">
-      <li class="nav-item"><a data-toggle="tab" href="#description" role="tab" class="nav-link detail-nav-link active">Description</a>
-      </li>
-      <li class="nav-item"><a data-toggle="tab" href="#additional-information" role="tab"
-                              class="nav-link detail-nav-link">Additional Information</a></li>
-      <li class="nav-item"><a data-toggle="tab" href="#reviews" role="tab" class="nav-link detail-nav-link">Reviews</a>
-      </li>
-    </ul>
-    <div class="tab-content py-4">
-      <div id="description" role="tabpanel" class="tab-pane active px-3">
-        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
-          ut labore et dolore magna aliqua. LOLUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-          ut aliquip ex ea commodo consequat. LOLDuis aute irure dolor in reprehenderit in voluptate velit esse cillum
-          dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-          deserunt mollit anim id est laborum.</p>
-        <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
-          ut labore et dolore magna aliqua. LOLUt enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi
-          ut aliquip ex ea commodo consequat. LOLDuis aute irure dolor in reprehenderit in voluptate velit esse cillum
-          dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
-          deserunt mollit anim id est laborum.</p>
-      </div>
-      <div id="additional-information" role="tabpanel" class="tab-pane">
-        <div class="row">
+    <tabset>
+      <tab customClass="detail-nav-link" heading="Description">
+        <div class="px-3 py-4">
+          <p class="text-muted" [innerHTML]="product.description"></p>
+        </div>
+      </tab>
+      <tab heading="Additional Information" customClass="detail-nav-link">
+        <div class="row py-4">
           <div class="col-lg-6">
             <table class="table text-sm">
               <tbody>
-              <tr>
-                <th class="text-uppercase font-weight-normal border-0">Product #</th>
-                <td class="text-muted border-0">Lorem ipsum dolor sit amet</td>
-              </tr>
-              <tr>
-                <th class="text-uppercase font-weight-normal ">Available packaging</th>
-                <td class="text-muted ">LOLDuis aute irure dolor in reprehenderit</td>
-              </tr>
-              <tr>
-                <th class="text-uppercase font-weight-normal ">Weight</th>
-                <td class="text-muted ">dolor sit amet</td>
-              </tr>
-              <tr>
-                <th class="text-uppercase font-weight-normal ">Sunt in culpa qui</th>
-                <td class="text-muted ">Lorem ipsum dolor sit amet</td>
+              <tr *ngFor="let attribute of product.attributes|slice:0:1+product.attributes?.length/2;first as isFirst">
+                <th [ngClass]="{'border-0':isFirst}"class="text-uppercase font-weight-normal border-0">{{attribute.name}}</th>
+                <td [ngClass]="{'border-0':isFirst}" class="text-muted">{{attribute.value}}</td>
               </tr>
               </tbody>
             </table>
@@ -166,29 +149,18 @@
           <div class="col-lg-6">
             <table class="table text-sm">
               <tbody>
-              <tr>
-                <th class="text-uppercase font-weight-normal border-0">Weight</th>
-                <td class="text-muted border-0">dolor sit amet</td>
-              </tr>
-              <tr>
-                <th class="text-uppercase font-weight-normal ">Sunt in culpa qui</th>
-                <td class="text-muted ">Lorem ipsum dolor sit amet</td>
-              </tr>
-              <tr>
-                <th class="text-uppercase font-weight-normal ">Product #</th>
-                <td class="text-muted ">Lorem ipsum dolor sit amet</td>
-              </tr>
-              <tr>
-                <th class="text-uppercase font-weight-normal ">Available packaging</th>
-                <td class="text-muted ">LOLDuis aute irure dolor in reprehenderit</td>
+              <tr
+                *ngFor="let attribute of product.attributes|slice:product.attributes?.length/2 - 1:product.attributes?.length;first as isFirst">
+                <th [ngClass]="{'border-0':isFirst}" class="text-uppercase font-weight-normal">{{attribute.name}}</th>
+                <td [ngClass]="{'border-0':isFirst}" class="text-muted">{{attribute.value}}</td>
               </tr>
               </tbody>
             </table>
           </div>
         </div>
-      </div>
-      <div id="reviews" role="tabpanel" class="tab-pane">
-        <div class="row mb-5">
+      </tab>
+      <tab heading="Reviews" customClass="detail-nav-link">
+        <div class="row mb-5 py-4">
           <div class="col-lg-10 col-xl-9">
             <div class="media review">
               <div class="text-center mr-4 mr-xl-5"><img
@@ -288,8 +260,8 @@
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </tab>
+    </tabset>
   </div>
 </section>
 <section class="my-5">
@@ -423,3 +395,4 @@
     </div>
   </div>
 </section>
+

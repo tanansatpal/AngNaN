@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductSectionService } from '@shared/services';
 import { ActivatedRoute } from '@angular/router';
 import { environment } from '@env/environment';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-detail',
@@ -9,6 +10,7 @@ import { environment } from '@env/environment';
   styleUrls: ['./detail.component.scss']
 })
 export class DetailComponent implements OnInit {
+  faStar = faStar;
   product: any = {};
   productAlias: string;
   sliderOptions: any;

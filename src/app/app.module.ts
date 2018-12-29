@@ -5,6 +5,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { HttpClientModule } from '@angular/common/http';
 import { ServiceWorkerModule } from '@angular/service-worker';
+import { TabsModule } from 'ngx-bootstrap/tabs';
 import { environment } from '@env/environment';
 import { UserModule } from '@app/user/user.module';
 import { ProductModule } from '@app/product';
@@ -32,6 +33,7 @@ import { tokenProvider } from '@shared/interceptors/token.interceptor';
     FontAwesomeModule,
     StoreModule.forRoot(AppReducer),
     EffectsModule.forRoot([]),
+    TabsModule.forRoot(),
     AppRoutingModule,
     UserModule,
     ProductModule,
