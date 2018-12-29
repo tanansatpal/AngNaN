@@ -1,6 +1,7 @@
 import { Action } from '@ngrx/store';
 
 export enum CartActionsTypes {
+  GET_CURRENT_CART = '[App Component] Cart API',
   ADD_TO_CART = '[Page] Add To Cart API',
   ADD_TO_CART_SUCCESS = '[Add To Cart API] Page',
   ADD_TO_CART_FAILED = '[Add To Cart API] Message',
@@ -8,6 +9,10 @@ export enum CartActionsTypes {
   REMOVE_FROM_CART_SUCCESS = '[Remove Item API] Cart Page',
   UPDATE_QUANTITY = '[Cart Page] Update Item Quantity API',
   UPDATE_QUANTITY_SUCCESS = '[Update Item Quantity API] Cart Page',
+}
+
+export class GetCurrentCart {
+  readonly type = CartActionsTypes.GET_CURRENT_CART;
 }
 
 export class AddToCart implements Action {
@@ -57,7 +62,8 @@ export class UpdateQuantitySuccess implements Action {
 }
 
 export type CartUnion =
-  AddToCart
+  GetCurrentCart
+  | AddToCart
   | AddToCartSuccess
   | AddToCartFailed
   | RemoveFromCart

@@ -27,6 +27,12 @@ export class CartService {
     return null;
   }
 
+  getCurrentCart() {
+    return this.api.get(`${this.API_URL}carts/${this.getCartId()}`).pipe(
+      map(response => response['data']['cart'])
+    );
+  }
+
   addToCart(data) {
     return this.api.put(`${this.API_URL}carts/_/addItem`, {data: data}, {params: {q: JSON.stringify({_id: this.getCartId()})}}).pipe(
       map(response => {
