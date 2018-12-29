@@ -113,8 +113,9 @@
             </div>
             <ul class="list-inline">
               <li class="list-inline-item">
-                <button type="submit" class="btn btn-dark btn-lg mb-1"><i class="fa fa-shopping-cart mr-2"></i>Add to
-                  Cart
+                <button type="submit" class="btn btn-dark btn-lg mb-1" (click)="addToCart()">
+                  <i class="fa fa-shopping-cart mr-2"></i>
+                  Add to Cart
                 </button>
               </li>
               <li class="list-inline-item"><a href="#" class="btn btn-outline-secondary mb-1"> <i
@@ -140,7 +141,8 @@
             <table class="table text-sm">
               <tbody>
               <tr *ngFor="let attribute of product.attributes|slice:0:1+product.attributes?.length/2;first as isFirst">
-                <th [ngClass]="{'border-0':isFirst}"class="text-uppercase font-weight-normal border-0">{{attribute.name}}</th>
+                <th [ngClass]="{'border-0':isFirst}"
+                    class="text-uppercase font-weight-normal border-0">{{attribute.name}}</th>
                 <td [ngClass]="{'border-0':isFirst}" class="text-muted">{{attribute.value}}</td>
               </tr>
               </tbody>

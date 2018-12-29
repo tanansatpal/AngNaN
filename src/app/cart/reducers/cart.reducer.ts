@@ -2,14 +2,15 @@ import { CartState } from '@app/cart/reducers/cart.state';
 import { CartActionsTypes, CartUnion } from '@app/cart/actions/cart.actions';
 
 const initialState: CartState = {
-  items: []
+  items: [],
+  item_count: 0
 };
 
 export function CartReducer(state = initialState, action: CartUnion) {
 
   switch (action.type) {
     case CartActionsTypes.ADD_TO_CART_SUCCESS:
-      return {...state, items: [...action.payload]};
+      return {...state, ...action.payload};
 
     case CartActionsTypes.REMOVE_FROM_CART_SUCCESS:
       return {...state, items: [...action.payload]};

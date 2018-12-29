@@ -338,54 +338,35 @@
               <svg class="svg-icon">
                 <use xlink:href="#cart-1"></use>
               </svg>
-              <div class="navbar-icon-link-badge">3</div>
+              <div class="navbar-icon-link-badge">{{cartItemCount}}</div>
             </a>
               <div aria-labelledby="cartdetails" class="dropdown-menu dropdown-menu-right p-4">
                 <div class="navbar-cart-product-wrapper">
-                  <!-- cart item-->
-                  <div class="navbar-cart-product">
-                    <div class="d-flex align-items-center"><a href="../detail.html"><img
-                      src="../img/product/product-square-ian-dooley-347968-unsplash.jpg" alt="..."
-                      class="img-fluid navbar-cart-product-image"></a>
-                      <div class="w-100"><a href="#" class="close text-sm mr-2"><i class="fa fa-times"> </i></a>
-                        <div class="pl-3"><a href="../detail.html" class="navbar-cart-product-link">Skull Tee</a>
-                          <small class="d-block text-muted">Quantity: 1</small>
-                          <strong class="d-block text-sm">$75.00 </strong></div>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- cart item-->
-                  <div class="navbar-cart-product">
-                    <div class="d-flex align-items-center"><a href="../detail.html"><img
-                      src="../img/product/product-square-kyle-loftus-596319-unsplash.jpg" alt="..."
-                      class="img-fluid navbar-cart-product-image"></a>
-                      <div class="w-100"><a href="#" class="close text-sm mr-2"><i class="fa fa-times"> </i></a>
-                        <div class="pl-3"><a href="../detail.html" class="navbar-cart-product-link">Transparent
-                          Blouse</a>
-                          <small class="d-block text-muted">Quantity: 1</small>
-                          <strong class="d-block text-sm">$75.00 </strong></div>
-                      </div>
-                    </div>
-                  </div>
-                  <!-- cart item-->
-                  <div class="navbar-cart-product">
-                    <div class="d-flex align-items-center"><a href="../detail.html"><img
-                      src="../img/product/product-square-serrah-galos-494312-unsplash.jpg" alt="..."
-                      class="img-fluid navbar-cart-product-image"></a>
-                      <div class="w-100"><a href="#" class="close text-sm mr-2"><i class="fa fa-times"> </i></a>
-                        <div class="pl-3"><a href="../detail.html" class="navbar-cart-product-link">White Tee</a>
-                          <small class="d-block text-muted">Quantity: 1</small>
-                          <strong class="d-block text-sm">$75.00 </strong></div>
+                  <div class="navbar-cart-product" *ngFor="let item of cart?.items;">
+                    <div class="d-flex align-items-center">
+                      <a [routerLink]="['/product',item.product_id]">
+                        <img [src]="item.image" [alt]="item.name"
+                             class="img-fluid navbar-cart-product-image"></a>
+                      <div class="w-100">
+                        <a href="#" class="close text-sm mr-2"><i class="fa fa-times"> </i></a>
+                        <div class="pl-3">
+                          <a [routerLink]="['/product',item.product_id]"
+                             class="navbar-cart-product-link">{{item.name}}</a>
+                          <small class="d-block text-muted">Quantity: {{item.quantity}}</small>
+                          <strong class="d-block text-sm">{{item.price|currency}} </strong></div>
                       </div>
                     </div>
                   </div>
                 </div>
                 <!-- total price-->
-                <div class="navbar-cart-total"><span class="text-uppercase text-muted">Total</span><strong
-                  class="text-uppercase">$75.00</strong></div>
+                <div class="navbar-cart-total">
+                  <span class="text-uppercase text-muted">Total</span><strong
+                  class="text-uppercase">{{cart.total|currency}}</strong></div>
                 <!-- buttons-->
-                <div class="d-flex justify-content-between"><a href="../cart.html" class="btn btn-link text-dark mr-3">View
-                  Cart <i class="fa-arrow-right fa"></i></a><a href="../checkout1.html" class="btn btn-outline-dark">Checkout</a>
+                <div class="d-flex justify-content-between">
+                  <a routerLink="/cart" class="btn btn-link text-dark mr-3">View
+                  Cart <i class="fa-arrow-right fa"></i></a>
+                  <a routerLink="/checkout" class="btn btn-outline-dark">Checkout</a>
                 </div>
               </div>
             </div>

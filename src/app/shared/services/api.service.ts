@@ -42,4 +42,12 @@ export class ApiService {
         catchError(this.handleError('url', []))
       );
   }
+
+  put(url, data, httpOptions = {}) {
+    return this.http.post(url, data, httpOptions)
+      .pipe(
+        map(response => response['data']),
+        catchError(this.handleError('url', []))
+      );
+  }
 }

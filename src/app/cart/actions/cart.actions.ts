@@ -3,6 +3,7 @@ import { Action } from '@ngrx/store';
 export enum CartActionsTypes {
   ADD_TO_CART = '[Page] Add To Cart API',
   ADD_TO_CART_SUCCESS = '[Add To Cart API] Page',
+  ADD_TO_CART_FAILED = '[Add To Cart API] Message',
   REMOVE_FROM_CART = '[Cart Page] Remove Item API',
   REMOVE_FROM_CART_SUCCESS = '[Remove Item API] Cart Page',
   UPDATE_QUANTITY = '[Cart Page] Update Item Quantity API',
@@ -21,6 +22,10 @@ export class AddToCartSuccess implements Action {
 
   constructor(public payload: any) {
   }
+}
+
+export class AddToCartFailed implements Action {
+  readonly type = CartActionsTypes.ADD_TO_CART_FAILED;
 }
 
 export class RemoveFromCart implements Action {
@@ -51,4 +56,11 @@ export class UpdateQuantitySuccess implements Action {
   }
 }
 
-export type CartUnion = AddToCart | AddToCartSuccess | RemoveFromCart | RemoveFromCartSuccess | UpdateQuantity | UpdateQuantitySuccess;
+export type CartUnion =
+  AddToCart
+  | AddToCartSuccess
+  | AddToCartFailed
+  | RemoveFromCart
+  | RemoveFromCartSuccess
+  | UpdateQuantity
+  | UpdateQuantitySuccess;

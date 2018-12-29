@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { OwlModule } from 'ngx-owl-carousel';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { BsDropdownModule, TabsModule } from 'ngx-bootstrap';
 import { CollectionProductsComponent } from './collection-products/collection-products.component';
 import { ProductGridItemComponent } from './product-grid-item/product-grid-item.component';
 
@@ -10,9 +12,12 @@ import { ProductGridItemComponent } from './product-grid-item/product-grid-item.
   imports: [
     CommonModule,
     RouterModule,
-    OwlModule
+    OwlModule,
+    FontAwesomeModule,
+    BsDropdownModule.forRoot(),
+    TabsModule.forRoot()
   ],
-  exports: [OwlModule, CollectionProductsComponent, ProductGridItemComponent]
+  exports: [OwlModule, FontAwesomeModule, BsDropdownModule, TabsModule, CollectionProductsComponent, ProductGridItemComponent]
 })
 export class ComponentModule {
 }
