@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ComponentModule } from '@shared/components';
+import { SharedModule } from '@shared/index';
 import { SlidesComponent } from './components/slides/slides.component';
 import { HomeComponent } from './home.component';
 import { HomeRoutingModule } from './home-routing.module';
@@ -13,7 +13,7 @@ import { CategoriesComponent } from './components/categories/categories.componen
   imports: [
     CommonModule,
     HomeRoutingModule,
-    ComponentModule
+    SharedModule
   ],
   declarations: [SlidesComponent, HomeComponent, BrandsComponent, BannerComponent, CategoriesComponent],
   providers: [SiteService]

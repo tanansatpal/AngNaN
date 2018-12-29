@@ -5,13 +5,13 @@ import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { IconsComponent } from './icons/icons.component';
 
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { SharedModule } from '@app/shared';
 
 @NgModule({
   imports: [
     CommonModule,
     RouterModule,
-    FontAwesomeModule
+    SharedModule
   ],
   declarations: [HeaderComponent, FooterComponent, IconsComponent],
   exports: [HeaderComponent, FooterComponent]

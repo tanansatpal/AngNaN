@@ -16,7 +16,7 @@ import { StoreModule } from '@ngrx/store';
 import { CategoryReducer } from '@app/category/reducers/category.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { CategoryEffects } from '@app/category/reducers/category.effects';
-import { ComponentModule } from '@shared/components';
+import { SharedModule } from '@shared/index';
 
 @NgModule({
   declarations: [
@@ -29,7 +29,7 @@ import { ComponentModule } from '@shared/components';
     EffectsModule.forFeature([CategoryEffects]),
     NgxPaginationModule,
     CategoryRoutingModule,
-    ComponentModule
+    SharedModule
   ]
 })
 export class CategoryModule {
