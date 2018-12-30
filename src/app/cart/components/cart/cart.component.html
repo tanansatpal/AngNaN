@@ -1,0 +1,65 @@
+<!-- Hero Section-->
+<section class="hero">
+  <div class="container">
+    <!-- Breadcrumbs -->
+    <ol class="breadcrumb justify-content-center">
+      <li class="breadcrumb-item"><a routerLink="/">Home</a></li>
+      <li class="breadcrumb-item active">Shopping cart</li>
+    </ol>
+    <!-- Hero Content-->
+    <div class="hero-content pb-5 text-center">
+      <h1 class="hero-heading">Shopping cart</h1>
+    </div>
+  </div>
+</section>
+<!-- Shopping Cart Section-->
+<section>
+  <div class="container">
+    <div class="row mb-5">
+      <div class="col-lg-8">
+        <div class="cart">
+          <div class="cart-header text-center">
+            <div class="row">
+              <div class="col-md-5">Item</div>
+              <div class="col-md-7 d-none d-md-block">
+                <div class="row">
+                  <div class="col-md-3">Price</div>
+                  <div class="col-md-4">Quantity</div>
+                  <div class="col-md-3">Total</div>
+                  <div class="col-md-2"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="cart-body">
+            <ng-container *ngFor="let item of cart.items;">
+              <app-line-item [item]="item"></app-line-item>
+            </ng-container>
+          </div>
+        </div>
+        <div class="my-5 d-flex justify-content-between flex-column flex-lg-row">
+          <a routerLink="/" class="btn btn-link text-muted"><i class="fa fa-chevron-left"></i> Continue Shopping</a>
+          <a routerLink="/checkout" class="btn btn-dark">Proceed to checkout <i class="fa fa-chevron-right"></i></a>
+        </div>
+      </div>
+      <div class="col-lg-4">
+        <div class="block mb-5">
+          <div class="block-header">
+            <h6 class="text-uppercase mb-0">Order Summary</h6>
+          </div>
+          <div class="block-body bg-light pt-1">
+            <p class="text-sm">Shipping and additional costs are calculated based on values you have entered.</p>
+            <ul class="order-summary mb-0 list-unstyled">
+              <li class="order-summary-item"><span>Order Subtotal </span><span>{{cart.sub_total|currency}}</span></li>
+              <li class="order-summary-item">
+                <span>Shipping and handling</span><span>{{cart.shipping_total|currency}}</span></li>
+              <li class="order-summary-item"><span>Tax</span><span>{{cart.taxes_total|currency}}</span></li>
+              <li class="order-summary-item border-0"><span>Total</span><strong
+                class="order-summary-total">{{cart.total|currency}}</strong></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
