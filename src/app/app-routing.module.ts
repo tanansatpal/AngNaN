@@ -11,6 +11,10 @@ const routes: Routes = [
     loadChildren: './auth/auth.module#AuthModule',
   },
   {
+    path: 'checkout',
+    loadChildren: './checkout/checkout.module#CheckoutModule',
+  },
+  {
     path: 'user',
     loadChildren: './user/index#UserModule',
   },
