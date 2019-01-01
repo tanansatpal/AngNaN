@@ -5,12 +5,12 @@ import { CheckoutShippingComponent } from './components/checkout-shipping/checko
 import { CheckoutPaymentComponent } from './components/checkout-payment/checkout-payment.component';
 import { CheckoutReviewComponent } from './components/checkout-review/checkout-review.component';
 import { CheckoutComponent } from './components/checkout/checkout.component';
-import { RouterModule } from '@angular/router';
+import { CheckoutRoutingModule } from './checkout-routing.module';
 
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule
+    CheckoutRoutingModule
   ],
   declarations: [CheckoutAddressComponent, CheckoutShippingComponent, CheckoutPaymentComponent, CheckoutReviewComponent, CheckoutComponent]
 })
