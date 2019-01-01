@@ -21,6 +21,12 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-8">
+        <ul class="custom-nav nav nav-pills mb-5">
+          <li class="nav-item w-25" *ngFor="let section of sections;">
+            <a [routerLink]="section.url" routerLinkActive="active" class="nav-link text-sm"
+               [ngClass]="{'disabled':section.disabled}">{{section.title}}</a>
+          </li>
+        </ul>
         <router-outlet></router-outlet>
       </div>
       <div class="col-lg-4">
@@ -31,10 +37,12 @@
           <div class="block-body bg-light pt-1">
             <p class="text-sm">Shipping and additional costs are calculated based on values you have entered.</p>
             <ul class="order-summary mb-0 list-unstyled">
-              <li class="order-summary-item"><span>Order Subtotal </span><span>$390.00</span></li>
-              <li class="order-summary-item"><span>Shipping and handling</span><span>$10.00</span></li>
-              <li class="order-summary-item"><span>Tax</span><span>$0.00</span></li>
-              <li class="order-summary-item border-0"><span>Total</span><strong class="order-summary-total">$400.00</strong></li>
+              <li class="order-summary-item"><span>Order Subtotal </span><span>{{cart.sub_total|currency}}</span></li>
+              <li class="order-summary-item">
+                <span>Shipping and handling</span><span>{{cart.shipping_total|currency}}</span></li>
+              <li class="order-summary-item"><span>Tax</span><span>{{cart.taxes_total|currency}}</span></li>
+              <li class="order-summary-item border-0"><span>Total</span><strong
+                class="order-summary-total">{{cart.total|currency}}</strong></li>
             </ul>
           </div>
         </div>

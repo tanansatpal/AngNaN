@@ -11,7 +11,7 @@ export enum CartActionsTypes {
   UPDATE_QUANTITY_SUCCESS = '[Update Item Quantity API] Cart Page',
 }
 
-export class GetCurrentCart {
+export class GetCurrentCart implements Action {
   readonly type = CartActionsTypes.GET_CURRENT_CART;
 }
 

@@ -1725,7 +1725,7 @@ owl-carousel {
     color: $color_abbey_approx;
 
     &.active {
-      background: $color_abbey_approx;
+      background: $color_abbey_approx!important;
       color: $white;
     }
 
