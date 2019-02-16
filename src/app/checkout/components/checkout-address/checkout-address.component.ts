@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-checkout-address',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CheckoutAddressComponent implements OnInit {
 
-  constructor() { }
+  addressForm: FormGroup;
+
+  constructor() {
+  }
 
   ngOnInit() {
+    this.addressForm = new FormGroup({
+      full_name: new FormControl('', Validators.required),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      address: new FormControl('', Validators.required),
+      city: new FormControl('', Validators.required),
+      zip: new FormControl('', Validators.required),
+      state: new FormControl('', Validators.required),
+      phone: new FormControl('', Validators.required),
+    });
   }
 
 }

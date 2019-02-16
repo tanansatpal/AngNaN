@@ -24,7 +24,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   cart: any;
   cart$: Subscription;
 
-  constructor(private router: Router, @Inject(DOCUMENT) document, private store: Store<{ auth }>) {
+  constructor(private router: Router, private store: Store<{ auth }>) {
   }
 
   ngOnInit() {
@@ -41,23 +41,29 @@ export class HeaderComponent implements OnInit, OnDestroy {
     });
   }
 
-  // todo universal support
-  @HostListener('window:scroll', ['$event'])
-  onWindowScroll() {
-    const topbar = document.getElementById('topbar').offsetHeight;
-    if (window.pageYOffset > topbar) {
-      const element = document.getElementById('navbar');
-      element.classList.add('fixed-top');
-    } else {
-      const element = document.getElementById('navbar');
-      element.classList.remove('fixed-top');
-    }
-  }
+  // // todo universal support
+  // @HostListener('window:scroll', ['$event'])
+  // onWindowScroll() {
+  //   const topbar = document.getElementById('topbar').offsetHeight;
+  //   if (window.pageYOffset > topbar) {
+  //     const element = document.getElementById('navbar');
+  //     element.classList.add('fixed-top');
+  //   } else {
+  //     const element = document.getElementById('navbar');
+  //     element.classList.remove('fixed-top');
+  //   }
+  // }
 
   ngOnDestroy() {
-    this.router$.unsubscribe();
-    this.isAuthenticated$.unsubscribe();
-    this.cartItemCount$.unsubscribe();
+    if (this.router$) {
+      this.router$.unsubscribe();
+    }
+    if (this.isAuthenticated$) {
+      this.isAuthenticated$.unsubscribe();
+    }
+    if (this.cartItemCount$) {
+      this.cartItemCount$.unsubscribe();
+    }
   }
 
 }

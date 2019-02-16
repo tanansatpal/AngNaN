@@ -10,11 +10,14 @@ import { StoreModule } from '@ngrx/store';
 import { CheckoutReducer } from '@app/checkout/reducers/checkout.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { CheckoutEffects } from '@app/checkout/reducers/checkout.effects';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   imports: [
     CommonModule,
     CheckoutRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
     StoreModule.forFeature('checkout', CheckoutReducer),
     EffectsModule.forFeature([CheckoutEffects])
   ],
