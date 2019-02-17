@@ -5,13 +5,8 @@ import { EffectsModule } from '@ngrx/effects';
 import { HttpClientModule } from '@angular/common/http';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '@env/environment';
-import { UserModule } from '@app/user/user.module';
-import { ProductModule } from '@app/product';
-import { CartModule } from '@app/cart';
-import { AuthModule } from '@app/auth';
 import { HomeModule } from '@app/home';
 import { LayoutModule } from '@app/layout';
-import { CategoryModule } from '@app/category';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -31,13 +26,8 @@ import { tokenProvider } from '@shared/interceptors/token.interceptor';
     StoreModule.forRoot(AppReducer),
     EffectsModule.forRoot([]),
     AppRoutingModule,
-    UserModule,
-    ProductModule,
-    CartModule,
-    AuthModule,
     HomeModule,
     LayoutModule,
-    CategoryModule,
     ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
   ],
   providers: [

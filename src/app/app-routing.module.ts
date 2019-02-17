@@ -1,7 +1,8 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { UserGuard } from '@app/user/guards/user.guard';
 
-const routes: Routes = [
+const APP_ROUTES: Routes = [
   {
     path: '',
     loadChildren: './home/home.module#HomeModule',
@@ -16,6 +17,7 @@ const routes: Routes = [
   },
   {
     path: 'user',
+    canLoad: [UserGuard],
     loadChildren: './user/index#UserModule',
   },
   {
@@ -33,7 +35,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(APP_ROUTES)],
   exports: [RouterModule]
 })
 export class AppRoutingModule {

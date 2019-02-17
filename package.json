@@ -11,7 +11,8 @@
     "webpack:server": "./node_modules/webpack/bin/webpack.js --config webpack.server.config.js --progress --colors",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "compodoc": "./node_modules/.bin/compodoc -p src/tsconfig.app.json -d docs/"
   },
   "private": true,
   "dependencies": {
@@ -41,6 +42,7 @@
     "ngx-bootstrap": "^3.1.2",
     "ngx-owl-carousel": "^2.0.7",
     "ngx-pagination": "^3.2.1",
+    "node-sass": "^4.11.0",
     "owl.carousel": "^2.3.4",
     "popper.js": "^1.14.4",
     "rxjs": "~6.3.3",
@@ -53,6 +55,7 @@
     "@angular/cli": "~7.0.3",
     "@angular/compiler-cli": "^7.0.0",
     "@angular/language-service": "^7.0.0",
+    "@compodoc/compodoc": "^1.1.8",
     "@types/jasmine": "~2.8.8",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "~8.9.4",

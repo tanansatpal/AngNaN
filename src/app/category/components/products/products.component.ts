@@ -8,8 +8,9 @@ import {
   getCategoryProductsTotal,
   getCategorySort
 } from '@app/category/actions/category.selectors';
-import { Subscription } from 'rxjs';
+import { combineLatest, Subscription } from 'rxjs';
 import { SetFacets, SetTotal } from '@app/category/actions/category.actions';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-products',
@@ -36,6 +37,7 @@ export class ProductsComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
+
     this.filters$ = this.store.pipe(select(getCategoryFilters)).subscribe(filters => {
       if (filters) {
         this.filters = filters;
