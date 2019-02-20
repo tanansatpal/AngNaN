@@ -7,6 +7,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '@env/environment';
 import { HomeModule } from '@app/home';
 import { LayoutModule } from '@app/layout';
+import { PrebootModule } from 'preboot';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -17,25 +18,19 @@ import { responseProvider } from '@shared/interceptors/response.interceptor';
 import { tokenProvider } from '@shared/interceptors/token.interceptor';
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
-    BrowserModule.withServerTransition({appId: 'ang-nan'}),
+    BrowserModule.withServerTransition({ appId: 'ang-nan' }),
+    PrebootModule.withConfig({ appRoot: 'app-root' }),
     HttpClientModule,
     StoreModule.forRoot(AppReducer),
     EffectsModule.forRoot([]),
     AppRoutingModule,
     HomeModule,
     LayoutModule,
-    ServiceWorkerModule.register('ngsw-worker.js', {enabled: environment.production}),
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
-  providers: [
-    tokenProvider,
-    responseProvider,
-    fakeBackendProvider,
-  ],
+  providers: [tokenProvider, responseProvider, fakeBackendProvider],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-}
+export class AppModule {}
