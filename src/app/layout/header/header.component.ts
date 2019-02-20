@@ -4,8 +4,8 @@ import { select, Store } from '@ngrx/store';
 import { faBars } from '@fortawesome/free-solid-svg-icons';
 import { getAuthStatus } from '@app/auth/reducers/selectors';
 import { Subscription } from 'rxjs';
-import { DOCUMENT } from '@angular/common';
 import { getCart, getCartItemsCount } from '@app/cart/actions/cart.selectors';
+import { AppState } from '@app/app.state';
 
 @Component({
   selector: 'app-header',
@@ -13,7 +13,6 @@ import { getCart, getCartItemsCount } from '@app/cart/actions/cart.selectors';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit, OnDestroy {
-
   faBars = faBars;
   homeHeader = false;
   isAuthenticated = false;
@@ -24,17 +23,16 @@ export class HeaderComponent implements OnInit, OnDestroy {
   cart: any;
   cart$: Subscription;
 
-  constructor(private router: Router, private store: Store<{ auth }>) {
-  }
+  constructor(private router: Router, private store: Store<{ auth }>) {}
 
   ngOnInit() {
     this.homeHeader = this.router.url === '/';
     this.isAuthenticated$ = this.store.pipe(select(getAuthStatus)).subscribe(result => {
       this.isAuthenticated = result;
     });
-    this.cartItemCount$ = this.store.pipe(select(getCartItemsCount)).subscribe(count => this.cartItemCount = count);
-    this.cart$ = this.store.pipe(select(getCart)).subscribe(cart => this.cart = cart);
-    this.router.events.subscribe((val) => {
+    this.cartItemCount$ = this.store.pipe(select(getCartItemsCount)).subscribe(count => (this.cartItemCount = count));
+    this.cart$ = this.store.pipe(select(getCart)).subscribe(cart => (this.cart = cart));
+    this.router.events.subscribe(val => {
       if (val instanceof NavigationEnd) {
         this.homeHeader = val.url === '/';
       }
@@ -65,5 +63,4 @@ export class HeaderComponent implements OnInit, OnDestroy {
       this.cartItemCount$.unsubscribe();
     }
   }
-
 }
