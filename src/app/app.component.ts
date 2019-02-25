@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from '@app/app.state';
 import { GetCurrentCart } from '@app/cart/actions/cart.actions';
+import { Authorize } from '@app/auth/actions/auth.actions';
 
 @Component({
   selector: 'app-root',
@@ -11,12 +12,11 @@ import { GetCurrentCart } from '@app/cart/actions/cart.actions';
 export class AppComponent implements OnInit {
   title = 'AngNaN';
 
-  constructor(private store: Store<AppState>) {
-
-  }
+  constructor(private store: Store<AppState>) {}
 
   ngOnInit() {
     this.store.dispatch(new GetCurrentCart());
+    this.store.dispatch(new Authorize());
     // ------------------------------------------------------- //
     //   Scroll to top button
     // ------------------------------------------------------ //
