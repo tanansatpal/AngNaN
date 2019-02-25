@@ -36,6 +36,7 @@
     "@fortawesome/free-solid-svg-icons": "^5.4.2",
     "@ngrx/effects": "^7.0.0",
     "@ngrx/store": "^7.0.0",
+    "@ngrx/store-devtools": "^7.2.0",
     "@nguniversal/module-map-ngfactory-loader": "^7.0.2",
     "add": "^2.0.6",
     "bootstrap": "^4.1.3",

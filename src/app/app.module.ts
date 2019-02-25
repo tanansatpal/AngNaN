@@ -16,6 +16,7 @@ import { AppReducer } from './app.reducer';
 import { fakeBackendProvider } from '@shared/interceptors/fake-backend.interceptor';
 import { responseProvider } from '@shared/interceptors/response.interceptor';
 import { tokenProvider } from '@shared/interceptors/token.interceptor';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
   declarations: [AppComponent],
@@ -28,7 +29,8 @@ import { tokenProvider } from '@shared/interceptors/token.interceptor';
     AppRoutingModule,
     HomeModule,
     LayoutModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],
   providers: [tokenProvider, responseProvider, fakeBackendProvider],
   bootstrap: [AppComponent]
