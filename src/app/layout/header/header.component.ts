@@ -1,7 +1,7 @@
 import { Component, OnInit, HostListener, Inject, OnDestroy } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { select, Store } from '@ngrx/store';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { faBars } from '@fortawesome/free-solid-svg-icons/faBars';
 import { getAuthStatus } from '@app/auth/reducers/selectors';
 import { Subscription } from 'rxjs';
 import { getCart, getCartItemsCount } from '@app/cart/actions/cart.selectors';
@@ -23,7 +23,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
   cart: any;
   cart$: Subscription;
 
-  constructor(private router: Router, private store: Store<{ auth }>) {}
+  constructor(private router: Router, private store: Store<AppState>) {}
 
   ngOnInit() {
     this.homeHeader = this.router.url === '/';

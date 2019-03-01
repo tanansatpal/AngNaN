@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SiteService } from '@shared/services';
 import { environment } from '@env/environment';
+import { NguCarouselConfig } from '@ngu/carousel';
 
 @Component({
   selector: 'app-slides',
@@ -8,12 +9,11 @@ import { environment } from '@env/environment';
   styleUrls: ['./slides.component.scss']
 })
 export class SlidesComponent implements OnInit {
-
   slides: any = [];
   sliderOptions: any = {};
+  // sliderOptions: NguCarouselConfig;
 
-  constructor(private siteService: SiteService) {
-  }
+  constructor(private siteService: SiteService) {}
 
   ngOnInit() {
     this.sliderOptions = {
@@ -28,6 +28,21 @@ export class SlidesComponent implements OnInit {
       nav: true,
       autoHeight: true
     };
+    // this.sliderOptions = {
+    //   grid: { xs: 1, sm: 1, md: 1, lg: 1, all: 0 },
+    //   slide: 1,
+    //   speed: 500,
+    //   point: {
+    //     visible: true
+    //   },
+    //   touch: true,
+    //   velocity: 0,
+    //   loop: true,
+    //   interval: { timing: 5000 },
+    //   animation: 'lazy',
+    //   custom: 'banner',
+    //   easing: 'cubic-bezier(0, 0, 0.2, 1)'
+    // };
 
     /*this.slides = [
       {
@@ -82,13 +97,11 @@ export class SlidesComponent implements OnInit {
   }
 
   getSlides() {
-    this.siteService.getSlides()
-      .subscribe(result => {
-        this.slides = result.map(slide => {
-          slide.image = `${environment.CDN_URL}${slide.image}`;
-          return slide;
-        });
+    this.siteService.getSlides().subscribe(result => {
+      this.slides = result.map(slide => {
+        slide.image = `${environment.CDN_URL}${slide.image}`;
+        return slide;
       });
+    });
   }
-
 }

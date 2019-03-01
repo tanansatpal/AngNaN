@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ProductSectionService } from '@shared/services';
 import { ActivatedRoute } from '@angular/router';
 import { environment } from '@env/environment';
-import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { faStar } from '@fortawesome/free-solid-svg-icons/faStar';
 import { Store } from '@ngrx/store';
 import { AddToCart } from '@app/cart/actions/cart.actions';
 
@@ -17,7 +17,11 @@ export class DetailComponent implements OnInit {
   productAlias: string;
   sliderOptions: any;
 
-  constructor(private productService: ProductSectionService, private route: ActivatedRoute, private store: Store<{ cart }>) {
+  constructor(
+    private productService: ProductSectionService,
+    private route: ActivatedRoute,
+    private store: Store<{ cart }>
+  ) {
     this.route.paramMap.subscribe(paramMap => {
       this.productAlias = paramMap.get('alias');
     });
@@ -54,7 +58,6 @@ export class DetailComponent implements OnInit {
   }
 
   addToCart() {
-    this.store.dispatch(new AddToCart({product_id: this.product._id, quantity: 1}));
+    this.store.dispatch(new AddToCart({ product_id: this.product._id, quantity: 1 }));
   }
-
 }

@@ -32,7 +32,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],
-  providers: [tokenProvider, responseProvider, fakeBackendProvider],
+  providers: [tokenProvider, responseProvider, ...fakeBackendProvider],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
