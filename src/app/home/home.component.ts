@@ -8,24 +8,32 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit, OnDestroy {
-  brands$: Subscription;
-  slides$: Subscription;
+  subsList: Subscription[] = [];
   brands = [];
   slides = [];
+  collection = {};
+  products = [];
 
   constructor(private productService: ProductSectionService, private siteService: SiteService) {}
 
   ngOnInit() {
-    this.brands$ = this.productService.getBrands().subscribe(data => (this.brands = data));
-    this.slides$ = this.siteService.getSlides().subscribe(data => (this.slides = data));
+    this.subsList.push(this.productService.getBrands().subscribe(data => (this.brands = data)));
+    this.subsList.push(this.siteService.getSlides().subscribe(data => (this.slides = data)));
+    this.subsList.push(
+      this.productService
+        .getCollections({ alias: 'your-favourites' })
+        .subscribe(result => (this.collection = result.shift()))
+    );
+    this.subsList.push(
+      this.productService
+        .getProducts({ collections: 'your-favourites' })
+        .subscribe(result => (this.products = result['data']))
+    );
   }
 
   ngOnDestroy(): void {
-    if (this.brands$) {
-      this.brands$.unsubscribe();
-    }
-    if (this.slides$) {
-      this.slides$.unsubscribe();
+    for (const sub of this.subsList) {
+      sub.unsubscribe();
     }
   }
 }

@@ -1,19 +1,17 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { ProductSectionService } from '@shared/services';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-collection-products',
   templateUrl: './collection-products.component.html',
-  styleUrls: ['./collection-products.component.scss']
+  styleUrls: ['./collection-products.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CollectionProductsComponent implements OnInit {
-  @Input() collectionAlias: string;
-  products: any = [];
+  @Input() collection: any = {};
+  @Input() products: any = [];
   sliderOptions: any = {};
-  collection: any = {};
 
-  constructor(private productService: ProductSectionService) {
-  }
+  constructor() {}
 
   ngOnInit() {
     this.sliderOptions = {
@@ -24,22 +22,5 @@ export class CollectionProductsComponent implements OnInit {
       nav: false,
       autoHeight: true
     };
-    this.getCollection();
   }
-
-  getCollection() {
-    this.productService.getCollections({ alias: this.collectionAlias })
-      .subscribe(result => {
-        this.collection = result[0];
-        this.getProducts();
-      });
-  }
-
-  getProducts() {
-    this.productService.getProducts({ collections: this.collectionAlias })
-      .subscribe(result => {
-        this.products = result['data'];
-      });
-  }
-
 }
