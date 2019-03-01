@@ -15,7 +15,8 @@
     "e2e": "ng e2e",
     "compodoc": "./node_modules/.bin/compodoc -p src/tsconfig.app.json -d docs/",
     "format:fix": "pretty-quick --staged",
-    "precommit": "run-s format:fix lint"
+    "precommit": "run-s format:fix lint",
+    "firebase-deploy": "firebase deploy"
   },
   "private": true,
   "dependencies": {
