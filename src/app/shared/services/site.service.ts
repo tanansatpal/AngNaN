@@ -8,7 +8,6 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class SiteService {
-
   private API_URL = environment.API_URL;
 
   /**
@@ -16,17 +15,13 @@ export class SiteService {
    * @param api - HTTP service to call the APIS
    * @param commonService - Common service
    * */
-  constructor(private api: ApiService, private commonService: CommonService) {
-  }
+  constructor(private api: ApiService, private commonService: CommonService) {}
 
   /**
    * Call the Slides API.
    * @returns slides - Slides from the response of the A+3PI;
    */
   getSlides() {
-    // console.log(this.api.get)
-    return this.api.get(`${this.API_URL}slides`).pipe(
-      map(response => response['data'])
-    );
+    return this.api.get(`${this.API_URL}slides`).pipe(map(response => response['data']));
   }
 }
