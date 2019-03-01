@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProductSectionService } from '@shared/services';
 
 @Component({
   selector: 'app-home',
@@ -6,11 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  brands$;
 
-  constructor() {
-  }
+  constructor(private productService: ProductSectionService) {}
 
   ngOnInit() {
+    this.brands$ = this.productService.getBrands();
   }
-
 }

@@ -1,41 +1,23 @@
-import { Component, OnInit } from '@angular/core';
-import { ProductSectionService } from '@shared/services';
-import { environment } from '../../../../environments/environment';
+import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-brands',
   templateUrl: './brands.component.html',
-  styleUrls: ['./brands.component.scss']
+  styleUrls: ['./brands.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class BrandsComponent implements OnInit {
-  brands: any = [];
-  sliderOptions: any = {};
+  @Input() brands;
+  sliderOptions: any = {
+    items: 6,
+    margin: 10,
+    dots: true,
+    responsiveClass: true,
+    nav: false,
+    autoHeight: true
+  };
 
-  constructor(private productService: ProductSectionService) {
-  }
+  constructor() {}
 
-  ngOnInit() {
-    this.sliderOptions = {
-      items: 6,
-      margin: 10,
-      dots: true,
-      responsiveClass: true,
-      nav: false,
-      autoHeight: true
-    };
-    this.productService.getBrands()
-      .subscribe(result => {
-        this.brands = result.filter(brand => {
-          if (brand.images && brand.images.length) {
-            brand.image = `${environment.CDN_URL}${brand.images[0].image}`;
-            return true;
-          } else {
-            return false;
-          }
-        });
-      }, err => {
-
-      });
-  }
-
+  ngOnInit() {}
 }
