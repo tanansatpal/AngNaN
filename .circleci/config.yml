@@ -3,7 +3,7 @@ jobs:
   build:
     working_directory: ~/project
     docker:
-      - image: circleci/node:chakracore-8.11-browsers-legacy
+      - image: circleci/node:10.15.2-jessie-browsers-legacy
     steps:
       - checkout
       - run:
@@ -40,7 +40,7 @@ jobs:
             - .firebaserc
   deploy:
     docker:
-      - image: circleci/node:chakracore-8.11-browsers-legacy
+      - image: circleci/node:10.15.2-jessie-browsers-legacy
     working_directory: ~/project
     steps:
       - run:
