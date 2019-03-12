@@ -31,8 +31,8 @@ export class UserComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit() {
-    this.orderCount$ = this.userService.getOrdersCount().subscribe(count => {
-      this.orderCount = count;
+    this.orderCount$ = this.userService.getOrdersCount().subscribe(result => {
+      this.orderCount = result.total;
       this.sidebarSections = [
         {
           url: '/user/orders',
@@ -76,5 +76,4 @@ export class UserComponent implements OnInit, OnDestroy {
       this.selectedSection$.unsubscribe();
     }
   }
-
 }

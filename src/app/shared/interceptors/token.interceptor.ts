@@ -5,8 +5,7 @@ import { Observable } from 'rxjs';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
-  constructor(public auth: AuthService) {
-  }
+  constructor(public auth: AuthService) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     // todo hack to be removed
@@ -14,6 +13,12 @@ export class TokenInterceptor implements HttpInterceptor {
       request = request.clone({
         setHeaders: {
           Authorization: `Bearer ${this.auth.getAuthToken()}`
+        }
+      });
+    } else if (request.url.match(/entity\/ms./)) {
+      request = request.clone({
+        setHeaders: {
+          'access-key': localStorage.getItem('tempAccessKey')
         }
       });
     }

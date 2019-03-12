@@ -15,6 +15,7 @@ import { UserSidebarComponent } from './components/user-sidebar/user-sidebar.com
 import { WishlistComponent } from './components/wishlist/wishlist.component';
 import { OrderComponent } from './components/order/order.component';
 import { CartItemComponent } from './components/order/cart-item/cart-item.component';
+import { AddEditAddressComponent } from './components/address/add-edit-address/add-edit-address.component';
 
 @NgModule({
   imports: [
@@ -25,8 +26,16 @@ import { CartItemComponent } from './components/order/cart-item/cart-item.compon
     ReactiveFormsModule,
     UserRoutingModule
   ],
-  declarations: [OrdersComponent, UserComponent, AddressComponent, ProfileComponent,
-    UserSidebarComponent, WishlistComponent, OrderComponent, CartItemComponent]
+  declarations: [
+    OrdersComponent,
+    UserComponent,
+    AddressComponent,
+    ProfileComponent,
+    UserSidebarComponent,
+    WishlistComponent,
+    OrderComponent,
+    CartItemComponent,
+    AddEditAddressComponent
+  ]
 })
-export class UserModule {
-}
+export class UserModule {}
