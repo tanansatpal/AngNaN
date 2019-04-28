@@ -5,7 +5,6 @@ import { EffectsModule } from '@ngrx/effects';
 import { HttpClientModule } from '@angular/common/http';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '@env/environment';
-import { HomeModule } from '@app/home';
 import { LayoutModule } from '@app/layout';
 import { PrebootModule } from 'preboot';
 
@@ -27,7 +26,6 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     StoreModule.forRoot(AppReducer),
     EffectsModule.forRoot([]),
     AppRoutingModule,
-    HomeModule,
     LayoutModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })

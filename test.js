@@ -1,3 +1,6 @@
-const pages = Math.ceil(125 / 12);
-console.log(pages);
+var a = 'hello world';
+var b = 3.1456789;
 
+console.log(a.length);
+console.log(a.toUpperCase());
+console.log(b.toFixed(1));

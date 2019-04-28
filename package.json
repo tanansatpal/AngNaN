@@ -7,6 +7,7 @@
     "build": "ng build --aot",
     "build-prod": "ng build --aot --prod",
     "build:ssr": "npm run build:client-and-server-bundles && npm run webpack:server",
+    "bundle-report": "ng build --aot --prod --stats-json && webpack-bundle-analyzer dist/browser/stats.json",
     "serve:ssr": "node dist/server.js",
     "build:client-and-server-bundles": "ng build --prod && ng run AngNaN:server",
     "webpack:server": "./node_modules/webpack/bin/webpack.js --config webpack.server.config.js --progress --colors",

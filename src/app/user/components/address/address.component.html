@@ -1,1 +1,11 @@
-{{ userAddresses$ | async }}
+<div *ngFor="let address of (userAddresses$ | async)">
+  {{ address | json }}
+
+  <div>{{ address.full_name }}</div>
+  <div>{{ address.phone }}</div>
+  <div>{{ address.address }}</div>
+  <div>{{ address.city }}</div>
+  <div>{{ address.state }}</div>
+  <div>{{ address.country }}</div>
+  <div>{{ address.zip }}</div>
+</div>
