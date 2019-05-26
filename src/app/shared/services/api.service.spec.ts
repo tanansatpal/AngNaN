@@ -23,8 +23,8 @@ describe('ApiService', () => {
     const getStub = of({ data: 'test' });
     getSpy.get.and.returnValue(getStub);
     service.get('test').subscribe(response => {
-      expect(response.data).toBe('test');
-      expect(service.get.calls.count()).toBe(1);
+      expect(response['data']).toBe('test');
+      expect(service.get['calls'].count()).toBe(1);
     });
   });
 });

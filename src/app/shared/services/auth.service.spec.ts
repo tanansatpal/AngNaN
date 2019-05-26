@@ -28,7 +28,7 @@ describe('AuthService', () => {
     service.login(user).subscribe(response => {
       expect(response.first_name).toBe('Oliver');
       expect(response.last_name).toBe('Queen');
-      expect(service.login.calls.count()).toBe(1);
+      expect(loginSpy.login['calls'].count()).toBe(1);
     });
   });
 });
