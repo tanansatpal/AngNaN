@@ -30,7 +30,5 @@ describe('AuthService', () => {
       expect(response.last_name).toBe('Queen');
       expect(service.login.calls.count()).toBe(1);
     });
-
-    expect(service);
   });
 });
