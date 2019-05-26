@@ -5,15 +5,22 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { Store, StoreModule } from '@ngrx/store';
 import * as fromFeature from '@app/auth/reducers/auth.reducer';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { AuthState } from '@app/auth/reducers/auth.state';
 import { Login } from '@app/auth/actions/auth.actions';
 import { AppReducer } from '@app/app.reducer';
+import { getAuthStatus } from '@app/auth/reducers/selectors';
+import { AuthGuard } from '@app/auth/guards/auth.guard';
+import { MockStore, provideMockStore } from '@ngrx/store/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
-  let store: Store<AuthState>;
+  let store: MockStore<AuthState>;
+  const initialState = { isLoggedIn: false, user: {} };
+  const routerSpy = jasmine.createSpyObj('Router', ['navigateByUrl']);
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
@@ -23,10 +30,10 @@ describe('LoginComponent', () => {
         StoreModule.forRoot({
           ...AppReducer,
           feature: fromFeature.AuthReducer
-        }),
-        RouterModule.forRoot([])
+        })
       ],
-      declarations: [LoginComponent]
+      declarations: [LoginComponent],
+      providers: [{ provide: Router, useValue: routerSpy }, provideMockStore({ initialState })]
     }).compileComponents();
 
     store = TestBed.get(Store);
@@ -56,5 +63,12 @@ describe('LoginComponent', () => {
     component.loginForm.controls['password'].setValue('');
     component.login();
     expect(store.dispatch).toHaveBeenCalledTimes(0);
+  });
+  it('should redirect if loggedin', () => {
+    store.setState({ isLoggedIn: true, user: {} });
+    expect(getAuthStatus.projector({ isLoggedIn: true })).toBe(true);
+    // expect(routerSpy.navigateByUrl.calls.count()).toBe(1);
+    // const navArgs = routerSpy.navigateByUrl.calls.first().args[0];
+    // console.log(navArgs);
   });
 });

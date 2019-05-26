@@ -13,12 +13,11 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit, OnDestroy {
-
   loginForm: FormGroup;
   returnUrl: string;
   status$: Subscription;
 
-  constructor(private auth: AuthService, private router: Router, private route: ActivatedRoute, private store: Store<{ auth }>) {
+  constructor(private auth: AuthService, private router: Router, private store: Store<{ auth }>) {
     this.redirectIfUserLoggedIn();
   }
 
@@ -31,17 +30,15 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   redirectIfUserLoggedIn() {
-    this.status$ = this.store.pipe(select(getAuthStatus)).subscribe(
-      isLoggedIn => {
-        if (isLoggedIn) {
-          return this.router.navigateByUrl(this.returnUrl);
-        }
+    this.status$ = this.store.pipe(select(getAuthStatus)).subscribe(isLoggedIn => {
+      if (isLoggedIn) {
+        return this.router.navigateByUrl(this.returnUrl);
       }
-    );
+    });
   }
 
   private pushErrorFor(ctrl_name: string, msg: string) {
-    this.loginForm.controls[ctrl_name].setErrors({ 'msg': msg });
+    this.loginForm.controls[ctrl_name].setErrors({ msg: msg });
   }
 
   validate() {
