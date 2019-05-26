@@ -4,7 +4,7 @@ import { AuthService } from './auth.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { StoreModule } from '@ngrx/store';
 import { AuthReducer } from '@app/auth/reducers/auth.reducer';
-import { Observable, of } from 'rxjs';
+import { of } from 'rxjs';
 
 describe('AuthService', () => {
   let service: AuthService;
