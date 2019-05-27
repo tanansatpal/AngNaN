@@ -10,9 +10,6 @@ import { AuthState } from '@app/auth/reducers/auth.state';
 import { Login } from '@app/auth/actions/auth.actions';
 import { AppReducer } from '@app/app.reducer';
 import * as Selectors from '@app/auth/reducers/selectors';
-import { AuthGuard } from '@app/auth/guards/auth.guard';
-import { MockStore, provideMockStore } from '@ngrx/store/testing';
-import { RouterTestingModule } from '@angular/router/testing';
 import { AuthService } from '@shared/services';
 import { of } from 'rxjs';
 import { EffectsModule } from '@ngrx/effects';
@@ -57,7 +54,7 @@ describe('LoginComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should call login', () => {
+  it('should call login function', () => {
     const action = new Login({ username: 'test', password: 'test' });
     component.loginForm.controls['username'].setValue('test');
     component.loginForm.controls['password'].setValue('test');
@@ -73,5 +70,23 @@ describe('LoginComponent', () => {
     component.loginForm.controls['password'].setValue('');
     component.login();
     expect(store.dispatch).toHaveBeenCalledTimes(0);
+  });
+  it('should call login', () => {
+    const loginElement: HTMLElement = fixture.nativeElement;
+    const loginForm = loginElement.querySelector('form');
+    (<HTMLInputElement>loginElement.querySelector('#email')).value = 'test@test.com';
+    loginElement.querySelector('#email').dispatchEvent(new Event('input'));
+    expect(component.loginForm.controls['username'].value).toBe('test@test.com');
+    (<HTMLInputElement>loginElement.querySelector('#password')).value = 'test';
+    loginElement.querySelector('#password').dispatchEvent(new Event('input'));
+    expect(component.loginForm.controls['password'].value).toBe('test');
+    authSpy.login.and.returnValue(of({ email: 'test@test.com', first_name: 'Test', last_name: 'test' }));
+    loginForm.submit();
+    loginForm.dispatchEvent(new Event('submit'));
+    const action = new Login({ username: 'test@test.com', password: 'test' });
+    expect(store.dispatch).toHaveBeenCalledWith(action);
+    expect(authSpy.login).toHaveBeenCalled();
+    expect(Selectors.getAuthStatus).toHaveBeenCalled();
+    expect(routerSpy.navigateByUrl).toHaveBeenCalledWith('/');
   });
 });
