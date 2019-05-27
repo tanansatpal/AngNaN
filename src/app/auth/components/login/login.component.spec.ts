@@ -9,17 +9,21 @@ import { Router, RouterModule } from '@angular/router';
 import { AuthState } from '@app/auth/reducers/auth.state';
 import { Login } from '@app/auth/actions/auth.actions';
 import { AppReducer } from '@app/app.reducer';
-import { getAuthStatus } from '@app/auth/reducers/selectors';
+import * as Selectors from '@app/auth/reducers/selectors';
 import { AuthGuard } from '@app/auth/guards/auth.guard';
 import { MockStore, provideMockStore } from '@ngrx/store/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { AuthService } from '@shared/services';
+import { of } from 'rxjs';
+import { EffectsModule } from '@ngrx/effects';
+import { AuthEffects } from '@app/auth/reducers/auth.effects';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
-  let store: MockStore<AuthState>;
-  const initialState = { isLoggedIn: false, user: {} };
+  let store: Store<AuthState>;
   const routerSpy = jasmine.createSpyObj('Router', ['navigateByUrl']);
+  const authSpy = jasmine.createSpyObj('AuthService', ['login']);
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -29,16 +33,18 @@ describe('LoginComponent', () => {
         HttpClientTestingModule,
         StoreModule.forRoot({
           ...AppReducer,
-          feature: fromFeature.AuthReducer
-        })
+          auth: fromFeature.AuthReducer
+        }),
+        EffectsModule.forRoot([AuthEffects])
       ],
       declarations: [LoginComponent],
-      providers: [{ provide: Router, useValue: routerSpy }, provideMockStore({ initialState })]
+      providers: [{ provide: Router, useValue: routerSpy }, { provide: AuthService, useValue: authSpy }]
     }).compileComponents();
 
     store = TestBed.get(Store);
 
     spyOn(store, 'dispatch').and.callThrough();
+    spyOn(Selectors, 'getAuthStatus').and.callThrough();
   }));
 
   beforeEach(() => {
@@ -55,20 +61,17 @@ describe('LoginComponent', () => {
     const action = new Login({ username: 'test', password: 'test' });
     component.loginForm.controls['username'].setValue('test');
     component.loginForm.controls['password'].setValue('test');
+    authSpy.login.and.returnValue(of({ email: 'test@test.com', first_name: 'Test', last_name: 'test' }));
     component.login();
     expect(store.dispatch).toHaveBeenCalledWith(action);
+    expect(authSpy.login).toHaveBeenCalled();
+    expect(Selectors.getAuthStatus).toHaveBeenCalled();
+    expect(routerSpy.navigateByUrl).toHaveBeenCalledWith('/');
   });
   it('should not call login', () => {
     component.loginForm.controls['username'].setValue('test');
     component.loginForm.controls['password'].setValue('');
     component.login();
     expect(store.dispatch).toHaveBeenCalledTimes(0);
-  });
-  it('should redirect if loggedin', () => {
-    store.setState({ isLoggedIn: true, user: {} });
-    expect(getAuthStatus.projector({ isLoggedIn: true })).toBe(true);
-    // expect(routerSpy.navigateByUrl.calls.count()).toBe(1);
-    // const navArgs = routerSpy.navigateByUrl.calls.first().args[0];
-    // console.log(navArgs);
   });
 });
