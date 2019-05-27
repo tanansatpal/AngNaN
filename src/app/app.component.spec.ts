@@ -1,35 +1,49 @@
-import { TestBed, async } from '@angular/core/testing';
+import { TestBed, async, ComponentFixture } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
+import { Store, StoreModule } from '@ngrx/store';
+import { AppReducer } from '@app/app.reducer';
+import { AppState } from '@app/app.state';
+import { GetCurrentCart } from '@app/cart/actions/cart.actions';
+import { Component } from '@angular/core';
+import { Authorize } from '@app/auth/actions/auth.actions';
 
 describe('AppComponent', () => {
+  let fixture: ComponentFixture<AppComponent>, component: AppComponent;
+  let store: Store<AppState>;
+
+  @Component({ selector: 'app-header', template: '' })
+  class HeaderStubComponent {}
+
+  @Component({ selector: 'app-footer', template: '' })
+  class FooterStubComponent {}
+
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule
-      ],
-      declarations: [
-        AppComponent
-      ],
+      imports: [RouterTestingModule, StoreModule.forRoot(AppReducer)],
+      declarations: [AppComponent, HeaderStubComponent, FooterStubComponent]
     }).compileComponents();
+
+    store = TestBed.get(Store);
+
+    spyOn(store, 'dispatch').and.callThrough();
   }));
 
+  beforeEach(() => {
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.componentInstance;
+  });
+
   it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'AngNaN'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('AngNaN');
-  });
-
-  it('should render title in a h1 tag', () => {
-    const fixture = TestBed.createComponent(AppComponent);
+  it(`should get the current cart`, () => {
     fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to AngNaN!');
+    const action = new GetCurrentCart();
+    const authAction = new Authorize();
+    expect(store.dispatch).toHaveBeenCalledWith(action);
+    expect(store.dispatch).toHaveBeenCalledWith(authAction);
   });
 });

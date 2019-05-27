@@ -32,7 +32,7 @@ export class HeaderComponent implements OnInit, OnDestroy {
     });
     this.cartItemCount$ = this.store.pipe(select(getCartItemsCount)).subscribe(count => (this.cartItemCount = count));
     this.cart$ = this.store.pipe(select(getCart)).subscribe(cart => (this.cart = cart));
-    this.router.events.subscribe(val => {
+    this.router$ = this.router.events.subscribe(val => {
       if (val instanceof NavigationEnd) {
         this.homeHeader = val.url === '/';
       }
