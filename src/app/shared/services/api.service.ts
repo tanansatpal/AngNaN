@@ -11,12 +11,10 @@ export class ApiService {
    * Creates an instance of ApiService
    * @param http - HTTP service to call the APIS
    * */
-  constructor(private http: HttpClient) {
-  }
+  constructor(private http: HttpClient) {}
 
   handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
-
       // TODO: send the error to remote logging infrastructure
       console.error(error); // log to console instead
 
@@ -29,25 +27,20 @@ export class ApiService {
   }
 
   get(url, options = {}) {
-    return this.http.get(url, options)
-      .pipe(
-        catchError(this.handleError('url', []))
-      );
+    return this.http.get(url, options).pipe(catchError(this.handleError(url, [])));
   }
 
   post(url, data, httpOptions = {}) {
-    return this.http.post(url, data, httpOptions)
-      .pipe(
-        map(response => response['data']),
-        catchError(this.handleError('url', []))
-      );
+    return this.http.post(url, data, httpOptions).pipe(
+      map(response => response['data']),
+      catchError(this.handleError(url, []))
+    );
   }
 
   put(url, data, httpOptions = {}) {
-    return this.http.put(url, data, httpOptions)
-      .pipe(
-        map(response => response['data']),
-        catchError(this.handleError('url', []))
-      );
+    return this.http.put(url, data, httpOptions).pipe(
+      map(response => response['data']),
+      catchError(this.handleError(url, []))
+    );
   }
 }

@@ -5,15 +5,23 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { Store, StoreModule } from '@ngrx/store';
 import * as fromFeature from '@app/auth/reducers/auth.reducer';
-import { Router, RouterModule } from '@angular/router';
+import { Router } from '@angular/router';
 import { AuthState } from '@app/auth/reducers/auth.state';
 import { Login } from '@app/auth/actions/auth.actions';
 import { AppReducer } from '@app/app.reducer';
 import * as Selectors from '@app/auth/reducers/selectors';
 import { AuthService } from '@shared/services';
-import { of } from 'rxjs';
+import { defer, of } from 'rxjs';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from '@app/auth/reducers/auth.effects';
+
+function asyncData<T>(data: T) {
+  return defer(() => Promise.resolve(data));
+}
+
+function asyncError<T>(errorObject: any) {
+  return defer(() => Promise.reject(errorObject));
+}
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
@@ -58,7 +66,7 @@ describe('LoginComponent', () => {
     const action = new Login({ username: 'test', password: 'test' });
     component.loginForm.controls['username'].setValue('test');
     component.loginForm.controls['password'].setValue('test');
-    authSpy.login.and.returnValue(of({ email: 'test@test.com', first_name: 'Test', last_name: 'test' }));
+    authSpy.login.and.returnValue(asyncData({ email: 'test@test.com', first_name: 'Test', last_name: 'test' }));
     component.login();
     expect(store.dispatch).toHaveBeenCalledWith(action);
     expect(authSpy.login).toHaveBeenCalled();

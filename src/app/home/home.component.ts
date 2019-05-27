@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ProductSectionService, SiteService } from '@shared/services';
-import { Subscription } from 'rxjs';
+import { SubSink } from 'subsink';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +8,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit, OnDestroy {
-  subsList: Subscription[] = [];
+  private subs = new SubSink();
   brands = [];
   slides = [];
   collection = {};
@@ -17,23 +17,17 @@ export class HomeComponent implements OnInit, OnDestroy {
   constructor(private productService: ProductSectionService, private siteService: SiteService) {}
 
   ngOnInit() {
-    this.subsList.push(this.productService.getBrands().subscribe(data => (this.brands = data)));
-    this.subsList.push(this.siteService.getSlides().subscribe(data => (this.slides = data)));
-    this.subsList.push(
-      this.productService
-        .getCollections({ alias: 'your-favourites' })
-        .subscribe(result => (this.collection = result.shift()))
-    );
-    this.subsList.push(
-      this.productService
-        .getProducts({ collections: 'your-favourites' })
-        .subscribe(result => (this.products = result['data']))
-    );
+    this.subs.sink = this.productService.getBrands().subscribe(data => (this.brands = data));
+    this.subs.sink = this.siteService.getSlides().subscribe(data => (this.slides = data));
+    this.subs.sink = this.productService
+      .getCollections({ alias: 'your-favourites' })
+      .subscribe(result => (this.collection = result.shift()));
+    this.subs.sink = this.productService
+      .getProducts({ collections: 'your-favourites' })
+      .subscribe(result => (this.products = result['data']));
   }
 
   ngOnDestroy(): void {
-    for (const sub of this.subsList) {
-      sub.unsubscribe();
-    }
+    this.subs.unsubscribe();
   }
 }
