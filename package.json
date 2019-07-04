@@ -19,7 +19,9 @@
     "precommit": "run-s format:fix lint",
     "firebase-deploy": "firebase deploy",
     "build:modern": "ng build --plugin ngx-build-modern --prod",
-    "build:modern:AngNaN": "ng build --plugin ngx-build-modern --project AngNaN --prod"
+    "build:modern:AngNaN": "ng build --plugin ngx-build-modern --project AngNaN --prod",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "private": true,
   "dependencies": {
@@ -62,7 +64,8 @@
     "subsink": "^1.0.0",
     "ts-loader": "^5.3.1",
     "yarn": "^1.10.1",
-    "zone.js": "~0.8.26"
+    "zone.js": "~0.8.26",
+    "snyk": "^1.189.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.10.0",
@@ -90,5 +93,6 @@
     "tslint": "~5.11.0",
     "typescript": "~3.1.1",
     "webpack-cli": "^3.1.2"
-  }
+  },
+  "snyk": true
 }
