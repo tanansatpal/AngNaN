@@ -16,9 +16,10 @@ import { fakeBackendProvider } from '@shared/interceptors/fake-backend.intercept
 import { responseProvider } from '@shared/interceptors/response.interceptor';
 import { tokenProvider } from '@shared/interceptors/token.interceptor';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { RouterLinkDirectiveStub } from '../testing/router-link-directive-stub';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, RouterLinkDirectiveStub],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ang-nan' }),
     PrebootModule.withConfig({ appRoot: 'app-root' }),
